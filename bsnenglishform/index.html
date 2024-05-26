@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psychological Counseling Services Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #87CEEB;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 20px auto;
+      text-align: left;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .short-answer, .long-answer {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .long-answer {
+      height: 100px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .info-button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .info-button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Take a break from Your Stress with Your Navigator</h1>
+    <h2>Psychological Counseling Services Application</h2>
+    <p>Thank you for choosing our psychological counseling services. You can take appointment of your navigator here. Please fill out the following details to help us understand your needs and preferences. This will allow us to match you with the most suitable counselor.</p>
+    <form id="counselingForm">
+      <div class="section-title">Section 1: Personal Information</div>
+      <div class="question">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" class="short-answer" required>
+      </div>
+      <div class="question">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" class="short-answer" required>
+      </div>
+      <div class="question">
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" class="short-answer" required>
+      </div>
+      <div class="question">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" class="short-answer" required>
+      </div>
+      <div class="question">
+        <label for="gender">Gender:</label>
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label>
+        <label><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
+      </div>
+      
+      <div class="section-title">Section 2: Counseling Preferences</div>
+      <div class="question">
+        <label for="language">Preferred Language:</label>
+        <label><input type="checkbox" name="language" value="English"> English</label>
+        <label><input type="checkbox" name="language" value="Spanish"> Spanish</label>
+        <label><input type="checkbox" name="language" value="French"> French</label>
+        <label><input type="checkbox" name="language" value="German"> German</label>
+        <label><input type="checkbox" name="language" value="Hindi"> Hindi</label>
+        <label><input type="checkbox" name="language" value="Telugu"> Telugu</label>
+        <label><input type="checkbox" name="language" value="Marathi"> Marathi</label>
+        <label><input type="checkbox" name="language" value="Bahasa Indonesia"> Bahasa Indonesia</label>
+        <label><input type="checkbox" name="language" value="Other"> Other (Please specify): <input type="text" name="otherLanguage" class="short-answer"></label>
+      </div>
+      <div class="question">
+        <label for="counselingMode">Preferred Counseling Mode:</label>
+        <label><input type="radio" name="counselingMode" value="Online" required> Online</label>
+        <label><input type="radio" name="counselingMode" value="Offline"> Offline</label>
+      </div>
+      <div class="question">
+        <label for="location">Preferred Location (if offline):</label>
+        <input type="text" id="location" name="location" class="short-answer">
+      </div>
+      <div class="question">
+        <label for="days">Preferred Days for Sessions:</label>
+        <label><input type="checkbox" name="days" value="Monday"> Monday</label>
+        <label><input type="checkbox" name="days" value="Tuesday"> Tuesday</label>
+        <label><input type="checkbox" name="days" value="Wednesday"> Wednesday</label>
+        <label><input type="checkbox" name="days" value="Thursday"> Thursday</label>
+        <label><input type="checkbox" name="days" value="Friday"> Friday</label>
+        <label><input type="checkbox" name="days" value="Saturday"> Saturday</label>
+        <label><input type="checkbox" name="days" value="Sunday"> Sunday</label>
+      </div>
+      <div class="question">
+        <label for="timeSlots">Preferred Time Slots:</label>
+        <input type="text" id="timeSlots" name="timeSlots" class="short-answer">
+      </div>
+      
+      <div class="section-title">Section 3: Counseling Needs and Concerns</div>
+      <div class="question">
+        <label for="issues">Please select the issues you are facing:</label>
+        <label><input type="checkbox" name="issues" value="Anxiety"> Anxiety</label>
+        <label><input type="checkbox" name="issues" value="Depression"> Depression</label>
+        <label><input type="checkbox" name="issues" value="Stress"> Stress</label>
+        <label><input type="checkbox" name="issues" value="Relationship Issues"> Relationship Issues</label>
+        <label><input type="checkbox" name="issues" value="Family Conflicts"> Family Conflicts</label>
+        <label><input type="checkbox" name="issues" value="Child Behavioral Problems"> Child Behavioral Problems</label>
+        <label><input type="checkbox" name="issues" value="Adolescent Issues"> Adolescent Issues</label>
+        <label><input type="checkbox" name="issues" value="Grief and Loss"> Grief and Loss</label>
+        <label><input type="checkbox" name="issues" value="Trauma and PTSD"> Trauma and PTSD</label>
+        <label><input type="checkbox" name="issues" value="Substance Abuse"> Substance Abuse</label>
+        <label><input type="checkbox" name="issues" value="Career Counseling"> Career Counseling</label>
+        <label><input type="checkbox" name="issues" value="Self-Esteem Issues"> Self-Esteem Issues</label>
+        <label><input type="checkbox" name="issues" value="Anger Management"> Anger Management</label>
+        <label><input type="checkbox" name="issues" value="Sleep Disorders"> Sleep Disorders</label>
+        <label><input type="checkbox" name="issues" value="Eating Disorders"> Eating Disorders</label>
+        <label><input type="checkbox" name="issues" value="Other"> Other (Please specify): <input type="text" name="otherIssues" class="short-answer"></label>
+      </div>
+      <div class="question">
+        <label for="duration">How long have you been experiencing these issues?</label>
+        <label><input type="radio" name="duration" value="Less than a month" required> Less than a month</label>
+        <label><input type="radio" name="duration" value="1-6 months"> 1-6 months</label>
+        <label><input type="radio" name="duration" value="6-12 months"> 6-12 months</label>
+        <label><input type="radio" name="duration" value="More than a year"> More than a year</label>
+      </div>
+      <div class="question">
+        <label for="previousCounseling">Have you previously sought counseling or therapy?</label>
+        <label><input type="radio" name="previousCounseling" value="Yes" required> Yes</label>
+        <label><input type="radio" name="previousCounseling" value="No"> No</label>
+      </div>
+      <div class="question">
+        <label for="counselingDetails">If yes, please provide details (optional):</label>
+        <textarea id="counselingDetails" name="counselingDetails" class="long-answer"></textarea>
+      </div>
+      
+      <div class="section-title">Section 4: Counseling Packages</div>
+      <div class="question">
+        <label for="package">Preferred Counseling Package:</label>
+        <label><input type="radio" name="package" value="Individual Counseling" required> Individual Counseling</label>
+        <label><input type="radio" name="package" value="Family Counseling"> Family Counseling</label>
+        <label><input type="radio" name="package" value="Anonymous Counseling"> Anonymous Counseling</label>
+        <label><input type="radio" name="package" value="Counseling for Kids"> Counseling for Kids</label>
+      </div>
+      <div class="question">
+        <label for="packageDuration">Preferred Package Duration:</label>
+        <label><input type="radio" name="packageDuration" value="Single Session" required> Single Session</label>
+        <label><input type="radio" name="packageDuration" value="Monthly Package (4 sessions)"> Monthly Package (4 sessions)</label>
+        <label><input type="radio" name="packageDuration" value="Quarterly Package (12 sessions)"> Quarterly Package (12 sessions)</label>
+        <label><input type="radio" name="packageDuration" value="Annual Package (48 sessions)"> Annual Package (48 sessions)</label>
+      </div>
+      <div class="question">
+        <label for="additionalInfo">Additional Information or Requests (optional):</label>
+        <textarea id="additionalInfo" name="additionalInfo" class="long-answer"></textarea>
+      </div>
+      
+      <div class="section-title">Section 5: Consent and Submission</div>
+      <div class="question">
+        <label for="consent">I consent to the processing of my personal data in accordance with the privacy policy. (We don’t share your personal data with any third party)</label>
+        <label><input type="radio" name="consent" value="Yes" required> Yes</label>
+        <label><input type="radio" name="consent" value="No"> No</label>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById('counselingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        if (!data[key]) {
+          data[key] = value;
+        } else {
+          if (!Array.isArray(data[key])) {
+            data[key] = [data[key]];
+          }
+          data[key].push(value);
+        }
+      });
+
+      fetch("https://script.google.com/macros/s/AKfycbzTnCT_51VF5Qcb9BPFGUpl0gRIsG87zsNX_RP78Vf4C5wZrOkGa8LraMU2mKu_3AhY_A/exec", {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        openResultWindow();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error submitting your form. Please try again.');
+      });
+    });
+
+    function openResultWindow() {
+      const resultWindow = window.open("", "_blank", "width=600,height=400");
+      resultWindow.document.write(`
+        <html>
+          <head>
+            <title>Response</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                background-color: #87CEEB;
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+              }
+              .container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                position: relative;
+              }
+              .close-button {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: #f44336;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 4px;
+              }
+              .close-button:hover {
+                background-color: #d32f2f;
+              }
+              h1 {
+                color: #333;
+              }
+              p {
+                color: #555;
+              }
+              .bold {
+                font-weight: bold;
+              }
+              .back-button {
+                display: inline-block;
+                padding: 10px 20px;
+                margin-top: 20px;
+                border: none;
+                background-color: #007BFF;
+                color: white;
+                font-size: 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                text-decoration: none;
+              }
+              .back-button:hover {
+                background-color: #0056b3;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <button class="close-button" onclick="window.close()">X</button>
+              <h1>We have received your inputs</h1>
+              <p>The Life Navigator team will contact you shortly. For further counseling details, please email us at <strong>connect@thelifenavigator.com</strong> or <strong>bookmypsychologist@gmail.com</strong>.</p>
+              <p><strong>Disclaimer:</strong> We do not provide medication or emergency health services. Our counseling services are based on the inputs provided by users.</p>
+              <a class="back-button" href="https://www.thelifenavigator.com">Go Back to Homepage</a>
+            </div>
+          </body>
+        </html>
+      `);
+    }
+  </script>
+  <div class="container">
+    <a class="info-button" href="https://thelifenavigator.com/difference-between-psychologist-and-psychiatrist/">Read more about the difference between a psychologist and a psychiatrist</a>
+  </div>
+</body>
+</html>
