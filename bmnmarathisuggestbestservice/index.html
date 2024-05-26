@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>मनोवैज्ञानिक सेवा प्रश्नावली</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #87CEEB; /* Sky blue background color */
+      margin: 0;
+      padding: 0;
+    }
+    .top-bar {
+      background-color: #00008B; /* Dark blue background color */
+      padding: 10px;
+      text-align: right;
+    }
+    .top-bar a {
+      text-decoration: none;
+      color: #FFF;
+      font-weight: bold;
+    }
+    .top-bar a:hover {
+      color: #FFD700; /* Gold color on hover */
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 20px auto;
+      text-align: center;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .question, .user-details {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="https://www.thelifenavigator.com">मुख्य पृष्ठावर परत जा</a>
+  </div>
+  <div class="container">
+    <h1>लाइफ नेविगेटर: <br>"तुमच्या नेविगेटरसह तुमच्या तणावातून विश्रांती घ्या"</h1>
+    <h2>घरातील सदस्यांसाठी मनोवैज्ञानिक सेवा प्रश्नावली</h2>
+    <p>ही प्रश्नावली तुमच्या परिस्थितीसाठी योग्य मनोवैज्ञानिक सेवा ठरविण्यात मदत करण्यासाठी डिझाइन केली आहे. कृपया सर्वात अचूक शिफारस प्राप्त करण्यासाठी प्रामाणिकपणे खालील प्रश्नांची उत्तरे द्या.</p>
+    <form id="questionnaire" onsubmit="return validateForm()">
+      <div class="user-details">
+        <p><label for="name">नाव (ऐच्छिक):</label><br>
+        <input type="text" id="name" name="name"></p>
+        <p><label for="age">वय:</label><br>
+        <input type="number" id="age" name="age" required></p>
+        <p><label for="gender">लिंग:</label><br>
+        <label><input type="radio" name="gender" value="Male" required> पुरुष</label>
+        <label><input type="radio" name="gender" value="Female"> महिला</label>
+        <label><input type="radio" name="gender" value="Other"> इतर</label></p>
+        <p><label for="relationship">घरातील नाते:</label><br>
+        <label><input type="radio" name="relationship" value="Parent" required> पालक</label>
+        <label><input type="radio" name="relationship" value="Child"> मुल</label>
+        <label><input type="radio" name="relationship" value="Grandparent"> आजी-आजोबा</label>
+        <label><input type="radio" name="relationship" value="Relative"> नातेवाईक</label>
+        <label><input type="radio" name="relationship" value="Other"> इतर</label></p>
+      </div>
+      <div class="question">
+        <p>1. घरातील वर्तमान वातावरण कसे आहे?</p>
+        <label><input type="radio" name="q1" value="Peaceful and harmonious" required> शांततामय आणि सौहार्दपूर्ण</label><br>
+        <label><input type="radio" name="q1" value="Occasionally tense but manageable"> कधी कधी तणावपूर्ण पण सांभाळण्यासारखे</label><br>
+        <label><input type="radio" name="q1" value="Frequently stressful and conflict-ridden"> वारंवार तणावपूर्ण आणि संघर्षमय</label><br>
+      </div>
+      <div class="question">
+        <p>2. तुमच्या जोडीदारासोबत तुमचं नातं कसं आहे?</p>
+        <label><input type="radio" name="q2" value="Very satisfied" required> खूप समाधानी</label><br>
+        <label><input type="radio" name="q2" value="Somewhat satisfied"> काही प्रमाणात समाधानी</label><br>
+        <label><input type="radio" name="q2" value="Dissatisfied"> असमाधानी</label><br>
+        <label><input type="radio" name="q2" value="Not applicable"> लागू नाही</label><br>
+      </div>
+      <div class="question">
+        <p>3. तुमच्या मुलांसोबत तुमचं नातं कसं आहे?</p>
+        <label><input type="radio" name="q3" value="Very close and understanding" required> खूप जवळचं आणि समजदार</label><br>
+        <label><input type="radio" name="q3" value="Good but with occasional issues"> चांगलं पण कधी कधी समस्या असतात</label><br>
+        <label><input type="radio" name="q3" value="Strained and distant"> ताणलेलं आणि दूरचं</label><br>
+        <label><input type="radio" name="q3" value="Not applicable"> लागू नाही</label><br>
+      </div>
+      <div class="question">
+        <p>4. तुमच्या पालकांसोबत किंवा सासरच्या लोकांसोबत तुमचं नातं कसं आहे?</p>
+        <label><input type="radio" name="q4" value="Very supportive and understanding" required> खूप सहायक आणि समजदार</label><br>
+        <label><input type="radio" name="q4" value="Somewhat supportive but with occasional conflicts"> काही प्रमाणात सहायक पण कधी कधी संघर्ष होतात</label><br>
+        <label><input type="radio" name="q4" value="Strained and stressful"> ताणलेलं आणि तणावपूर्ण</label><br>
+        <label><input type="radio" name="q4" value="Not applicable"> लागू नाही</label><br>
+      </div>
+      <div class="question">
+        <p>5. इतर नातेवाईकांसोबत तुमचं नातं कसं आहे?</p>
+        <label><input type="radio" name="q5" value="Very positive" required> खूप सकारात्मक</label><br>
+        <label><input type="radio" name="q5" value="Neutral"> तटस्थ</label><br>
+        <label><input type="radio" name="q5" value="Negative"> नकारात्मक</label><br>
+        <label><input type="radio" name="q5" value="Not applicable"> लागू नाही</label><br>
+      </div>
+      <div class="question">
+        <p>6. घरात तुमच्या मुलाचं वर्तन कसं आहे?</p>
+        <label><input type="radio" name="q6" value="Generally well-behaved and cooperative" required> सामान्यतः चांगलं वर्तन आणि सहकार्य</label><br>
+        <label><input type="radio" name="q6" value="Occasionally disobedient but manageable"> कधी कधी अवज्ञाकारी पण सांभाळण्यासारखे</label><br>
+        <label><input type="radio" name="q6" value="Frequently disobedient and challenging"> वारंवार अवज्ञाकारी आणि आव्हानात्मक</label><br>
+      </div>
+      <div class="question">
+        <p>7. शाळेत किंवा मित्रांसोबत तुमच्या मुलाचं वर्तन कसं आहे?</p>
+        <label><input type="radio" name="q7" value="Positive and well-adjusted" required> सकारात्मक आणि चांगलं समायोजित</label><br>
+        <label><input type="radio" name="q7" value="Occasionally problematic but generally good"> कधी कधी समस्याग्रस्त पण सामान्यतः चांगलं</label><br>
+        <label><input type="radio" name="q7" value="Frequently problematic and concerning"> वारंवार समस्याग्रस्त आणि चिंताजनक</label><br>
+      </div>
+      <div class="question">
+        <p>8. तुम्ही अलीकडे तुमच्या मुलाच्या मूड किंवा वर्तनात काही बदल पाहिले आहेत का?</p>
+        <label><input type="radio" name="q8" value="No significant changes" required> कोणतेही महत्त्वाचे बदल नाहीत</label><br>
+        <label><input type="radio" name="q8" value="Some changes but nothing alarming"> काही बदल आहेत पण काहीही चिंताजनक नाही</label><br>
+        <label><input type="radio" name="q8" value="Significant changes that concern me"> महत्त्वाचे बदल जे मला चिंताजनक वाटतात</label><br>
+      </div>
+      <div class="question">
+        <p>9. तुम्हाला किती वेळा तणावग्रस्त किंवा अभिभूत वाटतं?</p>
+        <label><input type="radio" name="q9" value="Rarely" required> क्वचितच</label><br>
+        <label><input type="radio" name="q9" value="Sometimes"> कधी कधी</label><br>
+        <label><input type="radio" name="q9" value="Often"> वारंवार</label><br>
+      </div>
+      <div class="question">
+        <p>10. तुमच्या सध्याच्या चिंता किंवा नैराश्याच्या पातळीचं तुम्ही कसं मूल्यमापन कराल?</p>
+        <label><input type="radio" name="q10" value="None" required> काहीही नाही</label><br>
+        <label><input type="radio" name="q10" value="Mild"> सौम्य</label><br>
+        <label><input type="radio" name="q10" value="Moderate"> मध्यम</label><br>
+        <label><input type="radio" name="q10" value="Severe"> गंभीर</label><br>
+      </div>
+      <div class="question">
+        <p>11. तुमच्या भावना आणि चिंता याबद्दल बोलण्यासाठी तुमच्याकडे कोणी आहे का?</p>
+        <label><input type="radio" name="q11" value="Yes, always" required> होय, नेहमीच</label><br>
+        <label><input type="radio" name="q11" value="Sometimes"> कधी कधी</label><br>
+        <label><input type="radio" name="q11" value="Rarely"> क्वचितच</label><br>
+        <label><input type="radio" name="q11" value="No, never"> नाही, कधीच नाही</label><br>
+      </div>
+      <div class="question">
+        <p>12. दैनंदिन जबाबदाऱ्या आणि कामं हाताळण्याची तुमची क्षमता कशी आहे?</p>
+        <label><input type="radio" name="q12" value="Very capable" required> खूप सक्षम</label><br>
+        <label><input type="radio" name="q12" value="Capable with occasional difficulties"> कधी कधी अडचणींनी सक्षम</label><br>
+        <label><input type="radio" name="q12" value="Frequently struggling"> वारंवार संघर्षरत</label><br>
+      </div>
+      <div class="question">
+        <p>13. व्यावसायिक मनोवैज्ञानिक मदत घेण्यासाठी तुम्ही तयार आहात का?</p>
+        <label><input type="radio" name="q13" value="Yes, definitely" required> होय, नक्कीच</label><br>
+        <label><input type="radio" name="q13" value="Maybe, if recommended"> कदाचित, जर शिफारस केली असेल तर</label><br>
+        <label><input type="radio" name="q13" value="No, not at this time"> नाही, आत्ता नाही</label><br>
+      </div>
+      <div class="question">
+        <p>14. तुम्हाला कोणत्या प्रकारची समुपदेशन सेवा हवी आहे?</p>
+        <label><input type="radio" name="q14" value="Individual counseling for yourself" required> तुमच्यासाठी वैयक्तिक समुपदेशन</label><br>
+        <label><input type="radio" name="q14" value="Family counseling for the whole family"> संपूर्ण कुटुंबासाठी कौटुंबिक समुपदेशन</label><br>
+        <label><input type="radio" name="q14" value="Child or adolescent counseling"> मुलं किंवा किशोरवयीन समुपदेशन</label><br>
+        <label><input type="radio" name="q14" value="Anonymous counseling services"> गुप्त समुपदेशन सेवा</label><br>
+      </div>
+      <div class="question">
+        <p>15. तुम्ही समुपदेशन सत्रांमध्ये कसे सहभागी होऊ इच्छिता?</p>
+        <label><input type="radio" name="q15" value="In-person" required> प्रत्यक्ष</label><br>
+        <label><input type="radio" name="q15" value="Online/virtual"> ऑनलाइन/आभासी</label><br>
+        <label><input type="radio" name="q15" value="No preference"> काहीही हरकत नाही</label><br>
+      </div>
+      <div class="question">
+        <p>16. जर एखाद्या कुटुंबातील सदस्याला वर्तन समस्या आहेत, तर कोणती परिस्थिती त्याचे सर्वोत्तम वर्णन करते?</p>
+        <label><input type="radio" name="q16" value="Occasional outbursts or defiance" required> कधीकधीचा विस्फोट किंवा अवज्ञा</label><br>
+        <label><input type="radio" name="q16" value="Persistent mood swings or aggression"> सतत मूड बदल किंवा आक्रमकता</label><br>
+        <label><input type="radio" name="q16" value="Withdrawal or lack of communication"> माघार किंवा संवादाचा अभाव</label><br>
+        <label><input type="radio" name="q16" value="Not applicable"> लागू नाही</label><br>
+      </div>
+      <div class="question">
+        <p>17. जर तुम्ही वैवाहिक समस्यांचा सामना करत असाल, तर कोणती परिस्थिती त्याचे सर्वोत्तम वर्णन करते?</p>
+        <label><input type="radio" name="q17" value="Minor disagreements that are resolved quickly" required> छोटे मतभेद जे पटकन सोडवले जातात</label><br>
+        <label><input type="radio" name="q17" value="Frequent arguments and misunderstandings"> वारंवार वादविवाद आणि गैरसमज</label><br>
+        <label><input type="radio" name="q17" value="Consideration of separation or divorce"> विभक्त होण्याचा किंवा घटस्फोटाचा विचार</label><br>
+        <label><input type="radio" name="q17" value="Not applicable"> लागू नाही</label><br>
+      </div>
+      <div class="question">
+        <p>18. जर एखाद्या वृद्ध कुटुंबातील सदस्याला सहाय्याची गरज असेल, तर कोणती परिस्थिती त्याचे सर्वोत्तम वर्णन करते?</p>
+        <label><input type="radio" name="q18" value="Occasional assistance with daily tasks" required> दैनंदिन कामांसाठी कधीकधी मदत</label><br>
+        <label><input type="radio" name="q18" value="Frequent medical or emotional support"> वारंवार वैद्यकीय किंवा भावनिक समर्थन</label><br>
+        <label><input type="radio" name="q18" value="Significant caregiving responsibilities"> महत्त्वपूर्ण देखभाल जबाबदाऱ्या</label><br>
+        <label><input type="radio" name="q18" value="Not applicable"> लागू नाही</label><br>
+      </div>
+      <button type="submit">सबमिट करा</button>
+    </form>
+  </div>
+  <script>
+    document.addEventListener('copy', function(e) {
+      e.prevent.preventDefault();
+      alert('या पृष्ठावर कॉपी करणे अनुमती नाही.');
+    });
+
+    function validateForm() {
+      const form = document.getElementById('questionnaire');
+      const formData = new FormData(form);
+
+      // Check if all questions are answered
+      for (let [key, value] of formData.entries()) {
+        if (value === "" && key.startsWith('q')) {
+          alert("कृपया सर्व प्रश्नांची उत्तरे द्या");
+          return false;
+        }
+      }
+
+      calculateScore(formData);
+      return false; // Prevent the form from submitting normally
+    }
+
+    function calculateScore(formData) {
+      // This function calculates the result and recommendation based on the form data
+      let message = '';
+      let recommendations = '';
+
+      const q14Value = formData.get('q14');
+      if (q14Value === 'Individual counseling for yourself') {
+        message = 'आम्ही वैयक्तिक समुपदेशन शिफारस करतो: जर तुम्हाला अभिभूत, तणावग्रस्त किंवा वैयक्तिक समर्थनाची गरज वाटत असेल.';
+        recommendations = `
+          <strong>काय करावे:</strong><br>
+          - माइंडफुलनेस आणि विश्रांती तंत्रांचा अभ्यास करा.<br>
+          - नियमित व्यायामासह एक निरोगी जीवनशैली राखा.<br>
+          - एक सुसंगत दैनंदिन दिनचर्या स्थापन करा.<br><br>
+          <strong>काय करू नये:</strong><br>
+          - अत्यधिक कॅफीन किंवा साखरेचे सेवन करू नका.<br>
+          - स्वत:ला वेगळे करू नका; मित्र आणि कुटुंबासोबत कनेक्टेड रहा.<br>
+          - सततचा तणाव किंवा चिंता दुर्लक्षित करू नका; आवश्यक असल्यास मदत घ्या.`;
+      } else if (q14Value === 'Family counseling for the whole family') {
+        message = 'आम्ही कौटुंबिक समुपदेशन शिफारस करतो: जर कुटुंबात वारंवार संघर्ष किंवा संवाद समस्यांचे असतील.';
+        recommendations = `
+          <strong>काय करावे:</strong><br>
+          - मुद्द्यांवर चर्चा आणि निराकरणासाठी नियमित कुटुंबीय बैठकांचे आयोजन करा.<br>
+          - सक्रिय ऐकण्याची आणि सहानुभूतीची प्रॅक्टिस करा.<br>
+          - कौटुंबिक बंधन क्रियाकलापांमध्ये भाग घ्या.<br><br>
+          <strong>काय करू नये:</strong><br>
+          - कुटुंबातील सदस्यांना दोषी ठरवू नका किंवा लाजीरवाणे करू नका.<br>
+          - कोणत्याही कुटुंबातील सदस्याच्या भावनिक गरजा दुर्लक्षित करू नका.<br>
+          - मुद्द्यांना अनदेखी करू नका; त्यांना खुलेपणाने सामोरे जा.`;
+      } else if (q14Value === 'Child or adolescent counseling') {
+        message = 'आम्ही बाल किंवा किशोरवयीन समुपदेशन शिफारस करतो: जर तुमचे मूल वर्तनात्मक समस्या किंवा भावनिक संकटाचा सामना करत असेल.';
+        recommendations = `
+          <strong>काय करावे:</strong><br>
+          - एक सहायक आणि समजून घेणारे वातावरण प्रदान करा.<br>
+          - भावनांबद्दल उघडपणे संवाद साधण्यास प्रोत्साहित करा.<br>
+          - अनुशासनासह संयम बाळगा आणि सुसंगत राहा.<br><br>
+          <strong>काय करू नये:</strong><br>
+          - तुमच्या मुलाच्या भावनांचा किंवा चिंतेचा अपमान करू नका.<br>
+          - तुमच्या मुलाची तुलना इतरांशी करू नका.<br>
+          - तुमच्या स्वत:च्या भावनिक कल्याणाकडे दुर्लक्ष करू नका; मुले अनेकदा त्यांच्या पालकांच्या भावनांचे प्रतिबिंबित करतात.`;
+      } else if (q14Value === 'Anonymous counseling services') {
+        message = 'आम्ही गुप्त समुपदेशन सेवा शिफारस करतो: जर तुम्हाला तुमच्या ओळखीचा खुलासा न करता तुमच्या चिंता चर्चा करायच्या असतील.';
+        recommendations = `
+          <strong>काय करावे:</strong><br>
+          - तुमच्या चिंतांबद्दल प्रामाणिक आणि उघड राहा.<br>
+          - समुपदेशन सत्रांचा वापर तुमच्या भावनांचा शोध घेण्यासाठी करा.<br>
+          - दिलेल्या सल्ला आणि रणनीतींचे पालन करा.<br><br>
+          <strong>काय करू नये:</strong><br>
+          - भीती किंवा लाजेमुळे महत्त्वाची माहिती लपवू नका.<br>
+          - सत्रे वगळू नका; सुसंगतता महत्त्वाची आहे.<br>
+          - दिलेल्या सल्ल्याकडे दुर्लक्ष करू नका; सुधाराकडे सक्रिय पाऊले उचला.`;
+      }
+
+      message += `<br><br>${recommendations}`;
+      message += "<br><br><strong>आणखी मार्गदर्शनासाठी तुमच्या मनोवैज्ञानिक नेविगेटरशी संपर्क साधा connect@thelifenavigator.com वर.</strong>";
+      message += "<br><br><strong>अस्वीकरण:</strong> वापरकर्त्यांनी दिलेल्या इनपुटच्या आधारे दिल्या जाणाऱ्या शिफारशी आहेत. आम्ही औषधांचे वर्णन करत नाही किंवा आपत्कालीन आरोग्य सेवा प्रदान करत नाही.";
+
+      openResultWindow(message);
+
+      // Send data to Google Sheets
+      backupData(formData);
+    }
+
+    function openResultWindow(message) {
+      const newWindow = window.open("", "_blank", "width=600,height=400");
+      newWindow.document.write(`
+        <html>
+          <head>
+            <title>परिणाम</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                background-color: #87CEEB;
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+              }
+              .result-container {
+                border: 10px solid transparent;
+                padding: 15px;
+                border-image: url('https://www.publicdomainpictures.net/pictures/10000/velka/1433-1249134241Z21z.jpg') 30;
+                border-radius: 15px;
+                background-color: #fff;
+              }
+              h1 {
+                color: #333;
+              }
+              p {
+                color: #555;
+              }
+              .bold {
+                font-weight: bold;
+              }
+              .back-button {
+                display: inline-block;
+                padding: 10px 20px;
+                margin-top: 20px;
+                border: none;
+                background-color: #007BFF;
+                color: white;
+                font-size: 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                text-decoration: none;
+              }
+              .back-button:hover {
+                background-color: #0056b3;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="result-container">
+              <h1>मनोवैज्ञानिक सेवा शिफारस</h1>
+              <p>${message}</p>
+              <a class="back-button" href="https://www.thelifenavigator.com">मुख्य पृष्ठावर परत जा</a>
+            </div>
+          </body>
+        </html>
+      `);
+    }
+
+    function backupData(formData) {
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzooLciDeyQO5mFjZUe_RKi3OwIa4eq0CGfhkOU1iuDUd0EptA7Rh8YBFBTaeuo9fj9Aw/exec"; // Replace with your Apps Script URL
+      const data = new URLSearchParams();
+
+      for (let [key, value] of formData.entries()) {
+        data.append(key, value);
+      }
+
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: data
+      }).then(response => {
+        console.log('Data sent to Google Sheets');
+      }).catch(error => {
+        console.error('Error sending data to Google Sheets:', error);
+      });
+    }
+  </script>
+</body>
+</html>

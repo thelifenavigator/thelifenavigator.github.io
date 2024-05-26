@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psychological Services Questionnaire</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="https://www.thelifenavigator.com">Back to Homepage</a>
+  </div>
+  <div class="container">
+    <h1>The Life Navigator: <br>"Take a break from your Stress with Your Navigator"</h1>
+    <h2>Psychological Services Questionnaire for Household Members</h2>
+    <p>This questionnaire is designed to help you determine which type of psychological service is best suited for your situation. Please answer the following questions honestly to receive the most accurate recommendation.</p>
+    <form id="questionnaire" onsubmit="return validateForm()">
+      <div class="user-details">
+        <p><label for="name">Name (optional):</label><br>
+        <input type="text" id="name" name="name"></p>
+        <p><label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" required></p>
+        <p><label for="gender">Gender:</label><br>
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label></p>
+        <p><label for="relationship">Relationship in the household:</label><br>
+        <label><input type="radio" name="relationship" value="Parent" required> Parent</label>
+        <label><input type="radio" name="relationship" value="Child"> Child</label>
+        <label><input type="radio" name="relationship" value="Grandparent"> Grandparent</label>
+        <label><input type="radio" name="relationship" value="Relative"> Relative</label>
+        <label><input type="radio" name="relationship" value="Other"> Other</label></p>
+      </div>
+      <div class="question">
+        <p>1. How would you describe the current atmosphere at home?</p>
+        <label><input type="radio" name="q1" value="Peaceful and harmonious" required> Peaceful and harmonious</label><br>
+        <label><input type="radio" name="q1" value="Occasionally tense but manageable"> Occasionally tense but manageable</label><br>
+        <label><input type="radio" name="q1" value="Frequently stressful and conflict-ridden"> Frequently stressful and conflict-ridden</label><br>
+      </div>
+      <div class="question">
+        <p>2. How do you feel about your relationship with your spouse/partner?</p>
+        <label><input type="radio" name="q2" value="Very satisfied" required> Very satisfied</label><br>
+        <label><input type="radio" name="q2" value="Somewhat satisfied"> Somewhat satisfied</label><br>
+        <label><input type="radio" name="q2" value="Dissatisfied"> Dissatisfied</label><br>
+        <label><input type="radio" name="q2" value="Not applicable"> Not applicable</label><br>
+      </div>
+      <div class="question">
+        <p>3. How do you feel about your relationship with your children?</p>
+        <label><input type="radio" name="q3" value="Very close and understanding" required> Very close and understanding</label><br>
+        <label><input type="radio" name="q3" value="Good but with occasional issues"> Good but with occasional issues</label><br>
+        <label><input type="radio" name="q3" value="Strained and distant"> Strained and distant</label><br>
+        <label><input type="radio" name="q3" value="Not applicable"> Not applicable</label><br>
+      </div>
+      <div class="question">
+        <p>4. How do you feel about your relationship with your parents or in-laws?</p>
+        <label><input type="radio" name="q4" value="Very supportive and understanding" required> Very supportive and understanding</label><br>
+        <label><input type="radio" name="q4" value="Somewhat supportive but with occasional conflicts"> Somewhat supportive but with occasional conflicts</label><br>
+        <label><input type="radio" name="q4" value="Strained and stressful"> Strained and stressful</label><br>
+        <label><input type="radio" name="q4" value="Not applicable"> Not applicable</label><br>
+      </div>
+      <div class="question">
+        <p>5. How do you feel about your relationship with other relatives?</p>
+        <label><input type="radio" name="q5" value="Very positive" required> Very positive</label><br>
+        <label><input type="radio" name="q5" value="Neutral"> Neutral</label><br>
+        <label><input type="radio" name="q5" value="Negative"> Negative</label><br>
+        <label><input type="radio" name="q5" value="Not applicable"> Not applicable</label><br>
+      </div>
+      <div class="question">
+        <p>6. How do you perceive your child's behavior at home?</p>
+        <label><input type="radio" name="q6" value="Generally well-behaved and cooperative" required> Generally well-behaved and cooperative</label><br>
+        <label><input type="radio" name="q6" value="Occasionally disobedient but manageable"> Occasionally disobedient but manageable</label><br>
+        <label><input type="radio" name="q6" value="Frequently disobedient and challenging"> Frequently disobedient and challenging</label><br>
+      </div>
+      <div class="question">
+        <p>7. How do you perceive your child's behavior at school or with peers?</p>
+        <label><input type="radio" name="q7" value="Positive and well-adjusted" required> Positive and well-adjusted</label><br>
+        <label><input type="radio" name="q7" value="Occasionally problematic but generally good"> Occasionally problematic but generally good</label><br>
+        <label><input type="radio" name="q7" value="Frequently problematic and concerning"> Frequently problematic and concerning</label><br>
+      </div>
+      <div class="question">
+        <p>8. Have you noticed any changes in your child's mood or behavior recently?</p>
+        <label><input type="radio" name="q8" value="No significant changes" required> No significant changes</label><br>
+        <label><input type="radio" name="q8" value="Some changes but nothing alarming"> Some changes but nothing alarming</label><br>
+        <label><input type="radio" name="q8" value="Significant changes that concern me"> Significant changes that concern me</label><br>
+      </div>
+      <div class="question">
+        <p>9. How often do you feel stressed or overwhelmed?</p>
+        <label><input type="radio" name="q9" value="Rarely" required> Rarely</label><br>
+        <label><input type="radio" name="q9" value="Sometimes"> Sometimes</label><br>
+        <label><input type="radio" name="q9" value="Often"> Often</label><br>
+      </div>
+      <div class="question">
+        <p>10. How would you rate your current level of anxiety or depression?</p>
+        <label><input type="radio" name="q10" value="None" required> None</label><br>
+        <label><input type="radio" name="q10" value="Mild"> Mild</label><br>
+        <label><input type="radio" name="q10" value="Moderate"> Moderate</label><br>
+        <label><input type="radio" name="q10" value="Severe"> Severe</label><br>
+      </div>
+      <div class="question">
+        <p>11. Do you have someone to talk to about your feelings and concerns?</p>
+        <label><input type="radio" name="q11" value="Yes, always" required> Yes, always</label><br>
+        <label><input type="radio" name="q11" value="Sometimes"> Sometimes</label><br>
+        <label><input type="radio" name="q11" value="Rarely"> Rarely</label><br>
+        <label><input type="radio" name="q11" value="No, never"> No, never</label><br>
+      </div>
+      <div class="question">
+        <p>12. How do you feel about your ability to manage daily responsibilities and tasks?</p>
+        <label><input type="radio" name="q12" value="Very capable" required> Very capable</label><br>
+        <label><input type="radio" name="q12" value="Capable with occasional difficulties"> Capable with occasional difficulties</label><br>
+        <label><input type="radio" name="q12" value="Frequently struggling"> Frequently struggling</label><br>
+      </div>
+      <div class="question">
+        <p>13. Are you open to seeking professional psychological help?</p>
+        <label><input type="radio" name="q13" value="Yes, definitely" required> Yes, definitely</label><br>
+        <label><input type="radio" name="q13" value="Maybe, if recommended"> Maybe, if recommended</label><br>
+        <label><input type="radio" name="q13" value="No, not at this time"> No, not at this time</label><br>
+      </div>
+      <div class="question">
+        <p>14. What type of counseling service are you most interested in?</p>
+        <label><input type="radio" name="q14" value="Individual counseling for yourself" required> Individual counseling for yourself</label><br>
+        <label><input type="radio" name="q14" value="Family counseling for the whole family"> Family counseling for the whole family</label><br>
+        <label><input type="radio" name="q14" value="Child or adolescent counseling"> Child or adolescent counseling</label><br>
+        <label><input type="radio" name="q14" value="Anonymous counseling services"> Anonymous counseling services</label><br>
+      </div>
+      <div class="question">
+        <p>15. How would you prefer to attend counseling sessions?</p>
+        <label><input type="radio" name="q15" value="In-person" required> In-person</label><br>
+        <label><input type="radio" name="q15" value="Online/virtual"> Online/virtual</label><br>
+        <label><input type="radio" name="q15" value="No preference"> No preference</label><br>
+      </div>
+      <div class="question">
+        <p>16. If a family member is experiencing behavioral issues, which situation best describes it?</p>
+        <label><input type="radio" name="q16" value="Occasional outbursts or defiance" required> Occasional outbursts or defiance</label><br>
+        <label><input type="radio" name="q16" value="Persistent mood swings or aggression"> Persistent mood swings or aggression</label><br>
+        <label><input type="radio" name="q16" value="Withdrawal or lack of communication"> Withdrawal or lack of communication</label><br>
+        <label><input type="radio" name="q16" value="Not applicable"> Not applicable</label><br>
+      </div>
+      <div class="question">
+        <p>17. If you are experiencing marital problems, which situation best describes it?</p>
+        <label><input type="radio" name="q17" value="Minor disagreements that are resolved quickly" required> Minor disagreements that are resolved quickly</label><br>
+        <label><input type="radio" name="q17" value="Frequent arguments and misunderstandings"> Frequent arguments and misunderstandings</label><br>
+        <label><input type="radio" name="q17" value="Consideration of separation or divorce"> Consideration of separation or divorce</label><br>
+        <label><input type="radio" name="q17" value="Not applicable"> Not applicable</label><br>
+      </div>
+      <div class="question">
+        <p>18. If an elderly family member needs support, which situation best describes it?</p>
+        <label><input type="radio" name="q18" value="Occasional assistance with daily tasks" required> Occasional assistance with daily tasks</label><br>
+        <label><input type="radio" name="q18" value="Frequent medical or emotional support"> Frequent medical or emotional support</label><br>
+        <label><input type="radio" name="q18" value="Significant caregiving responsibilities"> Significant caregiving responsibilities</label><br>
+        <label><input type="radio" name="q18" value="Not applicable"> Not applicable</label><br>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
