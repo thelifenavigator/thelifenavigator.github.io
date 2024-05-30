@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Navigatorలో స్వాగతం</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            user-select: none; /* Prevent text selection */
+            -webkit-user-select: none; /* Prevent text selection in Safari */
+            -moz-user-select: none; /* Prevent text selection in Firefox */
+            -ms-user-select: none; /* Prevent text selection in IE/Edge */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007acc;
+            text-align: center;
+        }
+        h2 {
+            color: #005f99;
+            text-align: center;
+        }
+        .instructions {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #005f99;
+        }
+        .output-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .output-content {
+            background-color: #e6f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            background-color: #005f99;
+        }
+        .disclaimer {
+            font-size: 0.8em;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .website-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px;
+            text-align: center;
+            background-color: #007acc;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .website-btn:hover {
+            background-color: #005f99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Life Navigator</h1>
+        <h2>తనావం నుంచి విరామం తీసుకోండి మీ నావిగేటర్ తో</h2>
+        <h3>ప్రాథమిక స్క్రీనింగ్</h3>
+        <div class="instructions">
+            దయచేసి కింది ప్రశ్నలకు సరైన మరియు నిజమైన సమాధానాలు ఇవ్వండి. ప్రశ్నలు తప్పనిసరి కాదు.
+        </div>
+        <form id="questionnaire">
+            <div class="form-group">
+                <label for="name">పేరు:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="age">వయసు:</label>
+                <input type="number" id="age" name="age">
+            </div>
+            <div class="form-group">
+                <label for="gender">లింగం:</label>
+                <select id="gender" name="gender">
+                    <option value="">ఎంచుకోండి</option>
+                    <option value="Male">పురుషుడు</option>
+                    <option value="Female">స్త్రీ</option>
+                    <option value="Other">ఇతర</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="occupation">వృత్తి/పాఠశాల గ్రేడ్:</label>
+                <input type="text" id="occupation" name="occupation">
+            </div>
+            <div class="form-group">
+                <label for="maritalStatus">వివాహ స్థితి:</label>
+                <select id="maritalStatus" name="maritalStatus">
+                    <option value="">ఎంచుకోండి</option>
+                    <option value="Single">అవివాహిత</option>
+                    <option value="Married">వివాహిత</option>
+                    <option value="Divorced">వివాహ విఛేదం</option>
+                    <option value="Widowed">విధవ/విధవర్</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="familyMembers">కుటుంబ సభ్యులు:</label>
+                <input type="text" id="familyMembers" name="familyMembers">
+            </div>
+
+            <!-- Questions -->
+            <div class="form-group">
+                <label>1. నేను తరచుగా నా భావాలను నిర్వహించడంలో ఇబ్బంది పడుతాను (ఉదా., తరచుగా ఒత్తిడి, ఆందోళన లేదా దుఃఖం).</label>
+                <input type="radio" name="q1" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q1" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q1" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q1" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q1" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>2. నేను నా సమస్యలను గురించి మాట్లాడేటప్పుడు నా గుర్తింపును వెల్లడించనప్పుడు సౌకర్యంగా ఉంటాను (ఉదా., వ్యక్తిగత వివరాలను పంచుకోవడంలో అసౌకర్యంగా అనిపించడం).</label>
+                <input type="radio" name="q2" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q2" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q2" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q2" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q2" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>3. నాకు నా కుటుంబ సభ్యులతో తరచుగా ఘర్షణలు లేదా కమ్యూనికేషన్ సమస్యలు ఉంటాయి (ఉదా., వాదనలు, తప్పుబడిన భావాలు).</label>
+                <input type="radio" name="q3" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q3" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q3" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q3" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q3" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>4. నా బిడ్డ/కిశోరుడు భావోద్వేగ లేదా ప్రవర్తనా సమస్యలను ఎదుర్కొంటున్నాడు (ఉదా., మూడ్ స్వింగ్స్, తిరస్కరణ).</label>
+                <input type="radio" name="q4" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q4" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q4" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q4" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q4" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>5. నాకు ఒంటరితనం అనిపిస్తుంది మరియు ఇతరులతో అర్థవంతమైన సంబంధాలను నిర్మించడంలో ఇబ్బంది పడుతాను (ఉదా., ఒంటరితనం, కొద్దిమంది సన్నిహిత స్నేహితులు).</label>
+                <input type="radio" name="q5" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q5" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q5" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q5" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q5" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>6. నాకు వ్యక్తిగత సమస్యలతో ఉన్నప్పటికీ ప్రజలతో నమ్మకం కలిగించడం కష్టంగా అనిపిస్తుంది (ఉదా., ఒక థెరపిస్ట్‌తో నా భావాలను పంచుకోవడంలో తొందరపడడం).</label>
+                <input type="radio" name="q6" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q6" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q6" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q6" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q6" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>7. నా కుటుంబంలో ఏకీకరణ మరియు అవగాహన లేకుండా ఉంటాయి (ఉదా., తరచుగా విభేదాలు, మద్దతు లేకుండా ఉండటం).</label>
+                <input type="radio" name="q7" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q7" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q7" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q7" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q7" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>8. నా బిడ్డ/కిశోరుడు విద్యా సమస్యలను ఎదుర్కొంటున్నాడు మరియు ఉత్సాహం తక్కువగా ఉంది (ఉదా., తక్కువ గ్రేడ్‌లు, పాఠశాలలో ఆసక్తి లేకపోవడం).</label>
+                <input type="radio" name="q8" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q8" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q8" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q8" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q8" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>9. నేను నా దైనందిన జీవితంలో ఒత్తిడి మరియు ఆందోళనను ఎదుర్కోవడంలో ఇబ్బంది పడుతున్నాను (ఉదా., పని లేదా ఇంట్లో తండ్రీకరించడం).</label>
+                <input type="radio" name="q9" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q9" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q9" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q9" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q9" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>10. నేను గుర్తించని విధంగా సహాయం పొందడంలో సౌకర్యంగా ఉంటాను (ఉదా., ఆన్‌లైన్ లేదా ఫోన్ కౌన్సిలింగ్‌ను ప్రిఫర్ చేయడం).</label>
+                <input type="radio" name="q10" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q10" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q10" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q10" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q10" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>11. నా కుటుంబం మరియు నాకు ఘర్షణలను పరిష్కరించడం మరియు ఒకరి అభిప్రాయాలను అర్థం చేసుకోవడం కష్టంగా ఉంటుంది (ఉదా., నిత్య వివాదాలు, రాజీకి లోనుకాకుండా ఉండటం).</label>
+                <input type="radio" name="q11" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q11" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q11" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q11" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q11" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>12. నా బిడ్డ/కిశోరుడు నిశ్శబ్దత లేదా అధిక మూడ్ స్వింగ్స్ ను చూపిస్తున్నారు (ఉదా., దీర్ఘకాలంగా దుఃఖం, ఆగ్రహం).</label>
+                <input type="radio" name="q12" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q12" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q12" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q12" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q12" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>13. నాకు తరచుగా ఒంటరితనం అనిపిస్తుంది మరియు నా సామాజిక జీవితాన్ని మెరుగుపరచడానికి మద్దతు అవసరం అనిపిస్తుంది (ఉదా., మరింత స్నేహితులను కోరుకోవడం, సామాజిక కార్యక్రమాలలో పాల్గొనడం).</label>
+                <input type="radio" name="q13" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q13" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q13" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q13" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q13" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>14. నేను నా సమస్యలను ముఖాముఖి చర్చించడంలో సంకోచిస్తాను మరియు ఆన్‌లైన్ కౌన్సిలింగ్‌ను ప్రిఫర్ చేస్తాను (ఉదా., సిగ్గు లేదా సంకోచం అనిపించడం).</label>
+                <input type="radio" name="q14" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q14" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q14" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q14" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q14" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>15. నా కుటుంబ పరిస్థితుల్లో ఇటీవల మార్పులు జరిగాయి, వాటి కారణంగా ఒత్తిడి ఉంది (ఉదా., విడాకులు, కొత్త సభ్యుడు).</label>
+                <input type="radio" name="q15" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q15" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q15" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q15" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q15" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>16. నా బిడ్డ/కిశోరుడు హింస లేదా పీర్ ప్రెజర్‌ను ఎదుర్కొంటున్నారు (ఉదా., చులకన చేయడం లేదా పీర్ ప్రెజర్).</label>
+                <input type="radio" name="q16" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q16" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q16" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q16" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q16" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>17. నాకు వ్యక్తిగత సవాళ్లను అధిగమించడానికి వ్యక్తిగత మార్గదర్శనం అవసరం ఉంది (ఉదా., కెరీర్ సలహా, సంబంధ సలహా).</label>
+                <input type="radio" name="q17" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q17" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q17" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q17" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q17" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+            <div class="form-group">
+                <label>18. నా బిడ్డ/కిశోరుడి మానసిక మరియు భావోద్వేగ ఆరోగ్యం గురించి నేను ఆందోళనగా ఉన్నాను (ఉదా., ఆందోళన, డిప్రెషన్).</label>
+                <input type="radio" name="q18" value="ఎప్పుడూ కాదు"> ఎప్పుడూ కాదు
+                <input type="radio" name="q18" value="చాలా తక్కువగా"> చాలా తక్కువగా
+                <input type="radio" name="q18" value="కొన్నిసార్లు"> కొన్నిసార్లు
+                <input type="radio" name="q18" value="తరచుగా"> తరచుగా
+                <input type="radio" name="q18" value="ఎప్పుడూ"> ఎప్పుడూ
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitForm()">సబ్మిట్ చేయండి</button>
+        </form>
+    </div>
+
+    <div class="output-container" id="outputContainer">
+        <div class="output-content" id="outputContent">
+            <button class="close-btn" onclick="closeOutput()">X</button>
+            <div id="outputText"></div>
+            <a href="http://www.thelifenavigator.com" class="website-btn">Visit Website</a>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        అస్వీకరణ: అవుట్‌పుట్ సూచన పూర్తిగా అందించిన ఇన్‌పుట్‌లపై ఆధారపడి ఉంటుంది. మేము ఔషధం లేదా అత్యవసర వైద్య సేవలను అందించము.
+    </div>
+
+    <script>
+        function submitForm() {
+            const form = document.getElementById('questionnaire');
+            const formData = new FormData(form);
+
+            const responses = {
+                name: formData.get('name'),
+                age: formData.get('age'),
+                gender: formData.get('gender'),
+                occupation: formData.get('occupation'),
+                maritalStatus: formData.get('maritalStatus'),
+                familyMembers: formData.get('familyMembers'),
+                questions: {
+                    q1: formData.get('q1'),
+                    q2: formData.get('q2'),
+                    q3: formData.get('q3'),
+                    q4: formData.get('q4'),
+                    q5: formData.get('q5'),
+                    q6: formData.get('q6'),
+                    q7: formData.get('q7'),
+                    q8: formData.get('q8'),
+                    q9: formData.get('q9'),
+                    q10: formData.get('q10'),
+                    q11: formData.get('q11'),
+                    q12: formData.get('q12'),
+                    q13: formData.get('q13'),
+                    q14: formData.get('q14'),
+                    q15: formData.get('q15'),
+                    q16: formData.get('q16'),
+                    q17: formData.get('q17'),
+                    q18: formData.get('q18')
+                }
+            };
+
+            const outputText = generateOutput(responses);
+            document.getElementById('outputText').innerHTML = outputText;
+            document.getElementById('outputContainer').style.display = 'flex';
+
+            saveToGoogleSheets(responses);
+        }
+
+        function generateOutput(responses) {
+            let output = `<h2>సిఫారసు చేసిన కౌన్సిలింగ్</h2>`;
+            if (responses.questions.q1 === "తరచుగా" || responses.questions.q1 === "ఎప్పుడూ" || 
+                responses.questions.q5 === "తరచుగా" || responses.questions.q5 === "ఎప్పుడూ" || 
+                responses.questions.q9 === "తరచుగా" || responses.questions.q9 === "ఎప్పుడూ" || 
+                responses.questions.q13 === "తరచుగా" || responses.questions.q13 === "ఎప్పుడూ" || 
+                responses.questions.q17 === "తరచుగా" || responses.questions.q17 === "ఎప్పుడూ") {
+                output += `<p><strong>వ్యక్తిగత కౌన్సిలింగ్</strong><br>కారణాలు: వ్యక్తిగత భావోద్వేగ ఒత్తిడి అధిక స్థాయి, భావాలను నిర్వహించడంలో ఇబ్బంది, ఒత్తిడి మరియు సామాజిక ఒంటరితనం.<br><strong>చేయవలసింది:</strong> నియమిత ఆత్మపరిశీలన చేయండి, మైండ్‌ఫుల్‌నెస్ ప్రాక్టీస్ చేయండి, ఒత్తిడిని తగ్గించే హాబీలను కోరుకోండి.<br><strong>చేయరాదు:</strong> ఒంటరితనాన్ని నివారించండి, భావాలను నిరోధించకండి, మీకు మించి పని చేయకండి.</p>`;
+            }
+            if (responses.questions.q2 === "తరచుగా" || responses.questions.q2 === "ఎప్పుడూ" || 
+                responses.questions.q6 === "తరచుగా" || responses.questions.q6 === "ఎప్పుడూ" || 
+                responses.questions.q10 === "తరచుగా" || responses.questions.q10 === "ఎప్పుడూ" || 
+                responses.questions.q14 === "తరచుగా" || responses.questions.q14 === "ఎప్పుడూ") {
+                output += `<p><strong>అజ్ఞాత కౌన్సిలింగ్</strong><br>కారణాలు: గోప్యతకు ప్రాధాన్యత, విశ్వాస సమస్యలు, ముఖాముఖి పరస్పర చర్యలలో సంకోచం.<br><strong>చేయవలసింది:</strong> ఆన్‌లైన్ ఫోరమ్‌లు శోధించండి, జర్నలింగ్ చేయండి, అజ్ఞాత కౌన్సిలింగ్ సేవలను ఉపయోగించండి.<br><strong>చేయరాదు:</strong> మీ సమస్యలను నిర్లక్ష్యం చేయకండి, అజ్ఞాతంగానైనా సహాయం తీసుకోవడంలో సంకోచించకండి.</p>`;
+            }
+            if (responses.questions.q3 === "తరచుగా" || responses.questions.q3 === "ఎప్పుడూ" || 
+                responses.questions.q7 === "తరచుగా" || responses.questions.q7 === "ఎప్పుడూ" || 
+                responses.questions.q11 === "తరచుగా" || responses.questions.q11 === "ఎప్పుడూ" || 
+                responses.questions.q15 === "తరచుగా" || responses.questions.q15 === "ఎప్పుడూ") {
+                output += `<p><strong>కుటుంబ కౌన్సిలింగ్</strong><br>కారణాలు: కుటుంబ ఘర్షణలు, కమ్యూనికేషన్ సమస్యలు, ఇటీవల కుటుంబ డైనమిక్స్‌లో మార్పులు.<br><strong>చేయవలసింది:</strong> చురుకైన వినడానికి సాధన చేయండి, నియమిత కుటుంబ సమావేశాలు జరపండి, కృతజ్ఞత మరియు ప్రేమను వ్యక్తం చేయండి.<br><strong>చేయరాదు:</strong> తప్పు ఆరోపణలు చేయకుండా ఉండండి, కుటుంబ సమస్యలను నిర్లక్ష్యం చేయకండి, పరిష్కరించని ఘర్షణలను నివారించండి.</p>`;
+            }
+            if (responses.questions.q4 === "తరచుగా" || responses.questions.q4 === "ఎప్పుడూ" || 
+                responses.questions.q8 === "తరచుగా" || responses.questions.q8 === "ఎప్పుడూ" || 
+                responses.questions.q12 === "తరచుగా" || responses.questions.q12 === "ఎప్పుడూ" || 
+                responses.questions.q16 === "తరచుగా" || responses.questions.q16 === "ఎప్పుడూ" || 
+                responses.questions.q18 === "తరచుగా" || responses.questions.q18 === "ఎప్పుడూ") {
+                output += `<p><strong>పిల్లలు/కిశోరుల కౌన్సిలింగ్</strong><br>కారణాలు: పిల్లలు/కిశోరులు భావోద్వేగాలు, ప్రవర్తన, విద్యా సవాళ్లు, పీర్ ప్రెజర్‌తో బాధపడుతున్నారు.<br><strong>చేయవలసింది:</strong> తేటతెల్లమైన కమ్యూనికేషన్‌ను ప్రోత్సహించండి, మద్దతు వాతావరణం పెంచండి, పాఠశాల కార్యకలాపాలలో పాల్గొనండి.<br><strong>చేయరాదు:</strong> వారి భావాలను నిర్లక్ష్యం చేయకండి, వారికి ఎక్కువ ఒత్తిడి చేయకండి, ప్రతికూల తులనాలను నివారించండి.</p>`;
+            }
+            if (output === `<h2>సిఫారసు చేసిన కౌన్సిలింగ్</h2>`) {
+                output += `<p>మీ సమాధానాల ఆధారంగా, ఈ సమయంలో మీకు కౌన్సిలింగ్ అవసరం లేదు అని అనిపిస్తుంది. అయినప్పటికీ, స్వీయ సంరక్షణ కొనసాగించండి మరియు భవిష్యత్తులో అవసరమైతే మద్దతు పొందండి.</p>`;
+            }
+            output += `<p>మరిన్ని వివరాల కోసం సంప్రదించండి: connect@thelifenavigator.com</p>`;
+            output += `<div class="disclaimer">అస్వీకరణ: అవుట్‌పుట్ సూచన పూర్తిగా అందించిన ఇన్‌పుట్‌లపై ఆధారపడి ఉంటుంది. మేము ఔషధం లేదా అత్యవసర వైద్య సేవలను అందించము.</div>`;
+            return output;
+        }
+
+        function closeOutput() {
+            document.getElementById('outputContainer').style.display = 'none';
+        }
+
+        function saveToGoogleSheets(data) {
+            const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+            fetch(scriptURL, { method: 'POST', body: JSON.stringify(data) })
+                .then(response => console.log('సక్సెస్!', response))
+                .catch(error => console.error('తప్పు!', error.message));
+        }
+    </script>
+</body>
+</html>

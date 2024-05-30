@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to The Life Navigator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            user-select: none; /* Prevent text selection */
+            -webkit-user-select: none; /* Prevent text selection in Safari */
+            -moz-user-select: none; /* Prevent text selection in Firefox */
+            -ms-user-select: none; /* Prevent text selection in IE/Edge */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007acc;
+            text-align: center;
+        }
+        h2 {
+            color: #005f99;
+            text-align: center;
+        }
+        .instructions {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
+        }
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #005f99;
+        }
+        .output-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        .output-content {
+            background-color: #e6f7ff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #007acc;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            background-color: #005f99;
+        }
+        .disclaimer {
+            font-size: 0.8em;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .website-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px;
+            text-align: center;
+            background-color: #007acc;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .website-btn:hover {
+            background-color: #005f99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to The Life Navigator</h1>
+        <h2>Take a break from stress with your Navigator</h2>
+<h2>Initial Screening Form</h3>
+
+        
+<div class="instructions">
+            Please provide correct and genuine answers to the following questions. Questions are not mandatory.
+        </div>
+        <form id="questionnaire">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="occupation">Occupation/School Grade:</label>
+                <input type="text" id="occupation" name="occupation">
+            </div>
+            <div class="form-group">
+                <label for="maritalStatus">Marital Status:</label>
+                <select id="maritalStatus" name="maritalStatus">
+                    <option value="">Select</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widowed">Widowed</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="familyMembers">Family Members:</label>
+                <input type="text" id="familyMembers" name="familyMembers">
+            </div>
+
+            <!-- Questions -->
+            <div class="form-group">
+                <label>1. I often feel overwhelmed by my emotions and have difficulty managing them (e.g., feeling stressed, anxious, or sad frequently).</label>
+                <input type="radio" name="q1" value="Never"> Never
+                <input type="radio" name="q1" value="Rarely"> Rarely
+                <input type="radio" name="q1" value="Sometimes"> Sometimes
+                <input type="radio" name="q1" value="Often"> Often
+                <input type="radio" name="q1" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>2. I prefer to talk about my problems without revealing my identity (e.g., feeling uncomfortable sharing personal details).</label>
+                <input type="radio" name="q2" value="Never"> Never
+                <input type="radio" name="q2" value="Rarely"> Rarely
+                <input type="radio" name="q2" value="Sometimes"> Sometimes
+                <input type="radio" name="q2" value="Often"> Often
+                <input type="radio" name="q2" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>3. I frequently have conflicts or communication issues with my family members (e.g., arguments, misunderstandings).</label>
+                <input type="radio" name="q3" value="Never"> Never
+                <input type="radio" name="q3" value="Rarely"> Rarely
+                <input type="radio" name="q3" value="Sometimes"> Sometimes
+                <input type="radio" name="q3" value="Often"> Often
+                <input type="radio" name="q3" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>4. My child/teenager is struggling with emotional or behavioral issues (e.g., mood swings, defiance).</label>
+                <input type="radio" name="q4" value="Never"> Never
+                <input type="radio" name="q4" value="Rarely"> Rarely
+                <input type="radio" name="q4" value="Sometimes"> Sometimes
+                <input type="radio" name="q4" value="Often"> Often
+                <input type="radio" name="q4" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>5. I feel isolated and have trouble forming meaningful connections with others (e.g., feeling lonely, having few close friends).</label>
+                <input type="radio" name="q5" value="Never"> Never
+                <input type="radio" name="q5" value="Rarely"> Rarely
+                <input type="radio" name="q5" value="Sometimes"> Sometimes
+                <input type="radio" name="q5" value="Often"> Often
+                <input type="radio" name="q5" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>6. I find it hard to trust people, even professionals, with my personal issues (e.g., reluctance to share feelings with a therapist).</label>
+                <input type="radio" name="q6" value="Never"> Never
+                <input type="radio" name="q6" value="Rarely"> Rarely
+                <input type="radio" name="q6" value="Sometimes"> Sometimes
+                <input type="radio" name="q6" value="Often"> Often
+                <input type="radio" name="q6" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>7. There is a lack of harmony and understanding within my family (e.g., frequent disagreements, lack of support).</label>
+                <input type="radio" name="q7" value="Never"> Never
+                <input type="radio" name="q7" value="Rarely"> Rarely
+                <input type="radio" name="q7" value="Sometimes"> Sometimes
+                <input type="radio" name="q7" value="Often"> Often
+                <input type="radio" name="q7" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>8. My child/teenager is facing academic challenges and seems unmotivated (e.g., poor grades, lack of interest in school).</label>
+                <input type="radio" name="q8" value="Never"> Never
+                <input type="radio" name="q8" value="Rarely"> Rarely
+                <input type="radio" name="q8" value="Sometimes"> Sometimes
+                <input type="radio" name="q8" value="Often"> Often
+                <input type="radio" name="q8" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>9. I have difficulty coping with stress and anxiety in my daily life (e.g., feeling overwhelmed at work or home).</label>
+                <input type="radio" name="q9" value="Never"> Never
+                <input type="radio" name="q9" value="Rarely"> Rarely
+                <input type="radio" name="q9" value="Sometimes"> Sometimes
+                <input type="radio" name="q9" value="Often"> Often
+                <input type="radio" name="q9" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>10. I would feel more comfortable seeking help anonymously (e.g., preferring online or phone counseling).</label>
+                <input type="radio" name="q10" value="Never"> Never
+                <input type="radio" name="q10" value="Rarely"> Rarely
+                <input type="radio" name="q10" value="Sometimes"> Sometimes
+                <input type="radio" name="q10" value="Often"> Often
+                <input type="radio" name="q10" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>11. My family and I have trouble resolving conflicts and understanding each other’s perspectives (e.g., ongoing disputes, lack of compromise).</label>
+                <input type="radio" name="q11" value="Never"> Never
+                <input type="radio" name="q11" value="Rarely"> Rarely
+                <input type="radio" name="q11" value="Sometimes"> Sometimes
+                <input type="radio" name="q11" value="Often"> Often
+                <input type="radio" name="q11" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>12. My child/teenager is showing signs of depression or extreme mood swings (e.g., prolonged sadness, irritability).</label>
+                <input type="radio" name="q12" value="Never"> Never
+                <input type="radio" name="q12" value="Rarely"> Rarely
+                <input type="radio" name="q12" value="Sometimes"> Sometimes
+                <input type="radio" name="q12" value="Often"> Often
+                <input type="radio" name="q12" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>13. I often feel lonely and believe I need support to improve my social life (e.g., desire for more friends, social activities).</label>
+                <input type="radio" name="q13" value="Never"> Never
+                <input type="radio" name="q13" value="Rarely"> Rarely
+                <input type="radio" name="q13" value="Sometimes"> Sometimes
+                <input type="radio" name="q13" value="Often"> Often
+                <input type="radio" name="q13" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>14. I am hesitant to discuss my issues face-to-face and would prefer online counseling (e.g., feeling shy or embarrassed).</label>
+                <input type="radio" name="q14" value="Never"> Never
+                <input type="radio" name="q14" value="Rarely"> Rarely
+                <input type="radio" name="q14" value="Sometimes"> Sometimes
+                <input type="radio" name="q14" value="Often"> Often
+                <input type="radio" name="q14" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>15. My family dynamics have recently changed, causing stress (e.g., divorce, new member).</label>
+                <input type="radio" name="q15" value="Never"> Never
+                <input type="radio" name="q15" value="Rarely"> Rarely
+                <input type="radio" name="q15" value="Sometimes"> Sometimes
+                <input type="radio" name="q15" value="Often"> Often
+                <input type="radio" name="q15" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>16. My child/teenager is experiencing bullying or peer pressure (e.g., being teased or pressured by peers).</label>
+                <input type="radio" name="q16" value="Never"> Never
+                <input type="radio" name="q16" value="Rarely"> Rarely
+                <input type="radio" name="q16" value="Sometimes"> Sometimes
+                <input type="radio" name="q16" value="Often"> Often
+                <input type="radio" name="q16" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>17. I need personalized guidance to overcome personal challenges (e.g., career advice, relationship advice).</label>
+                <input type="radio" name="q17" value="Never"> Never
+                <input type="radio" name="q17" value="Rarely"> Rarely
+                <input type="radio" name="q17" value="Sometimes"> Sometimes
+                <input type="radio" name="q17" value="Often"> Often
+                <input type="radio" name="q17" value="Always"> Always
+            </div>
+            <div class="form-group">
+                <label>18. I am concerned about the mental and emotional well-being of my child/teenager (e.g., anxiety, depression).</label>
+                <input type="radio" name="q18" value="Never"> Never
+                <input type="radio" name="q18" value="Rarely"> Rarely
+                <input type="radio" name="q18" value="Sometimes"> Sometimes
+                <input type="radio" name="q18" value="Often"> Often
+                <input type="radio" name="q18" value="Always"> Always
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+
+    <div class="output-container" id="outputContainer">
+        <div class="output-content" id="outputContent">
+            <button class="close-btn" onclick="closeOutput()">X</button>
+            <div id="outputText"></div>
+            <a href="http://www.thelifenavigator.com" class="website-btn">Visit Website</a>
+        </div>
+    </div>
+
+    <div class="disclaimer">
+        Disclaimer: The output suggestion is purely based on the inputs given. We do not provide medication or emergency medical services.
+    </div>
+
+    <script>
+        function submitForm() {
+            const form = document.getElementById('questionnaire');
+            const formData = new FormData(form);
+
+            const responses = {
+                name: formData.get('name'),
+                age: formData.get('age'),
+                gender: formData.get('gender'),
+                occupation: formData.get('occupation'),
+                maritalStatus: formData.get('maritalStatus'),
+                familyMembers: formData.get('familyMembers'),
+                questions: {
+                    q1: formData.get('q1'),
+                    q2: formData.get('q2'),
+                    q3: formData.get('q3'),
+                    q4: formData.get('q4'),
+                    q5: formData.get('q5'),
+                    q6: formData.get('q6'),
+                    q7: formData.get('q7'),
+                    q8: formData.get('q8'),
+                    q9: formData.get('q9'),
+                    q10: formData.get('q10'),
+                    q11: formData.get('q11'),
+                    q12: formData.get('q12'),
+                    q13: formData.get('q13'),
+                    q14: formData.get('q14'),
+                    q15: formData.get('q15'),
+                    q16: formData.get('q16'),
+                    q17: formData.get('q17'),
+                    q18: formData.get('q18')
+                }
+            };
+
+            const outputText = generateOutput(responses);
+            document.getElementById('outputText').innerHTML = outputText;
+            document.getElementById('outputContainer').style.display = 'flex';
+
+            saveToGoogleSheets(responses);
+        }
+
+        function generateOutput(responses) {
+            let output = `<h2>Suggested Counseling</h2>`;
+            if (responses.questions.q1 === "Often" || responses.questions.q1 === "Always" || 
+                responses.questions.q5 === "Often" || responses.questions.q5 === "Always" || 
+                responses.questions.q9 === "Often" || responses.questions.q9 === "Always" || 
+                responses.questions.q13 === "Often" || responses.questions.q13 === "Always" || 
+                responses.questions.q17 === "Often" || responses.questions.q17 === "Always") {
+                output += `<p><strong>Individual Counseling</strong><br>Reasons: High levels of personal emotional distress, difficulty managing emotions, stress, and social isolation.<br><strong>Do's:</strong> Engage in regular self-reflection, practice mindfulness, seek hobbies that reduce stress.<br><strong>Don'ts:</strong> Avoid isolation, don’t suppress emotions, avoid overworking yourself.</p>`;
+            }
+            if (responses.questions.q2 === "Often" || responses.questions.q2 === "Always" || 
+                responses.questions.q6 === "Often" || responses.questions.q6 === "Always" || 
+                responses.questions.q10 === "Often" || responses.questions.q10 === "Always" || 
+                responses.questions.q14 === "Often" || responses.questions.q14 === "Always") {
+                output += `<p><strong>Anonymous Counseling</strong><br>Reasons: Preference for privacy, trust issues, hesitation in face-to-face interactions.<br><strong>Do's:</strong> Seek online forums, engage in journaling, use anonymous counseling services.<br><strong>Don'ts:</strong> Avoid ignoring your problems, don’t hesitate to reach out even anonymously.</p>`;
+            }
+            if (responses.questions.q3 === "Often" || responses.questions.q3 === "Always" || 
+                responses.questions.q7 === "Often" || responses.questions.q7 === "Always" || 
+                responses.questions.q11 === "Often" || responses.questions.q11 === "Always" || 
+                responses.questions.q15 === "Often" || responses.questions.q15 === "Always") {
+                output += `<p><strong>Family Counseling</strong><br>Reasons: Family conflicts, communication issues, recent changes in family dynamics.<br><strong>Do's:</strong> Practice active listening, schedule regular family meetings, express appreciation and love.<br><strong>Don'ts:</strong> Avoid blame games, don’t ignore family issues, avoid unresolved conflicts.</p>`;
+            }
+            if (responses.questions.q4 === "Often" || responses.questions.q4 === "Always" || 
+                responses.questions.q8 === "Often" || responses.questions.q8 === "Always" || 
+                responses.questions.q12 === "Often" || responses.questions.q12 === "Always" || 
+                responses.questions.q16 === "Often" || responses.questions.q16 === "Always" || 
+                responses.questions.q18 === "Often" || responses.questions.q18 === "Always") {
+                output += `<p><strong>Kids/Teenagers Counseling</strong><br>Reasons: Child/teen struggles with emotions, behavior, academic challenges, peer pressure.<br><strong>Do's:</strong> Encourage open communication, foster a supportive environment, engage in school activities.<br><strong>Don'ts:</strong> Avoid dismissing their feelings, don’t pressure them excessively, avoid negative comparisons.</p>`;
+            }
+            if (output === `<h2>Suggested Counseling</h2>`) {
+                output += `<p>Based on your responses, it appears that you do not need counseling at this time. However, continue to practice self-care and seek support if needed in the future.</p>`;
+            }
+            output += `<p>For more details contact at: connect@thelifenavigator.com</p>`;
+            output += `<div class="disclaimer">Disclaimer: The output suggestion is purely based on the inputs given. We do not provide medication or emergency medical services.</div>`;
+            return output;
+        }
+
+        function closeOutput() {
+            document.getElementById('outputContainer').style.display = 'none';
+        }
+
+        function saveToGoogleSheets(data) {
+            const scriptURL = 'https://script.google.com/macros/s/AKfycby5jsj9_kyuHW_DQ6TnJ2WzWjo6ioyVWy2abkL6KwBc6RdOCtl4eszGfUyBMX9oK_7W4w/exec';
+            fetch(scriptURL, { method: 'POST', body: JSON.stringify(data) })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message));
+        }
+    </script>
+</body>
+</html>
