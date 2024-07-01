@@ -135,7 +135,7 @@
     </form>
 
     <div class="change-password">
-      <a href="change-password-teachers.html" target="_blank" id="changePasswordLink">Change Password</a>
+      <a href="#" id="changePasswordLink">Change Password</a>
     </div>
   </div>
 
@@ -159,14 +159,14 @@
       formData.append('username', username);
       formData.append('password', password);
 
-      fetch('https://script.google.com/macros/s/AKfycbxrNiReu-N6vhVBjo41XL7sUGuO9leTyd1f498XrQorBl4aCmzt02I_6vOZ-0ra9TafhA/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbyFs0q5uEifrvYkJ7ohAz_YyTqr2jgDsbSNBTlYihG1JTTDHO43Ai0P9VzUB0YH54bFGA/exec', {
         method: 'POST',
         body: formData
       })
       .then(response => response.json())
       .then(data => {
         if (data.result === 'success') {
-          window.location.href = 'https://www.thelifenavigator.com';
+          window.location.href = 'https://thelifenavigator.com/welcome-to-teachers-world/';
         } else {
           errorMessage.textContent = 'Invalid username or password. Please try again.';
         }
@@ -175,6 +175,11 @@
         console.error('Error!', error.message);
         errorMessage.textContent = 'There was an error logging in. Please try again.';
       });
+    });
+
+    document.getElementById('changePasswordLink').addEventListener('click', function(event) {
+      event.preventDefault();
+      window.open('change-password.html', 'Change Password', 'width=400,height=400');
     });
   </script>
 </body>
