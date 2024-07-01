@@ -135,7 +135,7 @@
     </form>
 
     <div class="change-password">
-      <a href="#" id="changePasswordLink">Change Password</a>
+      <a href="change-password-teachers.html" target="_blank" id="changePasswordLink">Change Password</a>
     </div>
   </div>
 
@@ -159,7 +159,7 @@
       formData.append('username', username);
       formData.append('password', password);
 
-      fetch('https://script.google.com/macros/s/AKfycbyFXCgTo9zXs6j7IqMo9n9vhIoV1rWK4ZTSbKs9dB-_xCBc1pUneCWFpu67Sm875_0xdQ/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbwWh7gSwuvOp1FCLZ6sjwZe6THAfJXGMV-JOSDfMJ19CixxybgQ-ExTAAw6shFbtFcIvw/exec', {
         method: 'POST',
         body: formData
       })
@@ -175,11 +175,6 @@
         console.error('Error!', error.message);
         errorMessage.textContent = 'There was an error logging in. Please try again.';
       });
-    });
-
-    document.getElementById('changePasswordLink').addEventListener('click', function(event) {
-      event.preventDefault();
-      window.open('change-password-teachers.html', 'Change Password', 'width=400,height=400');
     });
   </script>
 </body>
