@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Change Password - The Life Navigator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .container h2 {
+      text-align: center;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    .container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container form label {
+      margin-bottom: 5px;
+      color: #555555;
+    }
+
+    .container form input[type="text"],
+    .container form input[type="password"] {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .container form input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .container form input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .container .error-message {
+      color: #ff6347;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .container .success-message {
+      color: #4CAF50;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Change Password</h2>
+    <form id="changePasswordForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="currentPassword">Current Password</label>
+      <input type="password" id="currentPassword" name="currentPassword" required>
+
+      <label for="newPassword">New Password</label>
+      <input type="password" id="newPassword" name="newPassword" required>
+
+      <label for="confirmNewPassword">Confirm New Password</label>
+      <input type="password" id="confirmNewPassword" name="confirmNewPassword" required>
+
+      <div class="error-message" id="errorMessage"></div>
+      <div class="success-message" id="successMessage"></div>
+
+      <input type="submit" value="Change Password">
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('changePasswordForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const currentPassword = document.getElementById('currentPassword').value;
+      const newPassword = document.getElementById('newPassword').value;
+      const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+      const errorMessage = document.getElementById('errorMessage');
+      const successMessage = document.getElementById('successMessage');
+
+      errorMessage.textContent = '';
+      successMessage.textContent = '';
+
+      if (newPassword !== confirmNewPassword) {
+        errorMessage.textContent = 'New passwords do not match.';
+        return;
+      }
+
+      if (!/(?=.*[a-zA-Z])(?=.*\d)[A-Za-z\d]{6,}/.test(newPassword)) {
+        errorMessage.textContent = 'New password must be at least 6 characters long and contain at least one letter and one number.';
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('currentPassword', currentPassword);
+      formData.append('newPassword', newPassword);
+
+      fetch('https://script.google.com/macros/s/AKfycbyFXCgTo9zXs6j7IqMo9n9vhIoV1rWK4ZTSbKs9dB-_xCBc1pUneCWFpu67Sm875_0xdQ/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.result === 'success') {
+          successMessage.textContent = 'Password changed successfully.';
+          setTimeout(() => {
+            window.location.href = 'https://thelifenavigator.com/login-page-web/';
+          }, 2000);
+        } else {
+          errorMessage.textContent = 'Invalid username or current password. Please try again.';
+        }
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        errorMessage.textContent = 'There was an error changing the password. Please try again.';
+      });
+    });
+  </script>
+</body>
+</html>
