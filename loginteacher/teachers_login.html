@@ -135,7 +135,7 @@
     </form>
 
     <div class="change-password">
-      <a href="#" id="changePasswordLink">Change Password</a>
+      <a href="teachers_change_password.html" id="changePasswordLink">Change Password</a>
     </div>
   </div>
 
@@ -166,7 +166,7 @@
       .then(response => response.json())
       .then(data => {
         if (data.result === 'success') {
-          window.location.href = 'https://thelifenavigator.com/welcome-to-teachers-world/';
+          window.location.href = 'https://thelifenavigator.com/teachers-world/';
         } else {
           errorMessage.textContent = 'Invalid username or password. Please try again.';
         }
@@ -179,7 +179,7 @@
 
     document.getElementById('changePasswordLink').addEventListener('click', function(event) {
       event.preventDefault();
-      window.open('change-password.html', 'Change Password', 'width=400,height=400');
+      window.open('teachers_change_password.html', 'Change Password', 'width=400,height=400');
     });
   </script>
 </body>
