@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD:teacaherslogin/index.html
+  <title>Welcome to The Life Navigator</title>
+=======
+  <title>Login - The Life Navigator</title>
+>>>>>>> 7fddabd6989aa2765a88bebe2be2f7c29e4ecc8d:loginteach1/index.html
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #0073e6;
+      color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+<<<<<<< HEAD:teacaherslogin/index.html
+=======
+      margin-bottom: 20px;
+>>>>>>> 7fddabd6989aa2765a88bebe2be2f7c29e4ecc8d:loginteach1/index.html
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    .container {
+<<<<<<< HEAD:teacaherslogin/index.html
+      max-width: 800px;
+=======
+      max-width: 400px;
+>>>>>>> 7fddabd6989aa2765a88bebe2be2f7c29e4ecc8d:loginteach1/index.html
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+<<<<<<< HEAD:teacaherslogin/index.html
+      text-align: center;
+    }
+
+    .container h2 {
+=======
+    }
+
+    .container h2 {
+      text-align: center;
+>>>>>>> 7fddabd6989aa2765a88bebe2be2f7c29e4ecc8d:loginteach1/index.html
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+<<<<<<< HEAD:teacaherslogin/index.html
+    .container p {
+      color: #555555;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .container a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #0073e6;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .container a:hover {
+      background-color: #005aa7;
+=======
+    .container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container form label {
+      margin-bottom: 5px;
+      color: #555555;
+    }
+
+    .container form input[type="text"],
+    .container form input[type="password"] {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .container form input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .container form input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .container .terms-checkbox {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .container .terms-checkbox label {
+      color: #555555;
+    }
+
+    .container .terms-checkbox input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    .container .error-message {
+      color: #ff6347;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .container .change-password {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .container .change-password a {
+      color: #0073e6;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .container .change-password a:hover {
+      text-decoration: underline;
+>>>>>>> 7fddabd6989aa2765a88bebe2be2f7c29e4ecc8d:loginteach1/index.html
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Welcome to The Life Navigator</h1>
+  </div>
+
+  <div class="container">
+<<<<<<< HEAD:teacaherslogin/index.html
+    <h2>Supporting Teachers and Parents</h2>
+    <p>
+      The Life Navigator is dedicated to providing comprehensive support for both teachers and parents.
+      Whether you are looking to create an account, log in, or change your password, you can find the right tools here.
+    </p>
+    <a href="teachers_create_account.html">Create Teacher Account</a>
+    <a href="teachers_login.html">Teacher Login</a>
+    <a href="teachers_change_password.html">Change Teacher Password</a>
+    <a href="parents_create_final.html">Create Parent Account</a>
+  </div>
+=======
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <div class="terms-checkbox">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I accept the <a href="https://thelifenavigator.com/privacy-policy-for-the-life-navigator" target="_blank">terms and conditions</a></label>
+      </div>
+
+      <div class="error-message" id="errorMessage"></div>
+
+      <input type="submit" value="Login">
+    </form>
+
+    <div class="change-password">
+      <a href="teachers_change_password.html" id="changePasswordLink">Change Password</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const terms = document.getElementById('terms').checked;
+      const errorMessage = document.getElementById('errorMessage');
+
+      errorMessage.textContent = '';
+
+      if (!terms) {
+        errorMessage.textContent = 'You must accept the terms and conditions.';
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
+
+      fetch('https://script.google.com/macros/s/AKfycbyFs0q5uEifrvYkJ7ohAz_YyTqr2jgDsbSNBTlYihG1JTTDHO43Ai0P9VzUB0YH54bFGA/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.result === 'success') {
+          window.location.href = 'https://thelifenavigator.com/welcome-to-teachers-world/';
+        } else {
+          errorMessage.textContent = 'Invalid username or password. Please try again.';
+        }
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        errorMessage.textContent = 'There was an error logging in. Please try again.';
+      });
+    });
+
+    document.getElementById('changePasswordLink').addEventListener('click', function(event) {
+      event.preventDefault();
+      window.open('teachers_change_password.html', 'Change Password', 'width=400,height=400');
+    });
+  </script>
+>>>>>>> 7fddabd6989aa2765a88bebe2be2f7c29e4ecc8d:loginteach1/index.html
+</body>
+</html>
