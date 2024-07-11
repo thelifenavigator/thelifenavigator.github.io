@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to English Grammar Course - Pretest</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 18px;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 28px;
+        }
+        .button {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        h2, h3 {
+            color: red;
+            font-size: 24px;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 4px 0;
+            box-sizing: border-box;
+            font-size: 18px;
+            font-family: 'Times New Roman', serif;
+        }
+        .submit-start-button, .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            margin: 10px auto;
+            display: block;
+        }
+        .timer {
+            font-size: 24px;
+            color: white;
+            background-color: black;
+            border: 2px solid #4CAF50;
+            padding: 10px;
+            width: 100px;
+            text-align: center;
+            margin: 20px auto;
+            border-radius: 10px;
+            display: none;
+        }
+        .result-window {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-height: 90%;
+            background-color: white;
+            color: black;
+            font-size: 20px;
+            padding: 20px;
+            overflow-y: auto;
+            border: 2px solid #4CAF50;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+            border: none;
+        }
+        .no-copy {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .questions-section {
+            display: none;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .instructions {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .explanation {
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="no-copy" oncopy="return false" oncut="return false" onpaste="return false">
+
+<header>
+    <img src="https://learningrana.com/wp-content/uploads/2024/07/sasi-and-app-logo.png?w=626" alt="Logo" style="height: 100px;">
+    <div>Welcome to English Grammar Course - Pretest</div>
+</header>
+
+<button class="button" onclick="window.location.href='http://www.thelifenavigator.com'">Back to Home Page</button>
+
+<h3>Need for This Pre-test</h3>
+<p>The English Grammar Pre-test is designed to assess students' current proficiency levels in grammar before they embark on the English Grammar Course. This pre-test helps identify specific areas of strength and weakness, enabling tailored instruction to meet individual learning needs. By categorizing questions into various difficulty levels, the test provides a comprehensive understanding of a student's capabilities. The results guide students in selecting the most appropriate course module—basic, intermediate, or advanced—ensuring a personalized and effective learning experience. This targeted approach not only optimizes the learning process but also enhances the overall effectiveness of the educational journey.</p>
+
+<h2>Module Selecting Pre-test</h2>
+
+<div class="instructions">
+    <p>Please read the instructions carefully before starting the test:</p>
+    <ul>
+        <li>Total Marks: 110</li>
+        <li>Maximum Time Allowed: 15 minutes</li>
+        <li>Answer all the questions to the best of your ability.</li>
+    </ul>
+    <p>
+        <strong>Scoring Rules:</strong><br>
+        <strong>C2 Level (6 marks each):</strong> Questions 1 to 5<br>
+        <strong>C1 Level (5 marks each):</strong> Questions 6 to 10<br>
+        <strong>B2 Level (4 marks each):</strong> Questions 11 to 17<br>
+        <strong>B1 Level (3 marks each):</strong> Questions 18 to 22<br>
+        <strong>A2 Level (2 marks each):</strong> Questions 23 to 26<br>
+        <strong>A1 Level (1 mark each):</strong> Questions 27 to 30<br>
+    </p>
+</div>
+
+<form id="personal-details-form" onsubmit="return startTest(event)">
+    <div class="form-group">
+        <label for="student-name">Student's Name:</label>
+        <input type="text" id="student-name" name="student-name" required>
+    </div>
+    <div class="form-group">
+        <label for="roll-number">Roll Number:</label>
+        <input type="text" id="roll-number" name="roll-number" required>
+    </div>
+    <div class="form-group">
+        <label for="year">Year:</label>
+        <select id="year" name="year" required>
+            <option value="" disabled selected>Select your year</option>
+            <option value="1st">1st Year</option>
+            <option value="2nd">2nd Year</option>
+            <option value="3rd">3rd Year</option>
+            <option value="4th">4th Year</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="section">Section:</label>
+        <select id="section" name="section" required>
+            <option value="" disabled selected>Select your section</option>
+            <option value="not-applicable">Not Applicable</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="branch">Branch:</label>
+        <select id="branch" name="branch" required>
+            <option value="" disabled selected>Select your branch</option>
+            <option value="AIML">AIML</option>
+            <option value="CE">CE</option>
+            <option value="CSE">CSE</option>
+            <option value="CST">CST</option>
+            <option value="CSE(AIML)">CSE(AIML)</option>
+            <option value="CSE(DS)">CSE(DS)</option>
+            <option value="CSE(IoT&CS)">CSE(IoT&CS)</option>
+            <option value="ECE">ECE</option>
+            <option value="ECT">ECT</option>
+            <option value="IT">IT</option>
+            <option value="EEE">EEE</option>
+            <option value="ME">ME</option>
+            <option value="MBA">MBA</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="email-id">Email ID:</label>
+        <input type="email" id="email-id" name="email-id" required>
+    </div>
+    <div class="form-group">
+        <label for="phone-number">Phone Number:</label>
+        <input type="tel" id="phone-number" name="phone-number" required>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="submit-start-button">Submit and Start Test</button>
+    </div>
+</form>
+
+<div class="questions-section" id="questions-section">
+    <div class="timer" id="timer">15:00</div>
+    <form id="grammar-test-form" onsubmit="return submitTest(event)">
+        <h3>Grammar Questions</h3>
+        <ol>
+            <li>Hardly ______ under the shower when the phone rang.
+                <select name="q1" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="had he got">had he got</option>
+                    <option value="he has got">he has got</option>
+                    <option value="he got">he got</option>
+                    <option value="he was getting">he was getting</option>
+                </select>
+            </li>
+            <li>Those trainers have ______. Why don’t you buy a new pair?
+                <select name="q2" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="gone off">gone off</option>
+                    <option value="expired">expired</option>
+                    <option value="dropped off">dropped off</option>
+                    <option value="seen better days">seen better days</option>
+                </select>
+            </li>
+            <li>The news of the robbery soon ______ and made the people alert.
+                <select name="q3" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="broke out">broke out</option>
+                    <option value="got round">got round</option>
+                    <option value="spread out">spread out</option>
+                    <option value="came outside">came outside</option>
+                </select>
+            </li>
+            <li>Sheela seems a lively fun-loving and gregarious person but it would be a great mistake to ______ her intelligence.
+                <select name="q4" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="despise">despise</option>
+                    <option value="underrate">underrate</option>
+                    <option value="devalue">devalue</option>
+                    <option value="depreciate">depreciate</option>
+                </select>
+            </li>
+            <li>______ for his support and help she would have given up years ago.
+                <select name="q5" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Unless it was">Unless it was</option>
+                    <option value="If she hadn’t been">If she hadn’t been</option>
+                    <option value="Had it not been">Had it not been</option>
+                    <option value="If it were">If it were</option>
+                </select>
+            </li>
+            <li>People were amazed that the burglary took place in _____ daylight.
+                <select name="q6" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="wide">wide</option>
+                    <option value="open">open</option>
+                    <option value="large">large</option>
+                    <option value="broad">broad</option>
+                </select>
+            </li>
+            <li>Having _____ her driving test several times Krithi finally passed at the fourth attempt.
+                <select name="q7" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="had">had</option>
+                    <option value="made">made</option>
+                    <option value="taken">taken</option>
+                    <option value="attended">attended</option>
+                </select>
+            </li>
+            <li>It’s _____ likely that this novel will win a literary prize.
+                <select name="q8" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="totally">totally</option>
+                    <option value="deeply">deeply</option>
+                    <option value="strongly">strongly</option>
+                    <option value="highly">highly</option>
+                </select>
+            </li>
+            <li>She prefers to buy CDs __________ download music from the internet.
+                <select name="q9" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="rather than">rather than</option>
+                    <option value="as opposed to">as opposed to</option>
+                    <option value="in contrast to">in contrast to</option>
+                    <option value="in comparison to">in comparison to</option>
+                </select>
+            </li>
+            <li>Very rarely _____ here in India in the month of May.
+                <select name="q10" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="does it rain">does it rain</option>
+                    <option value="it rains">it rains</option>
+                    <option value="is it raining">is it raining</option>
+                    <option value="it is raining">it is raining</option>
+                </select>
+            </li>
+            <li>The scientist's ______ was groundbreaking.
+                <select name="q11" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="discovery">discovery</option>
+                    <option value="discovered">discovered</option>
+                    <option value="discovers">discovers</option>
+                    <option value="discover">discover</option>
+                </select>
+            </li>
+            <li>If he ______ harder he would have passed the exam with flying colours.
+                <select name="q12" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="studies">studies</option>
+                    <option value="had studied">had studied</option>
+                    <option value="studied">studied</option>
+                    <option value="has studied">has studied</option>
+                </select>
+            </li>
+            <li>The company announced that it would be launching a new product next year which is expected to significantly increase its market share. What is the company planning to do next year?
+                <select name="q13" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Close some of its stores">Close some of its stores</option>
+                    <option value="Launch a new product">Launch a new product</option>
+                    <option value="Increase prices">Increase prices</option>
+                    <option value="Lay off employees">Lay off employees</option>
+                </select>
+            </li>
+            <li>I suggest that he ______ the meeting.
+                <select name="q14" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="to attend">to attend</option>
+                    <option value="attends">attends</option>
+                    <option value="attend">attend</option>
+                    <option value="attending">attending</option>
+                </select>
+            </li>
+            <li>She made a ______ decision to leave the party early.
+                <select name="q15" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="quick">quick</option>
+                    <option value="fast">fast</option>
+                    <option value="did a quick">did a quick</option>
+                    <option value="did a fast">did a fast</option>
+                </select>
+            </li>
+            <li>Despite ______ tired, she finished the report.
+                <select name="q16" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="she was">she was</option>
+                    <option value="of being">of being</option>
+                    <option value="being">being</option>
+                    <option value="she being">she being</option>
+                </select>
+            </li>
+            <li>She ran ______ of sugar while making sweets.
+                <select name="q17" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="out">out</option>
+                    <option value="off">off</option>
+                    <option value="over">over</option>
+                    <option value="up">up</option>
+                </select>
+            </li>
+            <li>She ______ her homework before dinner.
+                <select name="q18" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="made">made</option>
+                    <option value="did">did</option>
+                    <option value="made her job">made her job</option>
+                    <option value="did her job">did her job</option>
+                </select>
+            </li>
+            <li>He said that he ______ to the store.
+                <select name="q19" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="was going">was going</option>
+                    <option value="is going">is going</option>
+                    <option value="I am going">I am going</option>
+                    <option value="will be going">will be going</option>
+                </select>
+            </li>
+            <li>She has been living in Paris ______ two years.
+                <select name="q20" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="since">since</option>
+                    <option value="for">for</option>
+                    <option value="in">in</option>
+                    <option value="from">from</option>
+                </select>
+            </li>
+            <li>Wait. I ______ the windows.
+                <select name="q21" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="will open">will open</option>
+                    <option value="open">open</option>
+                    <option value="am going to open">am going to open</option>
+                    <option value="am opening">am opening</option>
+                </select>
+            </li>
+            <li>I want to watch ______ TV. Have you seen ______ remote?
+                <select name="q22" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="__ / the">__ / the</option>
+                    <option value="the / __">the / __</option>
+                    <option value="the / a">the / a</option>
+                    <option value="a / __">a / __</option>
+                </select>
+            </li>
+            <li>The weather is ______ today. Let’s stay inside. It is safe.
+                <select name="q23" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="simple">simple</option>
+                    <option value="awful">awful</option>
+                    <option value="awesome">awesome</option>
+                    <option value="close">close</option>
+                </select>
+            </li>
+            <li>The child was ______ because his toy was broken and did not drink milk.
+                <select name="q24" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="tidy">tidy</option>
+                    <option value="happy">happy</option>
+                    <option value="upset">upset</option>
+                    <option value="modern">modern</option>
+                </select>
+            </li>
+            <li>My in-laws live two kilometers ______ from the railway station.
+                <select name="q25" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="outside">outside</option>
+                    <option value="along">along</option>
+                    <option value="around">around</option>
+                    <option value="away">away</option>
+                </select>
+            </li>
+            <li>Someone says: "Would you like some coffee?" You say:________
+                <select name="q26" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="Yes please">Yes please</option>
+                    <option value="Yes please & No thank you">Yes please & No thank you</option>
+                    <option value="I'm not sure">I'm not sure</option>
+                    <option value="No thank you">No thank you</option>
+                </select>
+            </li>
+            <li>This is my water bottle. Where is ______?
+                <select name="q27" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="you">you</option>
+                    <option value="your">your</option>
+                    <option value="yours">yours</option>
+                    <option value="you're">you're</option>
+                </select>
+            </li>
+            <li>You want to ask the time. You say:
+                <select name="q28" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="What is the time?">What is the time?</option>
+                    <option value="Where is the time?">Where is the time?</option>
+                    <option value="Which is the time?">Which is the time?</option>
+                    <option value="How is the time?">How is the time?</option>
+                </select>
+            </li>
+            <li>They are traveling ______ train.
+                <select name="q29" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="on">on</option>
+                    <option value="by">by</option>
+                    <option value="in">in</option>
+                    <option value="with">with</option>
+                </select>
+            </li>
+            <li>I ______ to the gym every day.
+                <select name="q30" required>
+                    <option value="" disabled selected>Select an answer</option>
+                    <option value="goes">goes</option>
+                    <option value="go">go</option>
+                    <option value="going">going</option>
+                    <option value="gone">gone</option>
+                </select>
+            </li>
+        </ol>
+        <div class="form-group">
+            <button type="submit" class="submit-button">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div class="result-window" id="result-window">
+    <button class="close-button" onclick="closeResultWindow()">Close</button>
+    <h2 class="bold">Your Results</h2>
+    <p class="bold">Your score is: <span id="score"></span></p>
+    <p class="bold">Time taken: <span id="time-taken"></span></p>
+    <p class="bold">You should opt for the <span id="suggested-course"></span> module of the English course.</p>
+    <h3>Performance Graph</h3>
+    <canvas id="performance-chart" style="max-width: 500px; max-height: 300px; background-color: white;"></canvas>
+    <div class="explanation">
+        <h3>Explanation of Marks Distribution</h3>
+        <p id="basic-level-explanation"></p>
+        <p id="intermediate-level-explanation"></p>
+        <p id="advanced-level-explanation"></p>
+    </div>
+    <button class="button" onclick="downloadPDF()">Download Report</button>
+</div>
+
+<script>
+    let timer;
+    let startTime;
+
+    function startTest(event) {
+        event.preventDefault();
+
+        document.getElementById('personal-details-form').style.display = 'none';
+        document.getElementById('questions-section').style.display = 'block';
+
+        timer = 15 * 60;
+        startTime = Date.now();
+        document.getElementById('timer').style.display = 'block';
+        const interval = setInterval(() => {
+            timer--;
+            let minutes = Math.floor(timer / 60);
+            let seconds = timer % 60;
+            document.getElementById('timer').textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            if (timer <= 0) {
+                clearInterval(interval);
+                document.getElementById('grammar-test-form').submit();
+            }
+        }, 1000);
+    }
+
+    function submitTest(event) {
+        event.preventDefault();
+
+        const form = document.forms['grammar-test-form'];
+        const personalDetailsForm = document.forms['personal-details-form'];
+        const formData = new FormData(personalDetailsForm);
+
+        const totalMarks = calculateScore();
+        formData.append('totalMarks', totalMarks);
+
+        let suggestedCourse = '';
+        if (totalMarks <= 40) {
+            suggestedCourse = 'basic';
+        } else if (totalMarks <= 80) {
+            suggestedCourse = 'intermediate';
+        } else {
+            suggestedCourse = 'advanced';
+        }
+        formData.append('suggestedCourse', suggestedCourse);
+
+        const duration = Math.floor((Date.now() - startTime) / 1000);
+        const minutesTaken = Math.floor(duration / 60);
+        const secondsTaken = duration % 60;
+        formData.append('timeTaken', `${minutesTaken} minutes and ${secondsTaken} seconds`);
+
+        fetch('https://script.google.com/macros/s/AKfycbzCYmBlHZAUFfdDTP-ZJy5ouITKn-3dlc_e1lAd9J4x4rull-_NtvJbilCMcRzNUgZw/exec', {
+            method: 'POST',
+            body: formData
+        }).then(response => {
+            console.log('Success!', response);
+            displayResult(totalMarks, suggestedCourse);
+        }).catch(error => console.error('Error!', error.message));
+    }
+
+    function displayResult(totalMarks, suggestedCourse) {
+        document.getElementById('score').innerText = totalMarks;
+
+        const duration = Math.floor((Date.now() - startTime) / 1000);
+        const minutesTaken = Math.floor(duration / 60);
+        const secondsTaken = duration % 60;
+        document.getElementById('time-taken').innerText = `${minutesTaken} minutes and ${secondsTaken} seconds`;
+
+        document.getElementById('suggested-course').innerText = suggestedCourse;
+
+        const {totalMarksBasic, totalMarksIntermediate, totalMarksAdvanced} = calculateLevelMarks();
+        const ctx = document.getElementById('performance-chart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Basic', 'Intermediate', 'Advanced'],
+                datasets: [{
+                    label: 'Correct Answers',
+                    data: [totalMarksBasic, totalMarksIntermediate, totalMarksAdvanced],
+                    backgroundColor: ['darkred', 'green', 'blue']
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const { correctBasic, correctIntermediate, correctAdvanced } = calculateLevelCorrectAnswers();
+
+        const basicExplanation = `You have attempted ${correctBasic.correctA2} correct questions from A2 (2 marks each) and ${correctBasic.correctA1} correct questions from A1 (1 mark each), hence you obtained ${totalMarksBasic} marks in Basic level questions.`;
+
+        const intermediateExplanation = `You have attempted ${correctIntermediate.correctB2} correct questions from B2 (4 marks each) and ${correctIntermediate.correctB1} correct questions from B1 (3 marks each), hence you obtained ${totalMarksIntermediate} marks in Intermediate level questions.`;
+
+        const advancedExplanation = `You have attempted ${correctAdvanced.correctC2} correct questions from C2 (6 marks each) and ${correctAdvanced.correctC1} correct questions from C1 (5 marks each), hence you obtained ${totalMarksAdvanced} marks in Advanced level questions.`;
+
+        document.getElementById('basic-level-explanation').innerText = basicExplanation;
+        document.getElementById('intermediate-level-explanation').innerText = intermediateExplanation;
+        document.getElementById('advanced-level-explanation').innerText = advancedExplanation;
+
+        document.getElementById('result-window').style.display = 'block';
+    }
+
+    function closeResultWindow() {
+        document.getElementById('result-window').style.display = 'none';
+    }
+
+    function calculateScore() {
+        const form = document.forms['grammar-test-form'];
+        let totalMarks = 0;
+
+        const marksDistribution = [
+            6, 6, 6, 6, 6, 
+            5, 5, 5, 5, 5, 
+            4, 4, 4, 4, 4, 4, 4,
+            3, 3, 3, 3, 3,
+            2, 2, 2, 2,
+            1, 1, 1, 1
+        ];
+
+        const correctAnswers = [
+            'had he got', 'seen better days', 'broke out', 'underrate', 'had it not been',
+            'broad', 'taken', 'highly', 'rather than', 'does it rain',
+            'discovery', 'had studied', 'launch a new product', 'attend', 'quick', 'being', 'out',
+            'did', 'was going', 'for', 'will open', '__ / the',
+            'awful', 'upset', 'away', 'Yes please & No thank you',
+            'yours', 'What is the time?', 'by', 'go'
+        ];
+
+        for (let i = 0; i < 30; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                totalMarks += marksDistribution[i];
+            }
+        }
+
+        return totalMarks;
+    }
+
+    function calculateLevelMarks() {
+        const form = document.forms['grammar-test-form'];
+        let totalMarksBasic = 0;
+        let totalMarksIntermediate = 0;
+        let totalMarksAdvanced = 0;
+
+        const correctAnswers = [
+            'had he got', 'seen better days', 'broke out', 'underrate', 'had it not been',
+            'broad', 'taken', 'highly', 'rather than', 'does it rain',
+            'discovery', 'had studied', 'launch a new product', 'attend', 'quick', 'being', 'out',
+            'did', 'was going', 'for', 'will open', '__ / the',
+            'awful', 'upset', 'away', 'Yes please & No thank you',
+            'yours', 'What is the time?', 'by', 'go'
+        ];
+
+        for (let i = 0; i < 10; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                totalMarksAdvanced += i < 5 ? 6 : 5;
+            }
+        }
+
+        for (let i = 10; i < 22; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                totalMarksIntermediate += i < 17 ? 4 : 3;
+            }
+        }
+
+        for (let i = 22; i < 30; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                totalMarksBasic += i < 26 ? 2 : 1;
+            }
+        }
+
+        return { totalMarksBasic, totalMarksIntermediate, totalMarksAdvanced };
+    }
+
+    function calculateLevelCorrectAnswers() {
+        const form = document.forms['grammar-test-form'];
+        let correctBasic = { correctA1: 0, correctA2: 0 };
+        let correctIntermediate = { correctB1: 0, correctB2: 0 };
+        let correctAdvanced = { correctC1: 0, correctC2: 0 };
+
+        const correctAnswers = [
+            'had he got', 'seen better days', 'broke out', 'underrate', 'had it not been',
+            'broad', 'taken', 'highly', 'rather than', 'does it rain',
+            'discovery', 'had studied', 'launch a new product', 'attend', 'quick', 'being', 'out',
+            'did', 'was going', 'for', 'will open', '__ / the',
+            'awful', 'upset', 'away', 'Yes please & No thank you',
+            'yours', 'What is the time?', 'by', 'go'
+        ];
+
+        for (let i = 0; i < 10; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                if (i < 5) {
+                    correctAdvanced.correctC2++;
+                } else {
+                    correctAdvanced.correctC1++;
+                }
+            }
+        }
+
+        for (let i = 10; i < 22; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                if (i < 17) {
+                    correctIntermediate.correctB2++;
+                } else {
+                    correctIntermediate.correctB1++;
+                }
+            }
+        }
+
+        for (let i = 22; i < 30; i++) {
+            if (form[`q${i + 1}`].value === correctAnswers[i]) {
+                if (i < 26) {
+                    correctBasic.correctA2++;
+                } else {
+                    correctBasic.correctA1++;
+                }
+            }
+        }
+
+        return { correctBasic, correctIntermediate, correctAdvanced };
+    }
+
+    function downloadPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        doc.setFont('Times New Roman');
+        doc.setFontSize(20);
+        doc.setTextColor('#00008B');
+        doc.text('Report on Suggested Course', 105, 20, null, null, 'center');
+        
+        doc.setFontSize(14);
+        doc.setTextColor('#000000');
+        doc.text('Student Name: ' + document.getElementById('student-name').value, 10, 30);
+        doc.text('Roll Number: ' + document.getElementById('roll-number').value, 10, 40);
+        doc.text('Year: ' + document.getElementById('year').value, 10, 50);
+        doc.text('Section: ' + document.getElementById('section').value, 10, 60);
+        doc.text('Branch: ' + document.getElementById('branch').value, 10, 70);
+
+        doc.text('Your score is: ' + document.getElementById('score').innerText, 10, 80);
+        doc.text('Time taken: ' + document.getElementById('time-taken').innerText, 10, 90);
+        doc.text('You should opt for the ' + document.getElementById('suggested-course').innerText + ' module of the English course.', 10, 100);
+
+        const canvas = document.getElementById('performance-chart');
+        const canvasImg = canvas.toDataURL('image/png', 1.0);
+        doc.addImage(canvasImg, 'PNG', 10, 110, 180, 80);
+
+        const protection = {
+            permissions: {
+                printing: 'highResolution',
+                modifying: 'none',
+                copying: 'none',
+                annotating: 'none',
+                fillingForms: 'none',
+                contentAccessibility: 'none',
+                documentAssembly: 'none'
+            }
+        };
+        doc.setProperties(protection);
+
+        doc.save('Report.pdf');
+    }
+</script>
+
+</body>
+</html>
