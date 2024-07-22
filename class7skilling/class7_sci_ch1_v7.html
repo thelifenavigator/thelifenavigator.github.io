@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Science Quiz - Nutrition in Plants</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .header {
+            background-color: #ff9999;
+            padding: 20px;
+            text-align: center;
+            color: black;
+            position: relative;
+        }
+
+        .header img {
+            height: 200px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .quiz-container, .results-container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .quiz-slide {
+            display: none;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .quiz-slide.active {
+            display: block;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: darkblue;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #timer {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .start-container {
+            text-align: center;
+        }
+
+        .results-container {
+            display: none;
+        }
+
+        .download-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-button:hover {
+            background-color: #0056b3;
+        }
+
+        .left-image {
+            width: 200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .score-label {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-container form label {
+            margin-bottom: 5px;
+            color: #555555;
+        }
+
+        .login-container form input[type="text"],
+        .login-container form input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .login-container form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .login-container form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .login-container .terms-checkbox {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .login-container .terms-checkbox label {
+            color: #555555;
+        }
+
+        .login-container .terms-checkbox input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .login-container .error-message {
+            color: #ff6347;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .intro-text {
+            font-size: 20px;
+        }
+
+        .timer-decorated {
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: #000;
+            color: #0f0;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .quote {
+            font-style: italic;
+            font-weight: bold;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function changeHeaderColor() {
+            const colors = ['#ff9999', '#99ccff', '#99ff99', '#ffcc99', '#cc99ff'];
+            const header = document.querySelector('.header');
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            header.style.backgroundColor = randomColor;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const terms = document.getElementById('terms').checked;
+                const errorMessage = document.getElementById('errorMessage');
+
+                errorMessage.textContent = '';
+
+                if (!terms) {
+                    errorMessage.textContent = 'You must accept the terms and conditions.';
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('username', username);
+                formData.append('password', password);
+
+                fetch('https://script.google.com/macros/s/AKfycbyxjzKFO99pyrz-1sJ3RjdACaBTHnNsLP8MHN42iq5DeBpkb0aH3iy4jV3Vf6pvEU4g8Q/exec', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                        document.querySelector('.login-container').style.display = 'none';
+                        document.querySelector('.start-container').style.display = 'block';
+                        document.getElementById('loggedInUser').value = username;
+                        document.getElementById('studentInfo').value = JSON.stringify(data.studentInfo);
+                    } else {
+                        errorMessage.textContent = 'Invalid username or password. Please try again.';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    errorMessage.textContent = 'There was an error logging in. Please try again.';
+                });
+            });
+        });
+
+        function startQuiz() {
+            document.querySelector('.start-container').style.display = 'none';
+            document.querySelector('.quiz-container').style.display = 'block';
+            startTimer();
+        }
+
+        let timer;
+        let timeLeft = 900; // 15 minutes in seconds
+        let startTime;
+
+        function startTimer() {
+            clearInterval(timer);
+            startTime = Date.now();
+            timer = setInterval(function() {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    submitQuiz();
+                } else {
+                    timeLeft--;
+                    let minutes = Math.floor(timeLeft / 60);
+                    let seconds = timeLeft % 60;
+                    document.getElementById('timer').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                }
+            }, 1000);
+        }
+
+        function nextSlide(slideNumber) {
+            document.querySelector('.quiz-slide.active').classList.remove('active');
+            document.getElementById('slide-' + slideNumber).classList.add('active');
+        }
+
+        function prevSlide(slideNumber) {
+            document.querySelector('.quiz-slide.active').classList.remove('active');
+            document.getElementById('slide-' + slideNumber).classList.add('active');
+        }
+
+        function submitQuiz() {
+            clearInterval(timer);
+            let endTime = Date.now();
+            let timeTaken = Math.floor((endTime - startTime) / 1000);
+            let totalMarks = 0;
+            let correctAnswers = {
+                basic: 0,
+                intermediate: 0,
+                expert: 0
+            };
+
+            const answers = [
+                "Consists of epidermis, mesophyll, and veins", "Loss of water vapor through stomata", "Gas exchange", "All of the above", "Both A and B",
+                "Glucose and oxygen", "All of the above", "Prevents water loss", "Through xylem", "Using chlorophyll, water, CO2, and sunlight to produce food",
+                "CO2 + H2O -> C6H12O6 + O2", "Guard Cells", "Captures sunlight", "Glucose", "Released into the air",
+                "To get energy", "Autotrophs", "Photosynthesis", "Chlorophyll", "Carbon Dioxide"
+            ];
+
+            document.querySelectorAll('.quiz-slide').forEach((slide, index) => {
+                const selectedOption = slide.querySelector('input[type="radio"]:checked');
+                if (selectedOption && selectedOption.value === answers[index]) {
+                    if (index < 10) {
+                        totalMarks += 3;
+                        correctAnswers.expert += 1;
+                    } else if (index < 15) {
+                        totalMarks += 2;
+                        correctAnswers.intermediate += 1;
+                    } else {
+                        totalMarks += 1;
+                        correctAnswers.basic += 1;
+                    }
+                }
+            });
+
+            document.getElementById('display-score').textContent = totalMarks;
+            document.getElementById('display-score').classList.remove('hidden');
+
+            const username = document.getElementById('loggedInUser').value;
+            const test = '1'; // Specify the test number here
+            sendTotalMarks(username, totalMarks, test);
+
+            setTimeout(() => showResults(totalMarks, timeTaken, correctAnswers, answers), 2000);
+        }
+
+        function sendTotalMarks(username, totalMarks, test) {
+            const formData = new FormData();
+            formData.append('username', username);
+            formData.append('totalMarks', totalMarks);
+            formData.append('test', test);
+
+            fetch('https://script.google.com/macros/s/AKfycbyxjzKFO99pyrz-1sJ3RjdACaBTHnNsLP8MHN42iq5DeBpkb0aH3iy4jV3Vf6pvEU4g8Q/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result !== 'success') {
+                    console.error('Error sending marks:', data);
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+            });
+        }
+
+        function showResults(totalMarks, timeTaken, correctAnswers, answers) {
+            document.querySelector('.quiz-container').style.display = 'none';
+            document.getElementById('results-container').style.display = 'block';
+
+            const minutesTaken = Math.floor(timeTaken / 60);
+            const secondsTaken = timeTaken % 60;
+            document.getElementById('total-marks').textContent = `Total Marks Obtained: ${totalMarks} / 45`;
+            document.getElementById('time-taken').textContent = `Time Taken: ${minutesTaken} minutes and ${secondsTaken} seconds`;
+
+            const ctx = document.getElementById('results-chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Basic', 'Intermediate', 'Expert'],
+                    datasets: [{
+                        label: 'Correct Answers',
+                        data: [correctAnswers.basic, correctAnswers.intermediate, correctAnswers.expert],
+                        backgroundColor: ['#007bff', '#28a745', '#dc3545'],
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Correct Answers'
+                            }
+                        }
+                    }
+                }
+            });
+
+            document.getElementById('marks-explanation').textContent = `You answered ${correctAnswers.basic} basic questions, ${correctAnswers.intermediate} intermediate questions, and ${correctAnswers.expert} expert questions correctly.`;
+
+            let recommendations = 'Recommendations: ';
+            if (correctAnswers.basic < 3) {
+                recommendations += 'Focus on the basic concepts of photosynthesis, such as its definition, importance, and basic steps. ';
+            }
+            if (correctAnswers.intermediate < 3) {
+                recommendations += 'Review the intermediate-level details like the structures involved in photosynthesis and their functions. ';
+            }
+            if (correctAnswers.expert < 3) {
+                recommendations += 'Study the expert-level topics, such as the biochemical processes and detailed mechanisms of photosynthesis, more thoroughly.';
+            }
+            document.getElementById('recommendations').textContent = recommendations;
+
+            let correctAnswersText = '<strong>Correct Answers:</strong><br>';
+            answers.forEach((answer, index) => {
+                correctAnswersText += `${index + 1}: <strong>${answer}</strong><br>`;
+            });
+            document.getElementById('correct-answers').innerHTML = correctAnswersText;
+
+            // Fetch student info from the hidden field
+            const studentInfo = JSON.parse(document.getElementById('studentInfo').value);
+            document.getElementById('student-info').innerHTML = `
+                <p><strong>Student Name:</strong> ${studentInfo.studentName}</p>
+                <p><strong>Father's Name:</strong> ${studentInfo.fatherName}</p>
+                <p><strong>School Name:</strong> ${studentInfo.schoolName}</p>
+            `;
+        }
+
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                unit: 'pt',
+                format: 'a4',
+                userUnit: 'px'
+            });
+
+            // Add header background
+            doc.setFillColor(169, 169, 169);
+            doc.rect(0, 0, doc.internal.pageSize.width, 150, 'F');
+
+            // Add header image
+            const headerImageUrl = 'https://i0.wp.com/thelifenavigator.com/wp-content/uploads/2024/07/DALL%C2%B7E-2024-07-22-00.20.08-A-golden-globe-with-a-blue-and-gold-globe-on-a-metallic-background.-Below-the-globe-is-a-large-button-with-the-text-The-Life-Navigator-Lighting-the.webp?fit=1024%2C1024&ssl=1';
+            const img = new Image();
+            img.src = headerImageUrl;
+            img.onload = function() {
+                doc.addImage(img, 'PNG', (doc.internal.pageSize.width - 100) / 2, 10, 100, 100);
+                
+                // Add header text with some gap
+                doc.setFont('Times New Roman');
+                doc.setFontSize(16);
+                doc.setTextColor('#000000');
+                doc.text('Skilling Program Powered by The Life Navigator', doc.internal.pageSize.width / 2, 130, { align: 'center' });
+                doc.text('Your Ultimate Guide in Parenting and Education (www.thelifenavigator.com)', doc.internal.pageSize.width / 2, 145, { align: 'center' });
+
+                // Add some space
+                const startY = 160;
+
+                // Add student info
+                const studentInfo = JSON.parse(document.getElementById('studentInfo').value);
+                doc.setFontSize(12);
+                doc.setTextColor('#000000');
+                doc.text(`Student Name: ${studentInfo.studentName}`, 20, startY);
+                doc.text(`Father's Name: ${studentInfo.fatherName}`, 20, startY + 20);
+                doc.text(`School Name: ${studentInfo.schoolName}`, 20, startY + 40);
+
+                // Add quiz results title
+                doc.setFontSize(16);
+                doc.setTextColor('#00008B');
+                doc.text('Science Quiz - Nutrition in Plants', doc.internal.pageSize.width / 2, startY + 70, { align: 'center' });
+                doc.setFontSize(14);
+                doc.text('Chapter 1 - Test-1 Results', doc.internal.pageSize.width / 2, startY + 90, { align: 'center' });
+
+                // Add quiz results
+                doc.setFontSize(12);
+                doc.setTextColor('#000000');
+                doc.text('Your score is: ' + document.getElementById('total-marks').innerText, 20, startY + 110);
+                doc.text('Time taken: ' + document.getElementById('time-taken').innerText, 20, startY + 130);
+
+                const canvas = document.getElementById('results-chart');
+                const canvasImg = canvas.toDataURL('image/png', 1.0);
+                doc.addImage(canvasImg, 'PNG', 20, startY + 150, doc.internal.pageSize.width - 40, 150);
+
+                const recommendations = document.getElementById('recommendations').innerText;
+                const splitRecommendations = doc.splitTextToSize(recommendations, doc.internal.pageSize.width - 40);
+                doc.text('Recommendations:', 20, startY + 310);
+                doc.text(splitRecommendations, 20, startY + 330);
+
+                // Save the PDF
+                doc.save('Test_Report.pdf');
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body onload="changeHeaderColor()">
+    <div class="header">
+        <img src="https://i0.wp.com/thelifenavigator.com/wp-content/uploads/2024/07/KIDSNAVIGATOR0001-0360-ezgif.com-video-to-gif-converter.gif?resize=600%2C338&ssl=1" alt="Logo">
+        <h1>Kids Navigator Welcomes You to IIT/NEET Skilling Program - Class-7</h1>
+        <h2>Chapter-1 Nutrition in Plants ( Skilling Test-1 )</h2>
+    </div>
+    <div class="container">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I accept the <a href="https://thelifenavigator.com/privacy-policy-for-the-life-navigator" target="_blank">terms and conditions</a></label>
+                </div>
+
+                <div class="error-message" id="errorMessage"></div>
+
+                <input type="submit" value="Login">
+                <input type="hidden" id="loggedInUser" name="loggedInUser">
+                <input type="hidden" id="studentInfo" name="studentInfo">
+            </form>
+        </div>
+        <div class="start-container" style="display: none;">
+            <h1>Science Quiz - Nutrition in Plants</h1>
+            <img src="https://i0.wp.com/thelifenavigator.com/wp-content/uploads/2024/07/DALL%C2%B7E-2024-07-18-23.13.26-A-golden-globe-with-a-blue-and-gold-globe-on-a-metallic-background.-Below-the-globe-is-a-large-button-with-the-text-Science-in-a-large-font-embedde.webp?fit=1024%2C1024&ssl=1" alt="Science" class="left-image">
+            <div class="intro-text">
+                <p><strong>Message to Parents and Teachers:</strong> Encourage your students to attempt this quiz to better prepare for future exams such as NEET and IIT, which are essential for pursuing careers in medicine and engineering. Sharing the performance PDF among parents and teachers can help track and improve the student’s progress.</p>
+                <p><strong>Scoring Rules:</strong> 1 mark for each basic question, 2 marks for each intermediate question, and 3 marks for each expert question.</p>
+                <p>Questions 1-10: Expert Level</p>
+                <p>Questions 11-15: Intermediate Level</p>
+                <p>Questions 16-20: Basic Level</p>
+                <p><strong>Total Marks:</strong> 45</p>
+                <p><strong>Duration:</strong> 15 minutes</p>
+            </div>
+            <button onclick="startQuiz()">Start Quiz</button>
+        </div>
+        <div class="quiz-container">
+            <div class="timer-decorated">Time Remaining: <span id="timer">15:00</span></div>
+            <div class="quiz-slide active" id="slide-1">
+                <h2>Q1: Describe the structure of a leaf.</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q1" value="Consists of epidermis, mesophyll, and veins"> Consists of epidermis, mesophyll, and veins
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="Consists of guard cells, chlorophyll, and stomata"> Consists of guard cells, chlorophyll, and stomata
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="Consists of cuticle, cortex, and pith"> Consists of cuticle, cortex, and pith
+                    </label>
+                    <label>
+                        <input type="radio" name="q1" value="None of the above"> None of the above
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button disabled>Back</button>
+                    <button type="button" onclick="nextSlide(2)">Next</button>
+                </div>
+                <p class="quote">“Education is the most powerful weapon which you can use to change the world.” – Nelson Mandela</p>
+            </div>
+            <div class="quiz-slide" id="slide-2">
+                <h2>Q2: Explain the process of transpiration in plants.</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q2" value="Loss of water vapor through stomata"> Loss of water vapor through stomata
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="Absorption of water by roots"> Absorption of water by roots
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="Movement of water through xylem"> Movement of water through xylem
+                    </label>
+                    <label>
+                        <input type="radio" name="q2" value="Synthesis of food in leaves"> Synthesis of food in leaves
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(1)">Back</button>
+                    <button type="button" onclick="nextSlide(3)">Next</button>
+                </div>
+                <p class="quote">“The beautiful thing about learning is that no one can take it away from you.” – B.B. King</p>
+            </div>
+            <div class="quiz-slide" id="slide-3">
+                <h2>Q3: What is the role of stomata in photosynthesis?</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q3" value="Gas exchange"> Gas exchange
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="Water absorption"> Water absorption
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="Mineral uptake"> Mineral uptake
+                    </label>
+                    <label>
+                        <input type="radio" name="q3" value="Sunlight absorption"> Sunlight absorption
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(2)">Back</button>
+                    <button type="button" onclick="nextSlide(4)">Next</button>
+                </div>
+                <p class="quote">“The expert in anything was once a beginner.” – Helen Hayes</p>
+            </div>
+            <div class="quiz-slide" id="slide-4">
+                <h2>Q4: Explain the significance of photosynthesis in the ecosystem.</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q4" value="Produces food for all organisms"> Produces food for all organisms
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="Releases oxygen into the atmosphere"> Releases oxygen into the atmosphere
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="Stores solar energy in chemical form"> Stores solar energy in chemical form
+                    </label>
+                    <label>
+                        <input type="radio" name="q4" value="All of the above"> All of the above
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(3)">Back</button>
+                    <button type="button" onclick="nextSlide(5)">Next</button>
+                </div>
+                <p class="quote">“Success is the sum of small efforts, repeated day in and day out.” – Robert Collier</p>
+            </div>
+            <div class="quiz-slide" id="slide-5">
+                <h2>Q5: How does the structure of a chloroplast support its function in photosynthesis?</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q5" value="Contains thylakoids for light absorption"> Contains thylakoids for light absorption
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="Has stroma for enzyme activity"> Has stroma for enzyme activity
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="Both A and B"> Both A and B
+                    </label>
+                    <label>
+                        <input type="radio" name="q5" value="None of the above"> None of the above
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(4)">Back</button>
+                    <button type="button" onclick="nextSlide(6)">Next</button>
+                </div>
+                <p class="quote">“The only way to do great work is to love what you do.” – Steve Jobs</p>
+            </div>
+            <div class="quiz-slide" id="slide-6">
+                <h2>Q6: What are the end products of photosynthesis?</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q6" value="Glucose and oxygen"> Glucose and oxygen
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="Carbon dioxide and water"> Carbon dioxide and water
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="Glucose and carbon dioxide"> Glucose and carbon dioxide
+                    </label>
+                    <label>
+                        <input type="radio" name="q6" value="Oxygen and water"> Oxygen and water
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(5)">Back</button>
+                    <button type="button" onclick="nextSlide(7)">Next</button>
+                </div>
+                <p class="quote">“Believe you can and you're halfway there.” – Theodore Roosevelt</p>
+            </div>
+            <div class="quiz-slide" id="slide-7">
+                <h2>Q7: How do plants use the glucose produced during photosynthesis?</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q7" value="For energy through respiration"> For energy through respiration
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="To build cellulose for cell walls"> To build cellulose for cell walls
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="To store as starch"> To store as starch
+                    </label>
+                    <label>
+                        <input type="radio" name="q7" value="All of the above"> All of the above
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(6)">Back</button>
+                    <button type="button" onclick="nextSlide(8)">Next</button>
+                </div>
+                <p class="quote">“You are never too old to set another goal or to dream a new dream.” – C.S. Lewis</p>
+            </div>
+            <div class="quiz-slide" id="slide-8">
+                <h2>Q8: What is the function of the cuticle in leaves?</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q8" value="Prevents water loss"> Prevents water loss
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="Absorbs sunlight"> Absorbs sunlight
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="Facilitates gas exchange"> Facilitates gas exchange
+                    </label>
+                    <label>
+                        <input type="radio" name="q8" value="Protects against herbivores"> Protects against herbivores
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(7)">Back</button>
+                    <button type="button" onclick="nextSlide(9)">Next</button>
+                </div>
+                <p class="quote">“Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.” – Albert Schweitzer</p>
+            </div>
+            <div class="quiz-slide" id="slide-9">
+                <h2>Q9: How do plants transport water from roots to leaves?</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q9" value="Through xylem"> Through xylem
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="Through phloem"> Through phloem
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="Through stomata"> Through stomata
+                    </label>
+                    <label>
+                        <input type="radio" name="q9" value="Through guard cells"> Through guard cells
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(8)">Back</button>
+                    <button type="button" onclick="nextSlide(10)">Next</button>
+                </div>
+                <p class="quote">“It always seems impossible until it’s done.” – Nelson Mandela</p>
+            </div>
+            <div class="quiz-slide" id="slide-10">
+                <h2>Q10: Describe the process of photosynthesis in plants.</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q10" value="Using chlorophyll, water, CO2, and sunlight to produce food"> Using chlorophyll, water, CO2, and sunlight to produce food
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="Using only water to produce food"> Using only water to produce food
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="Using minerals from soil to produce food"> Using minerals from soil to produce food
+                    </label>
+                    <label>
+                        <input type="radio" name="q10" value="None of the above"> None of the above
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(9)">Back</button>
+                    <button type="button" onclick="nextSlide(11)">Next</button>
+                </div>
+                <p class="quote">“Don’t watch the clock; do what it does. Keep going.” – Sam Levenson</p>
+            </div>
+            <div class="quiz-slide" id="slide-11">
+                <h2>Q11: What is the equation for photosynthesis?</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q11" value="CO2 + H2O -> C6H12O6 + O2"> CO2 + H2O -> C6H12O6 + O2
+                    </label>
+                    <label>
+                        <input type="radio" name="q11" value="CO2 + O2 -> C6H12O6 + H2O"> CO2 + O2 -> C6H12O6 + H2O
+                    </label>
+                    <label>
+                        <input type="radio" name="q11" value="C6H12O6 + O2 -> CO2 + H2O"> C6H12O6 + O2 -> CO2 + H2O
+                    </label>
+                    <label>
+                        <input type="radio" name="q11" value="None of the above"> None of the above
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(10)">Back</button>
+                    <button type="button" onclick="nextSlide(12)">Next</button>
+                </div>
+                <p class="quote">“Education is the passport to the future, for tomorrow belongs to those who prepare for it today.” – Malcolm X</p>
+            </div>
+            <div class="quiz-slide" id="slide-12">
+                <h2>Q12: Which cells in leaves control the opening and closing of stomata?</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q12" value="Guard Cells"> Guard Cells
+                    </label>
+                    <label>
+                        <input type="radio" name="q12" value="Mesophyll Cells"> Mesophyll Cells
+                    </label>
+                    <label>
+                        <input type="radio" name="q12" value="Palisade Cells"> Palisade Cells
+                    </label>
+                    <label>
+                        <input type="radio" name="q12" value="Epidermal Cells"> Epidermal Cells
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(11)">Back</button>
+                    <button type="button" onclick="nextSlide(13)">Next</button>
+                </div>
+                <p class="quote">“Education is not preparation for life; education is life itself.” – John Dewey</p>
+            </div>
+            <div class="quiz-slide" id="slide-13">
+                <h2>Q13: What is the role of chlorophyll in photosynthesis?</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q13" value="Captures sunlight"> Captures sunlight
+                    </label>
+                    <label>
+                        <input type="radio" name="q13" value="Absorbs water"> Absorbs water
+                    </label>
+                    <label>
+                        <input type="radio" name="q13" value="Transports minerals"> Transports minerals
+                    </label>
+                    <label>
+                        <input type="radio" name="q13" value="Releases oxygen"> Releases oxygen
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(12)">Back</button>
+                    <button type="button" onclick="nextSlide(14)">Next</button>
+                </div>
+                <p class="quote">“The future belongs to those who believe in the beauty of their dreams.” – Eleanor Roosevelt</p>
+            </div>
+            <div class="quiz-slide" id="slide-14">
+                <h2>Q14: What is the main product of photosynthesis?</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q14" value="Oxygen"> Oxygen
+                    </label>
+                    <label>
+                        <input type="radio" name="q14" value="Glucose"> Glucose
+                    </label>
+                    <label>
+                        <input type="radio" name="q14" value="Starch"> Starch
+                    </label>
+                    <label>
+                        <input type="radio" name="q14" value="Cellulose"> Cellulose
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(13)">Back</button>
+                    <button type="button" onclick="nextSlide(15)">Next</button>
+                </div>
+                <p class="quote">“You are braver than you believe, stronger than you seem and smarter than you think.” – A.A. Milne</p>
+            </div>
+            <div class="quiz-slide" id="slide-15">
+                <h2>Q15: What happens to the oxygen produced during photosynthesis?</h2>
+                <form>
+                    <label>
+                        <input type="radio" name="q15" value="Used by plants"> Used by plants
+                    </label>
+                    <label>
+                        <input type="radio" name="q15" value="Released into the air"> Released into the air
+                    </label>
+                    <label>
+                        <input type="radio" name="q15" value="Used for respiration"> Used for respiration
+                    </label>
+                    <label>
+                        <input type="radio" name="q15" value="Stored in leaves"> Stored in leaves
+                    </label>
+                </form>
+                <div class="navigation-buttons">
+                    <button type="button" onclick="prevSlide(14)">Back</button>
+                    <button type="button" onclick="submitQuiz()">Submit</button>
+                </div>
+                <p class="quote">“The beautiful thing about learning is nobody can take it away from you.” – B.B. King</p>
+                <label class="score-label">Your score is: <span id="display-score" class="hidden"></span></label>
+            </div>
+        </div>
+        <div class="results-container" id="results-container">
+            <h1>Science Quiz - Nutrition in Plants</h1>
+            <h2>Chapter 1</h2>
+            <h2>Test-1 Results</h2>
+            <div id="student-info"></div>
+            <p id="total-marks"></p>
+            <p id="time-taken"></p>
+            <canvas id="results-chart" width="600" height="400"></canvas>
+            <p id="marks-explanation"></p>
+            <p id="recommendations"></p>
+            <p id="correct-answers"></p>
+            <button class="download-button" onclick="downloadPDF()">Download Report (PDF)</button>
+            <h2>Empowering Parents: Practical Tips for Nurturing Diverse Learning Styles and Assisting Weak Learners</h2>
+            <button onclick="window.open('https://thelifenavigator.com/empowering-parents-practical-tips-for-nurturing-diverse-learning-styles-and-assisting-weak-learners/', '_blank')">Enter to know</button>
+            <h2>10 Effective Memory-Boosting Habits for Kids: Practical Parenting Tips</h2>
+            <button onclick="window.open('https://thelifenavigator.com/10-effective-memory-boosting-habits-for-kids-practical-parenting-tips/', '_blank')">Enter to know</button>
+        </div>
+    </div>
+</body>
+</html>
