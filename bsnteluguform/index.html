@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>మానసిక కౌన్సిలింగ్ సేవల అప్లికేషన్</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #87CEEB;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 20px auto;
+      text-align: left;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .short-answer, .long-answer {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .long-answer {
+      height: 100px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .info-button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+    }
+    .info-button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>మీ స్ట్రెస్ నుండి విరామం తీసుకోండి మీ నావిగేటర్‌తో</h1>
+    <h2>మానసిక కౌన్సిలింగ్ సేవల అప్లికేషన్</h2>
+    <p>మా మానసిక కౌన్సిలింగ్ సేవలను ఎంచుకున్నందుకు ధన్యవాదాలు. మీరు ఇక్కడ మీ నావిగేటర్ యొక్క అపాయింట్‌మెంట్ తీసుకోగలరు. దయచేసి మీ అవసరాలను మరియు ప్రాధాన్యతలను అర్థం చేసుకోవడానికి క్రింది వివరాలను పూరించండి. ఇది మీకు సరిపడే కౌన్సిలర్‌తో మేము మీకు అనుకూలంగా ఉంటుంది.</p>
+    <form id="counselingForm">
+      <div class="section-title">విభాగం 1: వ్యక్తిగత సమాచారం</div>
+      <div class="question">
+        <label for="fullName">పూర్తి పేరు:</label>
+        <input type="text" id="fullName" name="fullName" class="short-answer" required>
+      </div>
+      <div class="question">
+        <label for="email">ఈమెయిల్ చిరునామా:</label>
+        <input type="email" id="email" name="email" class="short-answer" required>
+      </div>
+      <div class="question">
+        <label for="phone">ఫోన్ నంబర్:</label>
+        <input type="text" id="phone" name="phone" class="short-answer" required>
+      </div>
+      <div class="question">
+        <label for="age">వయసు:</label>
+        <input type="number" id="age" name="age" class="short-answer" required>
+      </div>
+      <div class="question">
+        <label for="gender">లింగం:</label>
+        <label><input type="radio" name="gender" value="Male" required> మగ</label>
+        <label><input type="radio" name="gender" value="Female"> ఆడ</label>
+        <label><input type="radio" name="gender" value="Other"> ఇతర</label>
+        <label><input type="radio" name="gender" value="Prefer not to say"> చెప్పను</label>
+      </div>
+      
+      <div class="section-title">విభాగం 2: కౌన్సిలింగ్ ప్రాధాన్యతలు</div>
+      <div class="question">
+        <label for="language">ప్రాధాన్యత dilu కథ language:</label>
+        <label><input type="checkbox" name="language" value="English"> ఇంగ్లీష్</label>
+        <label><input type="checkbox" name="language" value="Spanish"> స్పానిష్</label>
+        <label><input type="checkbox" name="language" value="French"> ఫ్రెంచ్</label>
+        <label><input type="checkbox" name="language" value="German"> జర్మన్</label>
+        <label><input type="checkbox" name="language" value="Hindi"> హిందీ</label>
+        <label><input type="checkbox" name="language" value="Telugu"> తెలుగు</label>
+        <label><input type="checkbox" name="language" value="Marathi"> మరాఠీ</label>
+        <label><input type="checkbox" name="language" value="Bahasa Indonesia"> Bahasa Indonesia</label>
+        <label><input type="checkbox" name="language" value="Other"> ఇతర (దయచేసి పేర్కొనండి): <input type="text" name="otherLanguage" class="short-answer"></label>
+      </div>
+      <div class="question">
+        <label for="counselingMode">ప్రాధాన్యత dilu కౌన్సిలింగ్ మోడ్:</label>
+        <label><input type="radio" name="counselingMode" value="Online" required> ఆన్లైన్</label>
+        <label><input type="radio" name="counselingMode" value="Offline"> ఆఫ్‌లైన్</label>
+      </div>
+      <div class="question">
+        <label for="location">ప్రాధాన్యత dilu స్థానం (వెచ్చిన ఆఫ్‌లైన్):</label>
+        <input type="text" id="location" name="location" class="short-answer">
+      </div>
+      <div class="question">
+        <label for="days">సెషన్ల కోసం ప్రాధాన్యత dilu రోజులు:</label>
+        <label><input type="checkbox" name="days" value="Monday"> సోమవారం</label>
+        <label><input type="checkbox" name="days" value="Tuesday"> మంగళవారం</label>
+        <label><input type="checkbox" name="days" value="Wednesday"> బుధవారం</label>
+        <label><input type="checkbox" name="days" value="Thursday"> గురువారం</label>
+        <label><input type="checkbox" name="days" value="Friday"> శుక్రవారం</label>
+        <label><input type="checkbox" name="days" value="Saturday"> శనివారం</label>
+        <label><input type="checkbox" name="days" value="Sunday"> ఆదివారం</label>
+      </div>
+      <div class="question">
+        <label for="timeSlots">ప్రాధాన్యత dilu సమయం స్లాట్లు:</label>
+        <input type="text" id="timeSlots" name="timeSlots" class="short-answer">
+      </div>
+      
+      <div class="section-title">విభాగం 3: కౌన్సిలింగ్ అవసరాలు మరియు ఆందోళనలు</div>
+      <div class="question">
+        <label for="issues">మీరు ఎదుర్కొంటున్న సమస్యలను ఎంచుకోండి:</label>
+        <label><input type="checkbox" name="issues" value="Anxiety"> ఆందోళన</label>
+        <label><input type="checkbox" name="issues" value="Depression"> డిప్రెషన్</label>
+        <label><input type="checkbox" name="issues" value="Stress"> స్త్రెస్</label>
+        <label><input type="checkbox" name="issues" value="Relationship Issues"> సంబంధ సమస్యలు</label>
+        <label><input type="checkbox" name="issues" value="Family Conflicts"> కుటుంబ ఘర్షణలు</label>
+        <label><input type="checkbox" name="issues" value="Child Behavioral Problems"> పిల్లల ప్రవర్తన సమస్యలు</label>
+        <label><input type="checkbox" name="issues" value="Adolescent Issues"> వయస్సు సమస్యలు</label>
+        <label><input type="checkbox" name="issues" value="Grief and Loss"> దుఃఖం మరియు నష్టం</label>
+        <label><input type="checkbox" name="issues" value="Trauma and PTSD"> ట్రామా మరియు PTSD</label>
+        <label><input type="checkbox" name="issues" value="Substance Abuse"> పదార్ధ దుర్వినియోగం</label>
+        <label><input type="checkbox" name="issues" value="Career Counseling"> కెరీర్ కౌన్సిలింగ్</label>
+        <label><input type="checkbox" name="issues" value="Self-Esteem Issues"> స్వీయ గౌరవం సమస్యలు</label>
+        <label><input type="checkbox" name="issues" value="Anger Management"> కోపం నిర్వహణ</label>
+        <label><input type="checkbox" name="issues" value="Sleep Disorders"> నిద్ర సమస్యలు</label>
+        <label><input type="checkbox" name="issues" value="Eating Disorders"> తినే సమస్యలు</label>
+        <label><input type="checkbox" name="issues" value="Other"> ఇతర (దయచేసి పేర్కొనండి): <input type="text" name="otherIssues" class="short-answer"></label>
+      </div>
+      <div class="question">
+        <label for="duration">మీరు ఈ సమస్యలను ఎంతకాలం అనుభవిస్తున్నారు?</label>
+        <label><input type="radio" name="duration" value="Less than a month" required> ఒక నెల కంటే తక్కువ</label>
+        <label><input type="radio" name="duration" value="1-6 months"> 1-6 నెలలు</label>
+        <label><input type="radio" name="duration" value="6-12 months"> 6-12 నెలలు</label>
+        <label><input type="radio" name="duration" value="More than a year"> ఒక సంవత్సరం కంటే ఎక్కువ</label>
+      </div>
+      <div class="question">
+        <label for="previousCounseling">మీరు ఇంతకు ముందు కౌన్సిలింగ్ లేదా థెరపీ పొందారా?</label>
+        <label><input type="radio" name="previousCounseling" value="Yes" required> అవును</label>
+        <label><input type="radio" name="previousCounseling" value="No"> కాదు</label>
+      </div>
+      <div class="question">
+        <label for="counselingDetails">అవును అయితే, దయచేసి వివరాలు అందించండి (ఐచ్చికం):</label>
+        <textarea id="counselingDetails" name="counselingDetails" class="long-answer"></textarea>
+      </div>
+      
+      <div class="section-title">విభాగం 4: కౌన్సిలింగ్ ప్యాకేజీలు</div>
+      <div class="question">
+        <label for="package">ప్రాధాన్యత dilu కౌన్సిలింగ్ ప్యాకేజ్:</label>
+        <label><input type="radio" name="package" value="Individual Counseling" required> వ్యక్తిగత కౌన్సిలింగ్</label>
+        <label><input type="radio" name="package" value="Family Counseling"> కుటుంబ కౌన్సిలింగ్</label>
+        <label><input type="radio" name="package" value="Anonymous Counseling"> గుప్త కౌన్సిలింగ్</label>
+        <label><input type="radio" name="package" value="Counseling for Kids"> పిల్లల కోసం కౌన్సిలింగ్</label>
+      </div>
+      <div class="question">
+        <label for="packageDuration">ప్రాధాన్యత dilu ప్యాకేజ్ వ్యవధి:</label>
+        <label><input type="radio" name="packageDuration" value="Single Session" required> ఒక సెషన్</label>
+        <label><input type="radio" name="packageDuration" value="Monthly Package (4 sessions)"> నెలవారీ ప్యాకేజ్ (4 సెషన్లు)</label>
+        <label><input type="radio" name="packageDuration" value="Quarterly Package (12 sessions)"> త్రైమాసిక ప్యాకేజ్ (12 సెషన్లు)</label>
+        <label><input type="radio" name="packageDuration" value="Annual Package (48 sessions)"> వార్షిక ప్యాకేజ్ (48 సెషన్లు)</label>
+      </div>
+      <div class="question">
+        <label for="additionalInfo">అదనపు సమాచారం లేదా అభ్యర్థనలు (ఐచ్చికం):</label>
+        <textarea id="additionalInfo" name="additionalInfo" class="long-answer"></textarea>
+      </div>
+      
+      <div class="section-title">విభాగం 5: సమ్మతి మరియు సమర్పణ</div>
+      <div class="question">
+        <label for="consent">ప్రైవసీ పాలసీ ప్రకారం నా వ్యక్తిగత డేటాను ప్రాసెస్ చేయడానికి నేను సమ్మతిస్తున్నాను. (మేము మీ వ్యక్తిగత డేటాను ఏదైనా మూడవ పార్టీతో పంచుకోము)</label>
+        <label><input type="radio" name="consent" value="Yes" required> అవును</label>
+        <label><input type="radio" name="consent" value="No"> కాదు</label>
+      </div>
+      <button type="submit">సమర్పించండి</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById('counselingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(this);
+      const data = {};
+      formData.forEach((value, key) => {
+        if (!data[key]) {
+          data[key] = value;
+        } else {
+          if (!Array.isArray(data[key])) {
+            data[key] = [data[key]];
+          }
+          data[key].push(value);
+        }
+      });
+
+      fetch("https://script.google.com/macros/s/AKfycbzTnCT_51VF5Qcb9BPFGUpl0gRIsG87zsNX_RP78Vf4C5wZrOkGa8LraMU2mKu_3AhY_A/exec", {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        openResultWindow();
+      })
+      .catch(error => {
+        console.error('పొరపాటు:', error);
+        alert('మీ ఫారమ్ సమర్పించడంలో పొరపాటు ఉంది. దయచేసి మళ్ళీ ప్రయత్నించండి.');
+      });
+    });
+
+    function openResultWindow() {
+      const resultWindow = window.open("", "_blank", "width=600,height=400");
+      resultWindow.document.write(`
+        <html>
+          <head>
+            <title>ప్రతిస్పందన</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                background-color: #87CEEB;
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+              }
+              .container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                position: relative;
+              }
+              .close-button {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: #f44336;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 4px;
+              }
+              .close-button:hover {
+                background-color: #d32f2f;
+              }
+              h1 {
+                color: #333;
+              }
+              p {
+                color: #555;
+              }
+              .bold {
+                font-weight: bold;
+              }
+              .back-button {
+                display: inline-block;
+                padding: 10px 20px;
+                margin-top: 20px;
+                border: none;
+                background-color: #007BFF;
+                color: white;
+                font-size: 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                text-decoration: none;
+              }
+              .back-button:hover {
+                background-color: #0056b3;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <button class="close-button" onclick="window.close()">X</button>
+              <h1>మేము మీ ఇన్‌పుట్లను స్వీకరించాము</h1>
+              <p>లైఫ్ నావిగేటర్ టీమ్ త్వరలో మీతో సంప్రదిస్తుంది. మరిన్ని కౌన్సిలింగ్ వివరాల కోసం, దయచేసి మాకు <strong>connect@thelifenavigator.com</strong> లేదా <strong>bookmypsychologist@gmail.com</strong> కు ఇమెయిల్ చేయండి.</p>
+              <p><strong>డిస్క్లైమర్:</strong> మేము మందులు లేదా అత్యవసర ఆరోగ్య సేవలను అందించము. మా కౌన్సిలింగ్ సేవలు వినియోగదారుల ద్వారా అందించిన ఇన్‌పుట్‌ల ఆధారంగా ఉంటాయి.</p>
+              <a class="back-button" href="https://www.thelifenavigator.com">హోం పేజీకి తిరిగి వెళ్ళు</a>
+            </div>
+          </body>
+        </html>
+      `);
+    }
+  </script>
+  <div class="container">
+    <a class="info-button" href="https://www.thelifenavigator.com/difference-between-psychologist-and-psychiatrist/">సైకాలజిస్ట్ మరియు సైకియాట్రిస్ట్ మధ్య తేడా గురించి మరింత చదవండి</a>
+  </div>
+</body>
+</html>

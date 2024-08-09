@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>मनोवैज्ञानिक सेवाएं प्रश्नावली</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #87CEEB; /* Sky blue background color */
+      margin: 0;
+      padding: 0;
+    }
+    .top-bar {
+      background-color: #00008B; /* Dark blue background color */
+      padding: 10px;
+      text-align: right;
+    }
+    .top-bar a {
+      text-decoration: none;
+      color: #FFF;
+      font-weight: bold;
+    }
+    .top-bar a:hover {
+      color: #FFD700; /* Gold color on hover */
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: 20px auto;
+      text-align: center;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #333;
+    }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .question, .user-details {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <a href="https://www.thelifenavigator.com">मुख्य पृष्ठ पर वापस जाएं</a>
+  </div>
+  <div class="container">
+    <h1>लाइफ नेविगेटर: <br>"अपने नेविगेटर के साथ अपने तनाव से ब्रेक लें"</h1>
+    <h2>परिवार के सदस्यों के लिए मनोवैज्ञानिक सेवाएं प्रश्नावली</h2>
+    <p>यह प्रश्नावली आपकी स्थिति के लिए उपयुक्त मनोवैज्ञानिक सेवा निर्धारित करने में आपकी सहायता करने के लिए डिज़ाइन की गई है। कृपया सबसे सटीक सिफारिश प्राप्त करने के लिए ईमानदारी से निम्नलिखित प्रश्नों का उत्तर दें।</p>
+    <form id="questionnaire" onsubmit="return validateForm()">
+      <div class="user-details">
+        <p><label for="name">नाम (वैकल्पिक):</label><br>
+        <input type="text" id="name" name="name"></p>
+        <p><label for="age">आयु:</label><br>
+        <input type="number" id="age" name="age" required></p>
+        <p><label for="gender">लिंग:</label><br>
+        <label><input type="radio" name="gender" value="Male" required> पुरुष</label>
+        <label><input type="radio" name="gender" value="Female"> महिला</label>
+        <label><input type="radio" name="gender" value="Other"> अन्य</label></p>
+        <p><label for="relationship">परिवार में संबंध:</label><br>
+        <label><input type="radio" name="relationship" value="Parent" required> माता-पिता</label>
+        <label><input type="radio" name="relationship" value="Child"> बच्चा</label>
+        <label><input type="radio" name="relationship" value="Grandparent"> दादा-दादी</label>
+        <label><input type="radio" name="relationship" value="Relative"> रिश्तेदार</label>
+        <label><input type="radio" name="relationship" value="Other"> अन्य</label></p>
+      </div>
+      <div class="question">
+        <p>1. घर का वर्तमान माहौल कैसे है?</p>
+        <label><input type="radio" name="q1" value="Peaceful and harmonious" required> शांतिपूर्ण और सामंजस्यपूर्ण</label><br>
+        <label><input type="radio" name="q1" value="Occasionally tense but manageable"> कभी-कभी तनावपूर्ण लेकिन प्रबंधनीय</label><br>
+        <label><input type="radio" name="q1" value="Frequently stressful and conflict-ridden"> अक्सर तनावपूर्ण और विवादग्रस्त</label><br>
+      </div>
+      <div class="question">
+        <p>2. अपने साथी के साथ अपने संबंध के बारे में आप कैसा महसूस करते हैं?</p>
+        <label><input type="radio" name="q2" value="Very satisfied" required> बहुत संतुष्ट</label><br>
+        <label><input type="radio" name="q2" value="Somewhat satisfied"> कुछ हद तक संतुष्ट</label><br>
+        <label><input type="radio" name="q2" value="Dissatisfied"> असंतुष्ट</label><br>
+        <label><input type="radio" name="q2" value="Not applicable"> लागू नहीं</label><br>
+      </div>
+      <div class="question">
+        <p>3. अपने बच्चों के साथ अपने संबंध के बारे में आप कैसा महसूस करते हैं?</p>
+        <label><input type="radio" name="q3" value="Very close and understanding" required> बहुत करीब और समझने वाला</label><br>
+        <label><input type="radio" name="q3" value="Good but with occasional issues"> अच्छा लेकिन कभी-कभी मुद्दों के साथ</label><br>
+        <label><input type="radio" name="q3" value="Strained and distant"> तनावपूर्ण और दूरस्थ</label><br>
+        <label><input type="radio" name="q3" value="Not applicable"> लागू नहीं</label><br>
+      </div>
+      <div class="question">
+        <p>4. अपने माता-पिता या ससुराल वालों के साथ अपने संबंध के बारे में आप कैसा महसूस करते हैं?</p>
+        <label><input type="radio" name="q4" value="Very supportive and understanding" required> बहुत सहायक और समझने वाला</label><br>
+        <label><input type="radio" name="q4" value="Somewhat supportive but with occasional conflicts"> कुछ हद तक सहायक लेकिन कभी-कभी संघर्ष</label><br>
+        <label><input type="radio" name="q4" value="Strained and stressful"> तनावपूर्ण और तनावपूर्ण</label><br>
+        <label><input type="radio" name="q4" value="Not applicable"> लागू नहीं</label><br>
+      </div>
+      <div class="question">
+        <p>5. अन्य रिश्तेदारों के साथ अपने संबंध के बारे में आप कैसा महसूस करते हैं?</p>
+        <label><input type="radio" name="q5" value="Very positive" required> बहुत सकारात्मक</label><br>
+        <label><input type="radio" name="q5" value="Neutral"> तटस्थ</label><br>
+        <label><input type="radio" name="q5" value="Negative"> नकारात्मक</label><br>
+        <label><input type="radio" name="q5" value="Not applicable"> लागू नहीं</label><br>
+      </div>
+      <div class="question">
+        <p>6. घर में अपने बच्चे के व्यवहार के बारे में आपकी धारणा क्या है?</p>
+        <label><input type="radio" name="q6" value="Generally well-behaved and cooperative" required> सामान्यतः अच्छा व्यवहार और सहयोगी</label><br>
+        <label><input type="radio" name="q6" value="Occasionally disobedient but manageable"> कभी-कभी अवज्ञाकारी लेकिन प्रबंधनीय</label><br>
+        <label><input type="radio" name="q6" value="Frequently disobedient and challenging"> अक्सर अवज्ञाकारी और चुनौतीपूर्ण</label><br>
+      </div>
+      <div class="question">
+        <p>7. स्कूल में या साथियों के साथ अपने बच्चे के व्यवहार के बारे में आपकी धारणा क्या है?</p>
+        <label><input type="radio" name="q7" value="Positive and well-adjusted" required> सकारात्मक और अच्छी तरह से समायोजित</label><br>
+        <label><input type="radio" name="q7" value="Occasionally problematic but generally good"> कभी-कभी समस्याग्रस्त लेकिन सामान्यतः अच्छा</label><br>
+        <label><input type="radio" name="q7" value="Frequently problematic and concerning"> अक्सर समस्याग्रस्त और चिंताजनक</label><br>
+      </div>
+      <div class="question">
+        <p>8. क्या आपने हाल ही में अपने बच्चे के मूड या व्यवहार में कोई बदलाव देखा है?</p>
+        <label><input type="radio" name="q8" value="No significant changes" required> कोई महत्वपूर्ण बदलाव नहीं</label><br>
+        <label><input type="radio" name="q8" value="Some changes but nothing alarming"> कुछ बदलाव लेकिन कुछ भी चिंताजनक नहीं</label><br>
+        <label><input type="radio" name="q8" value="Significant changes that concern me"> महत्वपूर्ण बदलाव जो मुझे चिंतित करते हैं</label><br>
+      </div>
+      <div class="question">
+        <p>9. आप कितनी बार तनावग्रस्त या अभिभूत महसूस करते हैं?</p>
+        <label><input type="radio" name="q9" value="Rarely" required> शायद ही कभी</label><br>
+        <label><input type="radio" name="q9" value="Sometimes"> कभी-कभी</label><br>
+        <label><input type="radio" name="q9" value="Often"> अक्सर</label><br>
+      </div>
+      <div class="question">
+        <p>10. आपके वर्तमान चिंता या अवसाद स्तर का मूल्यांकन कैसे करेंगे?</p>
+        <label><input type="radio" name="q10" value="None" required> कोई नहीं</label><br>
+        <label><input type="radio" name="q10" value="Mild"> हल्का</label><br>
+        <label><input type="radio" name="q10" value="Moderate"> मध्यम</label><br>
+        <label><input type="radio" name="q10" value="Severe"> गंभीर</label><br>
+      </div>
+      <div class="question">
+        <p>11. क्या आपके पास अपनी भावनाओं और चिंताओं के बारे में बात करने के लिए कोई है?</p>
+        <label><input type="radio" name="q11" value="Yes, always" required> हां, हमेशा</label><br>
+        <label><input type="radio" name="q11" value="Sometimes"> कभी-कभी</label><br>
+        <label><input type="radio" name="q11" value="Rarely"> शायद ही कभी</label><br>
+        <label><input type="radio" name="q11" value="No, never"> नहीं, कभी नहीं</label><br>
+      </div>
+      <div class="question">
+        <p>12. दैनिक जिम्मेदारियों और कार्यों को प्रबंधित करने की आपकी क्षमता के बारे में आप कैसा महसूस करते हैं?</p>
+        <label><input type="radio" name="q12" value="Very capable" required> बहुत सक्षम</label><br>
+        <label><input type="radio" name="q12" value="Capable with occasional difficulties"> कभी-कभी कठिनाइयों के साथ सक्षम</label><br>
+        <label><input type="radio" name="q12" value="Frequently struggling"> अक्सर संघर्षरत</label><br>
+      </div>
+      <div class="question">
+        <p>13. क्या आप पेशेवर मनोवैज्ञानिक सहायता लेने के लिए तैयार हैं?</p>
+        <label><input type="radio" name="q13" value="Yes, definitely" required> हां, निश्चित रूप से</label><br>
+        <label><input type="radio" name="q13" value="Maybe, if recommended"> शायद, अगर सिफारिश की जाती है</label><br>
+        <label><input type="radio" name="q13" value="No, not at this time"> नहीं, इस समय नहीं</label><br>
+      </div>
+      <div class="question">
+        <p>14. आप किस प्रकार की परामर्श सेवा में सबसे अधिक रुचि रखते हैं?</p>
+        <label><input type="radio" name="q14" value="Individual counseling for yourself" required> अपने लिए व्यक्तिगत परामर्श</label><br>
+        <label><input type="radio" name="q14" value="Family counseling for the whole family"> पूरे परिवार के लिए परिवार परामर्श</label><br>
+        <label><input type="radio" name="q14" value="Child or adolescent counseling"> बच्चे या किशोर परामर्श</label><br>
+        <label><input type="radio" name="q14" value="Anonymous counseling services"> गुमनाम परामर्श सेवाएं</label><br>
+      </div>
+      <div class="question">
+        <p>15. आप परामर्श सत्र में कैसे भाग लेना पसंद करेंगे?</p>
+        <label><input type="radio" name="q15" value="In-person" required> व्यक्तिगत रूप से</label><br>
+        <label><input type="radio" name="q15" value="Online/virtual"> ऑनलाइन/वर्चुअल</label><br>
+        <label><input type="radio" name="q15" value="No preference"> कोई प्राथमिकता नहीं</label><br>
+      </div>
+      <div class="question">
+        <p>16. यदि किसी परिवार के सदस्य को व्यवहार संबंधी समस्याएं हो रही हैं, तो कौन सी स्थिति इसे सबसे अच्छी तरह से वर्णित करती है?</p>
+        <label><input type="radio" name="q16" value="Occasional outbursts or defiance" required> कभी-कभार का विस्फोट या अवज्ञा</label><br>
+        <label><input type="radio" name="q16" value="Persistent mood swings or aggression"> लगातार मूड में बदलाव या आक्रामकता</label><br>
+        <label><input type="radio" name="q16" value="Withdrawal or lack of communication"> निकासी या संचार की कमी</label><br>
+        <label><input type="radio" name="q16" value="Not applicable"> लागू नहीं</label><br>
+      </div>
+      <div class="question">
+        <p>17. यदि आप वैवाहिक समस्याओं का सामना कर रहे हैं, तो कौन सी स्थिति इसे सबसे अच्छी तरह से वर्णित करती है?</p>
+        <label><input type="radio" name="q17" value="Minor disagreements that are resolved quickly" required> छोटे-छोटे मतभेद जो जल्दी ही सुलझ जाते हैं</label><br>
+        <label><input type="radio" name="q17" value="Frequent arguments and misunderstandings"> अक्सर तर्क और गलतफहमी</label><br>
+        <label><input type="radio" name="q17" value="Consideration of separation or divorce"> अलगाव या तलाक पर विचार</label><br>
+        <label><input type="radio" name="q17" value="Not applicable"> लागू नहीं</label><br>
+      </div>
+      <div class="question">
+        <p>18. यदि किसी बुजुर्ग परिवार के सदस्य को सहायता की आवश्यकता है, तो कौन सी स्थिति इसे सबसे अच्छी तरह से वर्णित करती है?</p>
+        <label><input type="radio" name="q18" value="Occasional assistance with daily tasks" required> दैनिक कार्यों में कभी-कभार सहायता</label><br>
+        <label><input type="radio" name="q18" value="Frequent medical or emotional support"> अक्सर चिकित्सा या भावनात्मक समर्थन</label><br>
+        <label><input type="radio" name="q18" value="Significant caregiving responsibilities"> महत्वपूर्ण देखभाल जिम्मेदारियां</label><br>
+        <label><input type="radio" name="q18" value="Not applicable"> लागू नहीं</label><br>
+      </div>
+      <button type="submit">जमा करें</button>
+    </form>
+  </div>
+  <script>
+    document.addEventListener('copy', function(e) {
+      e.preventDefault();
+      alert('इस पेज पर कॉपी करना अनुमति नहीं है।');
+    });
+
+    function validateForm() {
+      const form = document.getElementById('questionnaire');
+      const formData = new FormData(form);
+
+      // Check if all questions are answered
+      for (let [key, value] of formData.entries()) {
+        if (value === "" && key.startsWith('q')) {
+          alert("कृपया सभी प्रश्नों का उत्तर दें");
+          return false;
+        }
+      }
+
+      calculateScore(formData);
+      return false; // Prevent the form from submitting normally
+    }
+
+    function calculateScore(formData) {
+      // This function calculates the result and recommendation based on the form data
+      let message = '';
+      let recommendations = '';
+
+      const q14Value = formData.get('q14');
+      if (q14Value === 'Individual counseling for yourself') {
+        message = 'हम व्यक्तिगत परामर्श की सिफारिश करते हैं: यदि आप अभिभूत, तनावग्रस्त, या व्यक्तिगत समर्थन की आवश्यकता महसूस कर रहे हैं।';
+        recommendations = `
+          <strong>क्या करें:</strong><br>
+          - माइंडफुलनेस और विश्राम तकनीकों का अभ्यास करें।<br>
+          - नियमित व्यायाम के साथ एक स्वस्थ जीवन शैली बनाए रखें।<br>
+          - एक सुसंगत दैनिक दिनचर्या स्थापित करें।<br><br>
+          <strong>क्या न करें:</strong><br>
+          - अत्यधिक कैफीन या शक्कर का सेवन न करें।<br>
+          - खुद को अलग न करें; दोस्तों और परिवार के साथ जुड़े रहें।<br>
+          - लगातार तनाव या चिंता की अनदेखी न करें; यदि आवश्यक हो तो सहायता प्राप्त करें।`;
+      } else if (q14Value === 'Family counseling for the whole family') {
+        message = 'हम परिवार परामर्श की सिफारिश करते हैं: यदि परिवार में बार-बार संघर्ष या संचार समस्याएं होती हैं।';
+        recommendations = `
+          <strong>क्या करें:</strong><br>
+          - मुद्दों पर चर्चा और समाधान के लिए नियमित पारिवारिक बैठकें आयोजित करें।<br>
+          - सक्रिय सुनने और सहानुभूति का अभ्यास करें।<br>
+          - पारिवारिक बंधन गतिविधियों में भाग लें।<br><br>
+          <strong>क्या न करें:</strong><br>
+          - परिवार के सदस्यों को दोषी या शर्मिंदा न करें।<br>
+          - किसी भी परिवार के सदस्य की भावनात्मक आवश्यकताओं की उपेक्षा न करें।<br>
+          - मुद्दों को अनदेखा न करें; उन्हें खुले तौर पर संबोधित करें।`;
+      } else if (q14Value === 'Child or adolescent counseling') {
+        message = 'हम बच्चे या किशोर परामर्श की सिफारिश करते हैं: यदि आपका बच्चा व्यवहारिक समस्याओं या भावनात्मक संकट का सामना कर रहा है।';
+        recommendations = `
+          <strong>क्या करें:</strong><br>
+          - एक सहायक और समझने वाला वातावरण प्रदान करें।<br>
+          - भावनाओं के बारे में खुली बातचीत को प्रोत्साहित करें।<br>
+          - अनुशासन के साथ धैर्य रखें और सुसंगत रहें।<br><br>
+          <strong>क्या न करें:</strong><br>
+          - अपने बच्चे की भावनाओं या चिंताओं को खारिज न करें।<br>
+          - अपने बच्चे की तुलना दूसरों से न करें।<br>
+          - अपनी खुद की भावनात्मक भलाई की उपेक्षा न करें; बच्चे अक्सर अपने माता-पिता की भावनाओं को प्रतिबिंबित करते हैं।`;
+      } else if (q14Value === 'Anonymous counseling services') {
+        message = 'हम गुमनाम परामर्श की सिफारिश करते हैं: यदि आप अपनी पहचान प्रकट किए बिना अपनी चिंताओं पर चर्चा करना पसंद करते हैं।';
+        recommendations = `
+          <strong>क्या करें:</strong><br>
+          - अपनी चिंताओं के बारे में ईमानदार और खुला रहें।<br>
+          - परामर्श सत्रों का उपयोग अपनी भावनाओं का पता लगाने के लिए करें।<br>
+          - दिए गए सलाह और रणनीतियों का पालन करें।<br><br>
+          <strong>क्या न करें:</strong><br>
+          - डर या शर्म के कारण महत्वपूर्ण जानकारी न छिपाएं।<br>
+          - सत्रों को छोड़ें नहीं; सुसंगतता महत्वपूर्ण है।<br>
+          - प्रदान की गई सलाह की अनदेखी न करें; सुधार की दिशा में सक्रिय कदम उठाएं।`;
+      }
+
+      message += `<br><br>${recommendations}`;
+      message += "<br><br><strong>आगे की सलाह के लिए अपने मनोवैज्ञानिक नेविगेटर से connect@thelifenavigator.com पर संपर्क करें।</strong>";
+      message += "<br><br><strong>अस्वीकरण:</strong> उपयोगकर्ताओं द्वारा दी गई जानकारी के आधार पर प्रदान की गई सिफारिशें हैं। हम दवाएं नहीं लिखते हैं या आपातकालीन स्वास्थ्य सेवाएं प्रदान नहीं करते हैं।";
+
+      openResultWindow(message);
+
+      // Send data to Google Sheets
+      backupData(formData);
+    }
+
+    function openResultWindow(message) {
+      const newWindow = window.open("", "_blank", "width=600,height=400");
+      newWindow.document.write(`
+        <html>
+          <head>
+            <title>परिणाम</title>
+            <style>
+              body {
+                font-family: Arial, sans-serif;
+                background-color: #87CEEB;
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+              }
+              .result-container {
+                border: 10px solid transparent;
+                padding: 15px;
+                border-image: url('https://www.publicdomainpictures.net/pictures/10000/velka/1433-1249134241Z21z.jpg') 30;
+                border-radius: 15px;
+                background-color: #fff;
+              }
+              h1 {
+                color: #333;
+              }
+              p {
+                color: #555;
+              }
+              .bold {
+                font-weight: bold;
+              }
+              .back-button {
+                display: inline-block;
+                padding: 10px 20px;
+                margin-top: 20px;
+                border: none;
+                background-color: #007BFF;
+                color: white;
+                font-size: 16px;
+                border-radius: 4px;
+                cursor: pointer;
+                text-decoration: none;
+              }
+              .back-button:hover {
+                background-color: #0056b3;
+              }
+            </style>
+          </head>
+          <body>
+            <div class="result-container">
+              <h1>मनोवैज्ञानिक सेवाएं अनुशंसा</h1>
+              <p>${message}</p>
+              <a class="back-button" href="https://www.thelifenavigator.com">मुख्य पृष्ठ पर वापस जाएं</a>
+            </div>
+          </body>
+        </html>
+      `);
+    }
+
+    function backupData(formData) {
+      const scriptURL = "https://script.google.com/macros/s/AKfycbx9PoV42pXHSr4LrGA9cnvV7v0MUFNWOBEyHuF-E5u2QlNtpoanTc-x1x5iAy-Rsjgipg/exec"; // Replace with your Apps Script URL
+      const data = new URLSearchParams();
+
+      for (let [key, value] of formData.entries()) {
+        data.append(key, value);
+      }
+
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: data
+      }).then(response => {
+        console.log('Data sent to Google Sheets');
+      }).catch(error => {
+        console.error('Error sending data to Google Sheets:', error);
+      });
+    }
+  </script>
+</body>
+</html>
