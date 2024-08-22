@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isolation Assessment Questionnaire for Parents / माता-पिता के लिए अलगाव मूल्यांकन प्रश्नावली</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            user-select: none;
+        }
+        header {
+            background-color: #673AB7;
+            padding: 10px 20px;
+            color: black;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+        nav button {
+            background-color: #673AB7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        nav button:hover {
+            background-color: #2e2e4a;
+        }
+        .container {
+            padding: 20px;
+            text-align: justify;
+            line-height: 1.6;
+        }
+        .section-heading {
+            color: #1a1a2e;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .content-heading {
+            color: red;
+            margin-bottom: 10px;
+        }
+        .content-text {
+            color: black;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        .submit-btn {
+            background-color: #673AB7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #2e2e4a;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        .modal-content {
+            background-color: #e6f2ff;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            position: relative;
+        }
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .back-btn, .home-btn {
+            background-color: #673AB7;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .back-btn:hover, .home-btn:hover {
+            background-color: #2e2e4a;
+        }
+        #chart-container {
+            width: 100%;
+            height: 400px;
+            margin-top: 20px;
+        }
+    #header img {
+            width: 400px;
+            height: auto;
+        }
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<header id="header">
+        <img src="https://thelifenavigator.com/wp-content/uploads/2024/07/Selfcarefinal0001-0150-ezgif.com-video-to-gif-converter.gif">
+        
+    </header>
+    <header>
+        <h1>The Life Navigator - Isolation Assessment for Parents / माता-पिता के लिए अलगाव मूल्यांकन</h1>
+        <h1>Understanding the Impact of Isolation on Parenting / पालन-पोषण पर अलगाव के प्रभाव को समझना</h1>
+    </header>
+    <nav>
+        <button onclick="window.location.href='http://www.thelifenavigator.com'">Home / मुख्यपृष्ठ</button>
+        <button onclick="window.location.href='https://thelifenavigator.com/about-us/'">About Us / हमारे बारे में</button>
+        <button onclick="window.location.href='https://thelifenavigator.com/contact/'">Contact / संपर्क करें</button>
+    </nav>
+    <div class="container">
+        <h2 class="section-heading">Isolation Assessment Questionnaire for Parents / माता-पिता के लिए अलगाव मूल्यांकन प्रश्नावली</h2>
+        <h3 class="content-heading">Understanding Isolation and Its Impact on Parenting / अलगाव और इसका पालन-पोषण पर प्रभाव</h3>
+        <p class="content-text">Parents, particularly those with young children, may experience feelings of isolation or loneliness. They may have less time for socializing or pursuing their own interests, leading to a sense of disconnect from friends or community. This questionnaire aims to identify areas where isolation might be affecting your parenting and provide strategies to help you manage these challenges. / माता-पिता, विशेष रूप से जिनके बच्चे छोटे हैं, उन्हें अलगाव या अकेलेपन की भावनाओं का अनुभव हो सकता है। उनके पास सामाजिक संपर्क या अपनी रुचियों का पालन करने के लिए कम समय हो सकता है, जिससे दोस्तों या समुदाय से अलगाव की भावना पैदा हो सकती है। यह प्रश्नावली उन क्षेत्रों की पहचान करने का प्रयास करती है जहां अलगाव आपके पालन-पोषण को प्रभावित कर सकता है और आपको इन चुनौतियों से निपटने में मदद करने के लिए रणनीतियां प्रदान करती है।</p>
+
+        <form id="isolation-form">
+            <label for="name">Name / नाम:</label>
+            <input type="text" id="name" name="name">
+            
+            <label for="age">Age / आयु:</label>
+            <input type="number" id="age" name="age">
+            
+            <label for="city">City / शहर:</label>
+            <input type="text" id="city" name="city">
+            
+            <label for="phone">Phone Number / फ़ोन नंबर:</label>
+            <input type="tel" id="phone" name="phone">
+            
+            <label for="email">Email ID / ईमेल आईडी:</label>
+            <input type="email" id="email" name="email">
+
+            <h3>Social Interaction / सामाजिक संपर्क</h3>
+            <label for="q1">1. How often do you socialize with friends? / आप कितनी बार दोस्तों के साथ मेलजोल करते हैं?</label>
+            <select id="q1" name="q1">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q2">2. How frequently do you feel lonely due to lack of social interaction? / सामाजिक संपर्क की कमी के कारण आपको कितनी बार अकेलापन महसूस होता है?</label>
+            <select id="q2" name="q2">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q3">3. Do you struggle to find time to meet with friends or family? / क्या आपको दोस्तों या परिवार से मिलने के लिए समय निकालने में कठिनाई होती है?</label>
+            <select id="q3" name="q3">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q4">4. How often do you feel isolated from your social circle? / आपको अपने सामाजिक दायरे से अलगाव का एहसास कितनी बार होता है?</label>
+            <select id="q4" name="q4">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q5">5. How frequently do you feel that your social life has diminished since becoming a parent? / माता-पिता बनने के बाद से आपको कितनी बार लगता है कि आपका सामाजिक जीवन कम हो गया है?</label>
+            <select id="q5" name="q5">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <h3>Pursuing Interests / रुचियों का पालन करना</h3>
+            <label for="q6">1. How often do you engage in hobbies or activities that you enjoy? / आप कितनी बार अपनी पसंद के शौक या गतिविधियों में संलग्न होते हैं?</label>
+            <select id="q6" name="q6">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q7">2. Do you feel that you have enough time for yourself? / क्या आपको लगता है कि आपके पास अपने लिए पर्याप्त समय है?</label>
+            <select id="q7" name="q7">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q8">3. How frequently do you sacrifice your interests for parenting responsibilities? / पालन-पोषण की ज़िम्मेदारियों के लिए आप कितनी बार अपनी रुचियों का त्याग करते हैं?</label>
+            <select id="q8" name="q8">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q9">4. Do you feel guilty when you take time for yourself away from your parenting duties? / पालन-पोषण की ज़िम्मेदारियों से दूर खुद के लिए समय निकालने पर क्या आपको अपराधबोध महसूस होता है?</label>
+            <select id="q9" name="q9">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q10">5. How often do you feel that your lack of personal time is affecting your well-being? / आपको कितनी बार लगता है कि आपके व्यक्तिगत समय की कमी आपके स्वास्थ्य पर असर डाल रही है?</label>
+            <select id="q10" name="q10">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <h3>Community Connection / समुदाय से जुड़ाव</h3>
+            <label for="q11">1. How often do you participate in community or social events? / आप कितनी बार सामुदायिक या सामाजिक कार्यक्रमों में भाग लेते हैं?</label>
+            <select id="q11" name="q11">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q12">2. Do you feel connected to your community? / क्या आपको अपने समुदाय से जुड़ाव महसूस होता है?</label>
+            <select id="q12" name="q12">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q13">3. How frequently do you feel supported by your community? / आपको कितनी बार अपने समुदाय का समर्थन महसूस होता है?</label>
+            <select id="q13" name="q13">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q14">4. Do you feel that you have people you can rely on for help or support? / क्या आपको लगता है कि आपके पास मदद या समर्थन के लिए भरोसेमंद लोग हैं?</label>
+            <select id="q14" name="q14">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <label for="q15">5. How often do you feel isolated from your community? / आपको कितनी बार अपने समुदाय से अलगाव महसूस होता है?</label>
+            <select id="q15" name="q15">
+                <option value="1">Never / कभी नहीं</option>
+                <option value="2">Rarely / शायद ही कभी</option>
+                <option value="3">Sometimes / कभी-कभी</option>
+                <option value="4">Often / अक्सर</option>
+                <option value="5">Always / हमेशा</option>
+            </select>
+
+            <button type="button" class="submit-btn" onclick="submitForm()">Submit / सबमिट करें</button>
+        </form>
+        <p><strong>Recommendations / सिफारिशें:</strong></p>
+        <ul>
+            <li>Seek professional help if you are struggling with feelings of isolation. Treatment options include counseling, support groups, and therapy sessions. / यदि आप अलगाव की भावनाओं से जूझ रहे हैं तो पेशेवर मदद लें। उपचार विकल्पों में परामर्श, समर्थन समूह और चिकित्सा सत्र शामिल हैं।</li>
+            <li>Schedule regular social activities with friends and family to stay connected. / जुड़े रहने के लिए दोस्तों और परिवार के साथ नियमित सामाजिक गतिविधियों का समय निर्धारित करें।</li>
+            <li>Engage in community events or groups to build a support network. / एक समर्थन नेटवर्क बनाने के लिए सामुदायिक कार्यक्रमों या समूहों में भाग लें।</li>
+            <li>Set aside time for hobbies and interests to maintain your personal well-being. / अपने व्यक्तिगत कल्याण को बनाए रखने के लिए शौक और रुचियों के लिए समय निकालें।</li>
+            <li>Communicate openly with your partner or support network about your feelings. / अपनी भावनाओं के बारे में अपने साथी या समर्थन नेटवर्क से खुलकर बात करें।</li>
+            <li>Model healthy social habits for your children to follow. / अपने बच्चों के पालन के लिए स्वस्थ सामाजिक आदतों का उदाहरण प्रस्तुत करें।</li>
+        </ul>
+        <p><strong>References / संदर्भ:</strong></p>
+        <ul>
+            <li>American Psychological Association. (2021). Isolation and Parenting. Retrieved from <a href="https://www.apa.org/topics/isolation-parenting">www.apa.org</a>. / अमेरिकन साइकोलॉजिकल एसोसिएशन. (2021). अलगाव और पालन-पोषण।</li>
+            <li>National Institute of Mental Health. (2021). Mental Health and Parenting. Retrieved from <a href="https://www.nimh.nih.gov/health/topics/mental-health-and-parenting/index.shtml">www.nimh.nih.gov</a>. / राष्ट्रीय मानसिक स्वास्थ्य संस्थान। (2021). मानसिक स्वास्थ्य और पालन-पोषण।</li>
+            <li>Mayo Clinic. (2021). Isolation in Parenting. Retrieved from <a href="https://www.mayoclinic.org/tests-procedures/isolation-parenting/about/pac-20385230">www.mayoclinic.org</a>. / मेयो क्लिनिक। (2021). पालन-पोषण में अलगाव।</li>
+            <li>Centers for Disease Control and Prevention. (2021). Positive Parenting Tips. Retrieved from <a href="https://www.cdc.gov/ncbddd/childdevelopment/positiveparenting/index.html">www.cdc.gov</a>. / रोग नियंत्रण और रोकथाम केंद्र। (2021). सकारात्मक पालन-पोषण टिप्स।</li>
+        </ul>
+        <p><strong>Disclaimer / अस्वीकरण:</strong></p>
+        <p>This assessment is for informational purposes only and is not a substitute for professional diagnosis or treatment. If you are experiencing severe symptoms, please seek immediate help from a mental health professional. We do not prescribe medication or provide emergency health services. For more information, contact us here: <a href="mailto:connect@thelifenavigator.com">connect@thelifenavigator.com</a>. / यह आकलन केवल सूचना के उद्देश्य से है और पेशेवर निदान या उपचार का विकल्प नहीं है। यदि आप गंभीर लक्षणों का अनुभव कर रहे हैं, तो कृपया मानसिक स्वास्थ्य पेशेवर से तत्काल सहायता प्राप्त करें। हम दवा नहीं देते हैं या आपातकालीन स्वास्थ्य सेवाएं प्रदान नहीं करते हैं। अधिक जानकारी के लिए, यहां संपर्क करें: <a href="mailto:connect@thelifenavigator.com">connect@thelifenavigator.com</a>.</p>
+    </div>
+
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Results / परिणाम</h2>
+            <div id="chart-container">
+                <canvas id="result-chart"></canvas>
+            </div>
+            <p id="result-text"></p>
+            <h3>Do's and Don'ts / क्या करें और क्या न करें</h3>
+            <p id="advice-text"></p>
+            <p>Note: The recommendations provided are based on the information entered. For more information, contact us here: <a href="mailto:connect@thelifenavigator.com">connect@thelifenavigator.com</a>. / ध्यान दें: दी गई सिफारिशें दर्ज की गई जानकारी पर आधारित हैं। अधिक जानकारी के लिए, यहां संपर्क करें: <a href="mailto:connect@thelifenavigator.com">connect@thelifenavigator.com</a>.</p>
+            <button class="home-btn" onclick="window.location.href='http://www.thelifenavigator.com'">Home / मुख्यपृष्ठ</button>
+        </div>
+    </div>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxRZKgRd138TCwjnj3atveWz4mtacsip7fRku9SuwqDhJdX0qvxg2_MlhvWn5pCKW1_/exec';
+        
+        function submitForm() {
+            const form = document.getElementById('isolation-form');
+            const formData = new FormData(form);
+            let socialInteractionScore = 0;
+            let pursuingInterestsScore = 0;
+            let communityConnectionScore = 0;
+
+            for (let entry of formData.entries()) {
+                if (entry[0].startsWith('q')) {
+                    if (parseInt(entry[0].substring(1)) <= 5) {
+                        socialInteractionScore += parseInt(entry[1]);
+                    } else if (parseInt(entry[0].substring(1)) <= 10) {
+                        pursuingInterestsScore += parseInt(entry[1]);
+                    } else {
+                        communityConnectionScore += parseInt(entry[1]);
+                    }
+                }
+            }
+
+            let totalScore = socialInteractionScore + pursuingInterestsScore + communityConnectionScore;
+            let resultText = '';
+            let adviceText = '';
+
+            if (totalScore <= 25) {
+                resultText = 'Low Risk: You show minimal signs of isolation affecting your parenting. Continue to monitor your social interactions and practice self-care. / निम्न जोखिम: आप अलगाव के कारण अपने पालन-पोषण पर न्यूनतम प्रभाव के संकेत दिखाते हैं। अपने सामाजिक संपर्कों की निगरानी करते रहें और आत्म-देखभाल का अभ्यास करें।';
+                adviceText = `
+                    <ul>
+                        <li>Maintain a consistent routine that includes time for social activities and self-care. / सामाजिक गतिविधियों और आत्म-देखभाल के लिए समय शामिल करने वाली नियमित दिनचर्या बनाए रखें।</li>
+                        <li>Engage in community events and groups to stay connected. / जुड़े रहने के लिए सामुदायिक कार्यक्रमों और समूहों में भाग लें।</li>
+                        <li>Practice healthy social habits regularly. / नियमित रूप से स्वस्थ सामाजिक आदतों का अभ्यास करें।</li>
+                    </ul>
+                `;
+            } else if (totalScore <= 50) {
+                resultText = 'Moderate Risk: You show some signs of isolation affecting your parenting. Consider discussing your feelings with a mental health professional. / मध्यम जोखिम: आप अलगाव के कारण अपने पालन-पोषण पर कुछ प्रभाव के संकेत दिखाते हैं। अपनी भावनाओं पर मानसिक स्वास्थ्य पेशेवर से चर्चा करने पर विचार करें।';
+                adviceText = `
+                    <ul>
+                        <li>Set realistic expectations for your social life and parenting roles. / अपने सामाजिक जीवन और पालन-पोषण की भूमिकाओं के लिए यथार्थवादी अपेक्षाएं निर्धारित करें।</li>
+                        <li>Engage in activities that help you relax and unwind. / आराम और विश्राम में मदद करने वाली गतिविधियों में संलग्न हों।</li>
+                        <li>Seek support from a mental health professional if needed. / यदि आवश्यक हो, तो मानसिक स्वास्थ्य पेशेवर से सहायता लें।</li>
+                    </ul>
+                `;
+            } else {
+                resultText = 'High Risk: You show significant signs of isolation affecting your parenting. It is recommended to seek professional help and support. / उच्च जोखिम: आप अलगाव के कारण अपने पालन-पोषण पर महत्वपूर्ण प्रभाव के संकेत दिखाते हैं। पेशेवर सहायता और समर्थन प्राप्त करने की सिफारिश की जाती है।';
+                adviceText = `
+                    <ul>
+                        <li>Consult with a mental health professional for guidance. / मार्गदर्शन के लिए मानसिक स्वास्थ्य पेशेवर से परामर्श लें।</li>
+                        <li>Engage in therapy or counseling sessions. / चिकित्सा या परामर्श सत्रों में भाग लें।</li>
+                        <li>Develop a personalized management plan for your isolation. / अपने अलगाव के लिए एक व्यक्तिगत प्रबंधन योजना विकसित करें।</li>
+                    </ul>
+                `;
+            }
+
+            document.getElementById('result-text').innerHTML = resultText;
+            document.getElementById('advice-text').innerHTML = adviceText;
+
+            const ctx = document.getElementById('result-chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Social Interaction / सामाजिक संपर्क', 'Pursuing Interests / रुचियों का पालन करना', 'Community Connection / समुदाय से जुड़ाव'],
+                    datasets: [{
+                        label: 'Score / स्कोर',
+                        data: [socialInteractionScore, pursuingInterestsScore, communityConnectionScore],
+                        backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(75, 192, 192)', 'rgb(255, 205, 86)', 'rgb(153, 102, 255)', 'rgb(255, 159, 64)', 'rgb(201, 203, 207)']
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 25
+                        }
+                    }
+                }
+            });
+
+            document.getElementById('result-modal').style.display = 'block';
+
+            formData.append('socialInteractionScore', socialInteractionScore);
+            formData.append('pursuingInterestsScore', pursuingInterestsScore);
+            formData.append('communityConnectionScore', communityConnectionScore);
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message));
+        }
+
+        function changeHeaderColor() {
+        const headers = document.querySelectorAll('header');
+        const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#F3FF33'];
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        headers.forEach(function(header) {
+            header.style.backgroundColor = randomColor;
+        });
+    }
+
+    function continuousHeaderColorChange() {
+        setInterval(changeHeaderColor, 3000);
+    }
+
+    window.onload = function() {
+        continuousHeaderColorChange();
+    };
+
+
+    </script>
+</body>
+</html>
