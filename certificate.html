@@ -18,8 +18,9 @@
 
         /* Container for the certificate */
         .container {
-            max-width: 1100px; /* Increased width */
+            max-width: 1100px; /* Fixed width for A4 landscape */
             margin: auto;
+            padding: 0px; /* Removed padding to avoid scaling issues */
         }
 
         /* Header styling */
@@ -40,20 +41,20 @@
 
         .header h1 {
             margin: 0;
-            font-size: 28px; /* Increased font size */
+            font-size: 28px;
         }
 
         /* Certificate container styling */
         .certificate-container {
             border: none;
-            padding: 30px; /* Adjusted padding */
+            padding: 30px;
             text-align: center;
             position: relative;
-            margin-top: 20px; /* Reduced top margin */
+            margin-top: 20px;
             width: 100%;
             box-sizing: border-box;
             background-image: url('https://thelifenavigator.com/wp-content/uploads/2024/08/Untitled-design1-1024x724.png');
-            background-size: 100% 100%; /* Adjusted background size */
+            background-size: 100% 100%; 
             background-repeat: no-repeat;
             background-position: center;
             color: black;
@@ -62,30 +63,29 @@
         /* Certificate header styling */
         .certificate-header {
             font-family: 'Lucida Calligraphy', cursive;
-
-            font-size: 54px; /* Increased font size */
-            margin-top: 10px; /* Reduced top margin */
+            font-size: 54px;
+            margin-top: 10px;
             color: #003366;
-            line-height: 1.2; /* Adjusted line height */
-            margin-bottom: 20px; /* Added bottom margin */
+            line-height: 1.2;
+            margin-bottom: 20px;
         }
 
         /* Certificate subheader styling */
         .certificate-subheader {
-            font-size: 28px; /* Increased font size */
-            margin: 5px 0; /* Reduced top and bottom margin */
+            font-size: 28px;
+            margin: 5px 0;
             color: #003366;
-            line-height: 1.3; /* Adjusted line height */
+            line-height: 1.3;
         }
 
         /* Certificate body text styling */
         .certificate-body {
-            font-size: 25px; /* Increased font size */
-            margin: 20px 50px; /* Added margins from all sides */
+            font-size: 25px;
+            margin: 20px 50px;
             font-family: 'Cinzel Decorative', serif;
             font-style: italic;
             color: black;
-            line-height: 1.5; /* Adjusted line height for better readability */
+            line-height: 1.5;
         }
 
         /* Styling for important text in the certificate body */
@@ -94,16 +94,16 @@
             font-style: italic;
             font-family: 'Cinzel Decorative', serif;
             color: #4B0082;
-            line-height: 1.5; /* Ensure consistent line height */
+            line-height: 1.5;
         }
 
         /* Adjustments for spacing between the logos and the certificate header */
         .certificate-logos {
             display: flex;
-            justify-content: center; /* Center logos side by side */
+            justify-content: center;
             align-items: center;
-            margin-top: 10px; /* Margin above logos */
-            margin-bottom: 10px; /* Margin below logos */
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
 
         /* Left logo container styling */
@@ -111,43 +111,43 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 400px; /* Adjustable width */
-            height: 150px; /* Adjustable height */
-            margin: 0 20px; /* Adjustable side margins */
+            width: 400px;
+            height: 150px;
+            margin: 0 20px;
         }
 
         /* Logos inside the containers */
         .left-logo-container img, .right-logo-container img {
-            max-width: 100%; /* Ensure the image fits the container */
-            max-height: 100%; /* Ensure the image fits the container */
+            max-width: 100%;
+            max-height: 100%;
         }
 
         /* Signature styling with options for margins and text adjustments */
         .certificate-signatures {
-            margin-top: 30px; /* Reduced top margin */
+            margin-top: 30px;
             display: flex;
             justify-content: space-between;
-            padding: 0 50px; /* Padding between the signatures */
+            padding: 0 50px;
         }
 
         .signature {
             text-align: center;
             width: 150px;
-            margin-top: 10px; /* Reduced top margin */
+            margin-top: 10px;
         }
 
         .signature img {
-            width: 120px; /* Increased image width */
-            height: 60px; /* Increased image height */
+            width: 120px;
+            height: 60px;
             display: block;
             margin: 0 auto;
         }
 
         .signature p {
-            margin-top: 5px; /* Reduced top margin */
-            font-weight: bold; /* Bold text for signatory names */
-            font-size: 18px; /* Adjusted font size */
-            line-height: 1.2; /* Adjusted line height */
+            margin-top: 5px;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 1.2;
         }
 
         /* Download button container and styling */
@@ -163,7 +163,7 @@
             border: none;
             cursor: pointer;
             margin: 10px;
-            font-size: 18px; /* Increased button font size */
+            font-size: 18px;
         }
 
         .download-button:hover {
@@ -246,10 +246,10 @@
 
 /* Image styling for the loading screen */
 .loading-screen img {
-    width: 100%; /* Default to fill the screen width */
-    height: auto; /* Maintain aspect ratio */
-    max-height: 100%; /* Ensure it doesn't exceed screen height */
-    object-fit: contain; /* Ensures the image fits well within the container */
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 /* Loading circle styling */
@@ -266,8 +266,8 @@
 
 /* Optional custom size settings for the loading image */
 .loading-screen img.custom-size {
-    width: var(--loading-img-width, 100%); /* Custom width with fallback to 100% */
-    height: var(--loading-img-height, auto); /* Custom height with fallback to auto */
+    width: var(--loading-img-width, 100%);
+    height: var(--loading-img-height, auto);
 }
 
 @-webkit-keyframes spin {
@@ -279,13 +279,9 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
         /* Media query for mobile responsiveness */
         @media (max-width: 600px) {
-            .container {
-                width: 100%;
-                padding: 10px;
-            }
-
             .login-container {
                 padding: 10px;
                 margin-top: 20px;
@@ -339,7 +335,7 @@
                     return;
                 }
 
-                loadingScreen.style.display = 'flex'; // Show the loading screen
+                loadingScreen.style.display = 'flex';
 
                 const formData = new FormData();
                 formData.append('username', username);
@@ -351,10 +347,9 @@
                 })
                 .then(response => response.json())
                 .then(data => {
-                    loadingScreen.style.display = 'none'; // Hide the loading screen
+                    loadingScreen.style.display = 'none';
 
                     if (data.result === 'success') {
-                        // Hide login container and show certificate generation container
                         document.querySelector('.login-container').style.display = 'none';
                         document.querySelector('.start-container').style.display = 'block';
                         document.getElementById('loggedInUser').value = username;
@@ -364,7 +359,7 @@
                     }
                 })
                 .catch(error => {
-                    loadingScreen.style.display = 'none'; // Hide the loading screen
+                    loadingScreen.style.display = 'none';
                     console.error('Error!', error.message);
                     errorMessage.textContent = 'There was an error logging in. Please try again.';
                 });
@@ -376,11 +371,9 @@
 
             const certificateContainer = document.querySelector('.certificate-container');
 
-            // Set header
             certificateContainer.querySelector('.certificate-header').textContent = "CERTIFICATE";
             certificateContainer.querySelector('.certificate-subheader').textContent = certificateInfo.eventName;
 
-            // Set body text
             const bodyText = `
                 This is to certify that <span class="important">${certificateInfo.name}</span>
                 of <span class="important">${certificateInfo.college}</span>
@@ -393,7 +386,6 @@
             `;
             certificateContainer.querySelector('.certificate-body').innerHTML = bodyText;
 
-            // Handle logo positioning based on availability
             const logosContainer = document.querySelector('.certificate-logos');
             const leftLogoHtml = certificateInfo.logoLeft ? `
                 <div class="left-logo-container">
@@ -415,7 +407,6 @@
                 logosContainer.style.display = 'none';
             }
 
-            // Set signatures
             const signaturesContainer = document.querySelector('.certificate-signatures');
             signaturesContainer.innerHTML = `
                 <div class="signature">
@@ -432,7 +423,6 @@
                 </div>
             `;
 
-            // Show the certificate
             certificateContainer.style.display = 'block';
         }
 
