@@ -203,7 +203,7 @@
       const studentClass = localStorage.getItem('studentClass');
 
       // Build the URL for the quiz page and pass the login details as query parameters
-      const quizUrl = `https://thelifenavigator.github.io/test1.html?username=${encodeURIComponent(username)}&parentName=${encodeURIComponent(parentName)}&studentName=${encodeURIComponent(studentName)}&schoolName=${encodeURIComponent(schoolName)}&schoolURL=${encodeURIComponent(schoolURL)}&studentClass=${encodeURIComponent(studentClass)}`;
+      const quizUrl = `https://thelifenavigator.github.io/test1?username=${encodeURIComponent(username)}&parentName=${encodeURIComponent(parentName)}&studentName=${encodeURIComponent(studentName)}&schoolName=${encodeURIComponent(schoolName)}&schoolURL=${encodeURIComponent(schoolURL)}&studentClass=${encodeURIComponent(studentClass)}`;
       
       // Navigate to the quiz page
       window.location.href = quizUrl;
