@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICSE Science Class Selection</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333; /* Scope to change text color later */
+    }
+
+    /* Header image */
+    .header-image {
+      width: 200px;
+      height: 200px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    /* School Info */
+    .school-info {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 2em;
+      color: #007BFF;
+    }
+
+    /* Parent and student info box */
+    .info-box {
+      text-align: center;
+      font-size: 1.5em;
+      margin: 20px auto;
+      padding: 20px;
+      width: 80%;
+      max-width: 500px;
+      border: 2px solid #007BFF;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 255, 0.2);
+      transition: all 0.3s ease;
+      background-color: #e0f7fa;
+    }
+
+    .info-box:hover {
+      box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+      transform: scale(1.03);
+    }
+
+    /* Introduction and guideline section */
+    .intro-section {
+      text-align: center;
+      margin: 30px 20px;
+      color: #007BFF;
+    }
+
+    .intro-section h2 {
+      font-size: 2.5em;
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+
+    .intro-section p {
+      font-size: 1.2em;
+      color: #333;
+      text-align: justify;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    .intro-section h3 {
+      color: #28a745;
+      font-size: 1.8em;
+      margin-top: 30px;
+    }
+
+    /* Class selection styling */
+    .class-section {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 1.8em;
+    }
+
+    .class-section select {
+      padding: 10px;
+      font-size: 1.2em;
+      width: 80%;
+      max-width: 400px;
+      margin-bottom: 10px;
+    }
+
+    /* Proceed button styling */
+    .class-section button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      margin: 10px;
+      border-radius: 5px;
+      font-size: 1.3em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .class-section button:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+
+    .class-section button:active {
+      transform: scale(0.98);
+    }
+
+    /* Mobile phone view adjustments */
+    @media (max-width: 768px) {
+      .header-image {
+        width: 150px;
+        height: 150px;
+      }
+
+      .info-box {
+        font-size: 1.2em;
+      }
+
+      .intro-section p {
+        font-size: 1.1em;
+      }
+
+      .class-section select, .class-section button {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dynamic header with school image -->
+  <div>
+    <img id="schoolImage" class="header-image" alt="School Image">
+  </div>
+
+  <!-- School Info -->
+  <div class="school-info">
+    <span id="schoolName">ICSE Science Class Selection</span>
+  </div>
+
+  <!-- Parent and Student Information -->
+  <div class="info-box">
+    <p>Parent Name: <span id="parentName">Loading...</span></p>
+    <p>Student Name: <span id="studentName">Loading...</span></p>
+    <p>Class: <span id="studentClass">Loading...</span></p>
+  </div>
+
+  <!-- Introduction Section -->
+  <div class="intro-section">
+    <h2>Welcome to the ICSE Science Skilling Program!</h2>
+    <p>We are excited to have you embark on this journey of science excellence.</p>
+    <h3>Part-1: Training & Practice</h3>
+    <p>In this phase, parents play a crucial role by conducting regular practice tests for students. These tests can be scheduled weekly, daily, or in accordance with guidelines provided by the school. This consistent practice ensures that students build a solid foundation in each chapter.</p>
+    
+    <h3>Testing & Competitions</h3>
+    <p>After completing the training phase, students will undergo a one-time chapter-wise quiz to assess their understanding. In addition, there will be grand quiz exams and opportunities to participate in national-level competitions to further challenge and enhance their skills.</p>
+    
+    <p>Let’s make learning an engaging and rewarding experience!</p>
+  </div>
+
+  <!-- Class Selection Section -->
+  <div class="class-section">
+    <h2>Select Class</h2>
+    <select id="class-select">
+      <option value="">Select Class</option>
+      <option value="LKG">LKG</option>
+      <option value="UKG">UKG</option>
+      <option value="Class-1">Class 1</option>
+      <option value="Class-2">Class 2</option>
+      <option value="Class-3">Class 3</option>
+      <option value="Class-4">Class 4</option>
+      <option value="Class-5">Class 5</option>
+      <option value="Class-6">Class 6</option>
+      <option value="Class-7">Class 7</option>
+      <option value="Class-8">Class 8</option>
+      <option value="Class-9">Class 9</option>
+      <option value="Class-10">Class 10</option>
+      <option value="Class-11">Class 11</option>
+      <option value="Class-12">Class 12</option>
+    </select>
+    <br>
+    <button onclick="proceedToClass()">Proceed</button>
+  </div>
+
+  <script>
+    // Fetch and display parent name, student name, school info, student class, and dynamic URL from localStorage
+    function displayUserData() {
+      const parentName = localStorage.getItem('parentName');
+      const studentName = localStorage.getItem('studentName');
+      const schoolName = localStorage.getItem('schoolName');
+      const schoolURL = localStorage.getItem('schoolURL');
+      const studentClass = localStorage.getItem('studentClass');
+      const headerImageWidth = localStorage.getItem('headerImageWidth') || 200;
+      const headerImageHeight = localStorage.getItem('headerImageHeight') || 200;
+
+      if (parentName) document.getElementById('parentName').textContent = parentName;
+      if (studentName) document.getElementById('studentName').textContent = studentName;
+      if (studentClass) document.getElementById('studentClass').textContent = studentClass;
+
+      // Display school image with dynamic size
+      const schoolImageElement = document.getElementById('schoolImage');
+      if (schoolURL) {
+        schoolImageElement.src = schoolURL;
+      } else {
+        schoolImageElement.src = 'https://thelifenavigator.com/wp-content/uploads/2024/08/DALL%C2%B7E-2024-04-29-23.50.21-A-classroom-beautifully-transformed-with-Vedic-themes-featuring-innovative-teaching-method-tools.-Teachers-kids-and-parents-adorned-in-Vedic-attir-1024x585.webp';
+      }
+
+      // Set the header image size dynamically if provided
+      schoolImageElement.style.width = headerImageWidth + 'px';
+      schoolImageElement.style.height = headerImageHeight + 'px';
+
+      if (schoolName) document.getElementById('schoolName').textContent = schoolName;
+    }
+
+    // Call the function to display user data when the page loads
+    window.onload = function() {
+      displayUserData();
+    };
+
+    // Proceed based on class selection
+function proceedToClass() {
+  const selectedClass = document.getElementById('class-select').value;
+
+  switch (selectedClass) {
+    case 'LKG':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_LKG_Science.html';
+      break;
+    case 'UKG':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_UKG_Science.html';
+      break;
+    case 'Class-1':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_1_Science.html';
+      break;
+    case 'Class-2':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_2_Science.html';
+      break;
+    case 'Class-3':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_3_Science.html';
+      break;
+    case 'Class-4':
+      window.location.href = 'https://thelifenavigator.github.io/SelectQuiz_ICSE_Class_4_Science.html';
+      break;
+    case 'Class-5':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_5_Science.html';
+      break;
+    case 'Class-6':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_6_Science.html';
+      break;
+    case 'Class-7':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_7_Science.html';
+      break;
+    case 'Class-8':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_8_Science.html';
+      break;
+    case 'Class-9':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_9_Science.html';
+      break;
+    case 'Class-10':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_10_Science.html';
+      break;
+    case 'Class-11':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_11_Science.html';
+      break;
+    case 'Class-12':
+      window.location.href = 'file:///D:/tln%20app/SelectQuiz_ICSE_Class_12_Science.html';
+      break;
+    default:
+      alert('Please select a valid class.');
+  }
+}
+
+  </script>
+
+</body>
+</html>

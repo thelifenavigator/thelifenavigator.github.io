@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICSE Class 4 Science - Test & Train</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333; /* Updated text color */
+    }
+
+    /* Header image */
+    .header-image {
+      width: 200px;
+      height: 250px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    /* School Info */
+    .school-info {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 2em;
+      color: #007BFF;
+    }
+
+    /* Parent and student info box */
+    .info-box {
+      text-align: center;
+      font-size: 1.5em;
+      margin: 20px auto;
+      padding: 20px;
+      width: 80%;
+      max-width: 500px;
+      border: 2px solid #007BFF;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 255, 0.2);
+      transition: all 0.3s ease;
+      background-color: #e0f7fa;
+    }
+
+    .info-box:hover {
+      box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+      transform: scale(1.03);
+    }
+
+    /* Introduction section */
+    .introduction-section {
+      text-align: center;
+      margin: 30px 20px;
+      color: #007BFF;
+    }
+
+    .introduction-section h2 {
+      color: #007BFF;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .introduction-section p {
+      font-size: 1.3em;
+      color: #333;
+      text-align: justify;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 700px;
+    }
+
+    /* Button styling */
+    .chapter-buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .chapter-buttons button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      margin: 10px;
+      border-radius: 5px;
+      font-size: 1.3em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .chapter-buttons button:hover {
+      background-color: #218838;
+      transform: rotate(-3deg) scale(1.05);
+    }
+
+    .chapter-buttons button:active {
+      transform: scale(0.98);
+    }
+
+    /* Responsive styling for buttons and mobile view */
+    @media (max-width: 768px) {
+      .chapter-buttons button {
+        width: 90%;
+        margin: 5px 0;
+      }
+
+      .header-image {
+        width: 150px;
+        height: 200px;
+      }
+
+      .info-box {
+        font-size: 1.2em;
+      }
+
+      .introduction-section p {
+        font-size: 1.2em;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Dynamic header with school image -->
+  <div>
+    <img id="schoolImage" class="header-image" alt="School Image">
+  </div>
+
+  <!-- School Info -->
+  <div class="school-info">
+    <span id="schoolName">ICSE Class 4 Science - Test & Train</span>
+  </div>
+
+  <!-- Parent and student information -->
+  <div class="info-box">
+    <p>Parent Name: <span id="parentName">Loading...</span></p>
+    <p>Student Name: <span id="studentName">Loading...</span></p>
+    <p>Class: <span id="studentClass">Loading...</span></p>
+  </div>
+
+  <!-- Class Header -->
+  <div class="introduction-section">
+    <h2>Class-4 Science</h2>
+    <p>Dear Parents, this page is designed to help your children test and train their knowledge in Science. The tests provided are not only time-efficient but also vital in shaping their foundational knowledge for future competitive exams like IIT and NEET. Encouraging your child to regularly take these tests will help track their progress and ensure a deep understanding of scientific concepts, which is crucial for their overall academic success. Let's prepare for a brighter future!</p>
+  </div>
+
+   <!-- Buttons for the 12 chapters in box layout -->
+  <div class="chapter-buttons">
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter1')">Human Body: Food We Eat</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter2')">Human Body: The Teeth</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter3')">Human Body: Digestive & Excretory Systems</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter4')">Adaptation in Animals</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter5')">Adaptation in Plants</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter6')">Plants in the Environment</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter7')">Air</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter8')">Materials and Solutions</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter9')">Light</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter10')">Measurement</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter11')">Push and Pull</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('chapter12')">Friction as a Force</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Fetch and display parent name, student name, school info, and dynamic URL from localStorage
+    function displayUserData() {
+      const parentName = localStorage.getItem('parentName');
+      const studentName = localStorage.getItem('studentName');
+      const schoolName = localStorage.getItem('schoolName');
+      const schoolURL = localStorage.getItem('schoolURL');
+      const studentClass = localStorage.getItem('studentClass');
+      const headerImageWidth = localStorage.getItem('headerImageWidth') || 200;
+      const headerImageHeight = localStorage.getItem('headerImageHeight') || 250;
+
+      if (parentName) document.getElementById('parentName').textContent = parentName;
+      if (studentName) document.getElementById('studentName').textContent = studentName;
+      if (studentClass) document.getElementById('studentClass').textContent = studentClass;
+
+      // Display school image with dynamic size
+      const schoolImageElement = document.getElementById('schoolImage');
+      if (schoolURL) {
+        schoolImageElement.src = schoolURL;
+      } else {
+        schoolImageElement.src = 'https://thelifenavigator.com/wp-content/uploads/2024/08/DALL%C2%B7E-2024-04-29-23.50.21-A-classroom-beautifully-transformed-with-Vedic-themes-featuring-innovative-teaching-method-tools.-Teachers-kids-and-parents-adorned-in-Vedic-attir-1024x585.webp';
+      }
+
+      // Set the header image size dynamically if provided, otherwise default to 200x250
+      schoolImageElement.style.width = headerImageWidth + 'px';
+      schoolImageElement.style.height = headerImageHeight + 'px';
+
+      if (schoolName) document.getElementById('schoolName').textContent = schoolName;
+    }
+
+    // Call the function to display user data when the page loads
+    window.onload = function() {
+      displayUserData();
+    };
+
+    // Navigate to the specific quiz page and pass user data from localStorage
+    function navigateToQuiz(chapterId) {
+      const username = localStorage.getItem('username');
+      const parentName = localStorage.getItem('parentName');
+      const studentName = localStorage.getItem('studentName');
+      const schoolName = localStorage.getItem('schoolName');
+      const schoolURL = localStorage.getItem('schoolURL');
+      const studentClass = localStorage.getItem('studentClass');
+
+      // Redirect to the quiz page with query parameters
+      const quizUrl = `https://thelifenavigator.github.io/icse_sci_class4_ch1_ptest_selection/${chapterId}.html?username=${encodeURIComponent(username)}&parentName=${encodeURIComponent(parentName)}&studentName=${encodeURIComponent(studentName)}&schoolName=${encodeURIComponent(schoolName)}&schoolURL=${encodeURIComponent(schoolURL)}&studentClass=${encodeURIComponent(studentClass)}`;
+      window.location.href = quizUrl;
+    }
+  </script>
+
+</body>
+</html>

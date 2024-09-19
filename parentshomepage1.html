@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parent's Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+
+    /* Header image styling */
+    .header-image {
+      width: 100%;
+      height: auto;
+    }
+
+    /* Welcome section styling */
+    .welcome-section {
+      text-align: center;
+      margin: 30px 20px;
+    }
+
+    .welcome-section h1 {
+      font-size: 2.5em;
+      color: #0073e6;
+    }
+
+    .welcome-section p {
+      font-size: 1.2em;
+      margin: 20px 0;
+    }
+
+    /* Import parent name styling */
+    .parent-info {
+      text-align: center;
+      font-size: 1.3em;
+      margin: 20px 0;
+    }
+
+    .parent-info span {
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Body text passage styling */
+    .body-text {
+      text-align: center;
+      font-size: 1.1em;
+      color: #555;
+      margin: 30px 10px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Buttons styling */
+    .button-section {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .button-section button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      margin: 10px;
+      border-radius: 5px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      display: block;
+      width: 60%;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .button-section button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header image -->
+  <div>
+    <img src="https://thelifenavigator.com/wp-content/uploads/2024/08/parents-teachers-nav-1-1024x585.png" alt="Header Image" class="header-image">
+  </div>
+
+  <!-- Welcome Section -->
+  <div class="welcome-section">
+    <h1>Welcome to all the parents to the journey of great parenthood</h1>
+  </div>
+
+  <!-- Parent name fetched from local storage -->
+  <div class="parent-info">
+    <p>Name of the parent: <span id="parentName">Loading...</span></p>
+  </div>
+
+  <!-- Body text about parenting skills -->
+  <div class="body-text">
+    <p>Parenting is a journey filled with challenges and beautiful moments. 
+    Here at The Life Navigator, we aim to equip you with the right skills 
+    to nurture your child's emotional, mental, and intellectual growth. 
+    Our resources are designed to empower parents with actionable advice, 
+    self-care strategies, and child development insights to ensure a positive 
+    parenting experience.</p>
+  </div>
+
+  <!-- Buttons for further navigation -->
+  <div class="button-section">
+    <button onclick="navigateTo('file:///D:/tln%20app/parentsselectsyllabus.html')">Parents Self Care</button>              
+    <button onclick="navigateTo('kids-mental-health.html')">Kids Mental Health</button>
+    <button onclick="navigateTo('parenting-course.html')">Parenting Course</button>
+    <button onclick="navigateTo('https://thelifenavigator.github.io/parentsselectsyllabus5_local_live_setting.html')">Engineering/Medical Skilling</button> 
+  </div>
+
+  <script>
+    // Fetch and display the parent name from local storage
+    function displayParentName() {
+      const parentName = localStorage.getItem('parentName'); // Get parent name from localStorage
+      if (parentName) {
+        document.getElementById('parentName').textContent = parentName; // Display the parent's name
+      } else {
+        document.getElementById('parentName').textContent = 'No parent name found';
+      }
+    }
+
+    // Call the function to display the parent name on page load
+    window.onload = function() {
+      displayParentName();
+    };
+
+    // Navigate to different pages
+    function navigateTo(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+</html>

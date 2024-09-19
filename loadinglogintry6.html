@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - The Life Navigator</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #0073e6;
+      color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+
+    .container {
+      max-width: 450px; /* Increased the width */
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .container h2 {
+      text-align: center;
+      color: #333333;
+      margin-bottom: 20px;
+    }
+
+    .container form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container form label {
+      margin-bottom: 5px;
+      color: #555555;
+    }
+
+    .container form input[type="text"],
+    .container form input[type="password"] {
+      padding: 12px; /* Increased padding for input fields */
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    /* Style the icons inside the input fields */
+    .input-icon {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .input-icon i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: #555555;
+    }
+
+    .container form input[type="text"],
+    .container form input[type="password"] {
+      padding-left: 35px;
+    }
+
+    .container form input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .container form input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .container .terms-checkbox {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .container .terms-checkbox label {
+      color: #555555;
+    }
+
+    .container .terms-checkbox input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    .container .error-message {
+      color: #ff6347;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* Show password checkbox */
+    .show-password-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    /* Loading Spinner and Waiting Image */
+    .loading-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .loading-image {
+      position: relative;
+    }
+
+    .loading-image img {
+      width: 300px; /* Increased size of the loading image */
+      height: auto;
+    }
+
+    .loading-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #4CAF50;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Responsive design for mobile devices */
+    @media screen and (max-width: 600px) {
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+
+      .loading-image img {
+        width: 150px;
+      }
+
+      .loading-ring {
+        width: 70px;
+        height: 70px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Welcome to The Life Navigator</h1>
+  </div>
+
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <!-- Username with icon -->
+      <div class="input-icon">
+        <label for="username">Username</label>
+        <i class="glyphicon glyphicon-user"></i>
+        <input type="text" id="username" name="username" placeholder="👤 Username" required>
+      </div>
+
+      <!-- Password with icon -->
+      <div class="input-icon">
+        <label for="password">Password</label>
+        <i class="glyphicon glyphicon-lock"></i>
+        <input type="password" id="password" name="password" placeholder="🗝️ Password" required>
+      </div>
+
+      <!-- Show password toggle -->
+      <div class="show-password-container">
+        <label for="show-password">
+          <input type="checkbox" id="show-password" onclick="togglePassword()"> Show Password
+        </label>
+      </div>
+
+      <!-- Terms and conditions checkbox -->
+      <div class="terms-checkbox">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">I accept the <a href="https://thelifenavigator.com/privacy-policy-for-the-life-navigator" target="_blank">terms and conditions</a></label>
+      </div>
+
+      <!-- Error message -->
+      <div class="error-message" id="errorMessage"></div>
+
+      <!-- Submit button -->
+      <input type="submit" value="Login">
+    </form>
+  </div>
+
+  <!-- Loading Spinner with Waiting Image -->
+  <div id="loadingContainer" class="loading-container">
+    <div class="loading-image">
+      <img src="https://thelifenavigator.com/wp-content/uploads/2024/08/DALL%C2%B7E-2024-08-25-17.00.10-A-futuristic-classroom-scene-featuring-small-children-using-innovative-teaching-and-learning-tools.-The-children-interact-with-holographic-lessons-pro.webp" alt="Waiting Image">
+      <div class="loading-ring"></div>
+    </div>
+  </div>
+
+  <script>
+    // Show/Hide password function
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+      } else {
+        passwordField.type = 'password';
+      }
+    }
+
+    // Form submission with loading animation
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const terms = document.getElementById('terms').checked;
+      const errorMessage = document.getElementById('errorMessage');
+      const loadingContainer = document.getElementById('loadingContainer');
+
+      errorMessage.textContent = '';
+
+      if (!terms) {
+        errorMessage.textContent = 'You must accept the terms and conditions.';
+        return;
+      }
+
+      // Show loading spinner and waiting image only after clicking the login button
+      loadingContainer.style.display = 'flex';
+
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
+
+      // Use the new Apps Script URL here
+      fetch('https://script.google.com/macros/s/AKfycbxXI4O8hRN4aBrXUeXUtTFZGN55bm9IMeAcbD8PVkw1BujNa8GVa74fnXgsr4OEZ0Nh/exec', { 
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      
+
+
+
+
+
+
+
+.then(data => {
+  // Hide loading spinner
+  loadingContainer.style.display = 'none';
+
+  if (data.result === 'success') {
+    const userData = data.userData;
+
+    // Store all necessary information in localStorage
+    localStorage.setItem('userId', userData.userId);
+    localStorage.setItem('password', userData.password);
+    localStorage.setItem('confirmPassword', userData.confirmPassword);
+    localStorage.setItem('studentName', userData.studentName);
+    localStorage.setItem('parentName', userData.parentName); // Store parent's name
+    localStorage.setItem('schoolName', userData.schoolName);
+    localStorage.setItem('parentPhone', userData.parentPhone);
+    localStorage.setItem('studentClass', userData.studentClass);
+    localStorage.setItem('studentRollNumber', userData.studentRollNumber);
+    localStorage.setItem('attendance', userData.attendance);
+    localStorage.setItem('schoolMessage', userData.schoolMessage);
+    localStorage.setItem('schoolMessage2', userData.schoolMessage2);
+    localStorage.setItem('schoolURL', userData.schoolURL);
+
+    // Redirect to the next page (Parent's homepage)
+    window.location.href = 'https://thelifenavigator.github.io/parentshomepage1.html'; // Change this path as needed
+  } else {
+    errorMessage.textContent = 'Invalid username or password. Please try again.';
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      .catch(error => {
+        console.error('Error!', error.message);
+        errorMessage.textContent = 'There was an error logging in. Please try again.';
+        // Hide loading spinner
+        loadingContainer.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
