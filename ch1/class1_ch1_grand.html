@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Class/Level-1 Chapter-1 Grand (English Grammar)</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 20px;
+    font-size: 18px;
+    background-color: white;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-drag: none;
+}
+
+body, img {
+    -webkit-touch-callout: none;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+.header {
+    background-color: #87CEEB;
+    padding: 20px;
+    text-align: center;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.header img {
+    height: 250px;
+    width: 350px;
+    display: block;
+    margin: 0 auto 10px;
+}
+.header h1, .header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+.quiz-container, .results-container {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    display: none;
+}
+.quiz-slide {
+    display: none;
+}
+.quiz-slide.active {
+    display: block;
+}
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: black;
+}
+button, .submit-button, .back-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+button:hover, .submit-button:hover, .back-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+.back-button-custom {
+    background-color: #FF5733;
+}
+.back-button-custom:hover {
+    background-color: #E64A19;
+}
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.timer-decorated {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #000;
+    color: #0f0;
+}
+
+/* Disable right-click */
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+</style>
+
+<script>
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault(); // Disable right-click
+});
+</script>
+</head>
+<body>
+<div class="header">
+  <img id="schoolImage" src="default_school_image_url.jpg" alt="School Image"/>
+  <h1 id="schoolName">School Name</h1>
+  <h2>Chapter-1-The Sentence (English Navigator) Grand Test</h2>
+</div>
+
+<div class="container">
+  <div class="start-container">
+    <h2>Welcome, <span id="studentName">Student</span></h2>
+    <h3>Class: <span id="studentClass">Class Info</span></h3>
+    <button onclick="startQuiz()">Start Test</button>
+  </div>
+
+  <div class="quiz-container">
+    <div class="timer-decorated">Time Remaining: <span id="timer">15:00</span></div>
+
+    <!-- Include all the questions as in your original code. -->
+  <!-- Question 1 -->
+  <div class="quiz-slide active" id="slide-1">
+ 
+  <h2>Q1: What is a sentence?</h2>
+  <form>
+    <label>
+      <input name="q1" type="radio" value="a) A group of letters"/> a) A group of letters
+    </label><br>
+    <label>
+      <input name="q1" type="radio" value="b) A group of words that makes complete sense"/> b) A group of words that makes complete sense
+    </label><br>
+    <label>
+      <input name="q1" type="radio" value="c) A group of numbers"/> c) A group of numbers
+    </label><br>
+    <label>
+      <input name="q1" type="radio" value="d) A group of pictures"/> d) A group of pictures
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button next-button" onclick="nextSlide(2)">Next</button>
+  </div>
+  <p class="quote">"Every good sentence helps to build a bridge between ideas." - Anonymous</p>
+</div>
+
+<!-- Question 2 -->
+<div class="quiz-slide" id="slide-2">
+  <h2>Q2: Which of the following is not a sentence?</h2>
+  <form>
+    <label>
+      <input name="q2" type="radio" value="a) She is playing outside."/> a) She is playing outside.
+    </label><br>
+    <label>
+      <input name="q2" type="radio" value="b) Likes mango."/> b) Likes mango.
+    </label><br>
+    <label>
+      <input name="q2" type="radio" value="c) I like ice cream."/> c) I like ice cream.
+    </label><br>
+    <label>
+      <input name="q2" type="radio" value="d) The cat is sleeping."/> d) The cat is sleeping.
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(1)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(3)">Next</button>
+  </div>
+  <p class="quote">"Make sure your sentence is like a complete thought." - Anonymous</p>
+</div>
+
+<!-- Question 3 -->
+<div class="quiz-slide" id="slide-3">
+  <h2>Q3: Which sentence is correct?</h2>
+  <form>
+    <label>
+      <input name="q3" type="radio" value="a) The boy is going school."/> a) The boy is going school.
+    </label><br>
+    <label>
+      <input name="q3" type="radio" value="b) The boy goes to school."/> b) The boy goes to school.
+    </label><br>
+    <label>
+      <input name="q3" type="radio" value="c) Goes boy the school."/> c) Goes boy the school.
+    </label><br>
+    <label>
+      <input name="q3" type="radio" value="d) Boy the school goes to."/> d) Boy the school goes to.
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(2)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(4)">Next</button>
+  </div>
+  <p class="quote">"Clear sentences make your thoughts shine brighter." - Anonymous</p>
+</div>
+
+<!-- Question 4 -->
+<div class="quiz-slide" id="slide-4">
+  <h2>Q4: What does a sentence start with?</h2>
+  <form>
+    <label>
+      <input name="q4" type="radio" value="a) A small letter"/> a) A small letter
+    </label><br>
+    <label>
+      <input name="q4" type="radio" value="b) A capital letter"/> b) A capital letter
+    </label><br>
+    <label>
+      <input name="q4" type="radio" value="c) A question mark"/> c) A question mark
+    </label><br>
+    <label>
+      <input name="q4" type="radio" value="d) A full stop"/> d) A full stop
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(3)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(5)">Next</button>
+  </div>
+  <p class="quote">"A capital letter starts your sentence strong!" - Anonymous</p>
+</div>
+
+<!-- Question 5 -->
+<div class="quiz-slide" id="slide-5">
+  <h2>Q5: What does a sentence end with?</h2>
+  <form>
+    <label>
+      <input name="q5" type="radio" value="a) A full stop, question mark, or exclamation mark"/> a) A full stop, question mark, or exclamation mark
+    </label><br>
+    <label>
+      <input name="q5" type="radio" value="b) A comma"/> b) A comma
+    </label><br>
+    <label>
+      <input name="q5" type="radio" value="c) A small letter"/> c) A small letter
+    </label><br>
+    <label>
+      <input name="q5" type="radio" value="d) A space"/> d) A space
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(4)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(6)">Next</button>
+  </div>
+  <p class="quote">"The end of a sentence is just as important as the start." - Anonymous</p>
+</div>
+
+<!-- Question 6 -->
+<div class="quiz-slide" id="slide-6">
+  <h2>Q6: Which sentence shows surprise?</h2>
+  <form>
+    <label>
+      <input name="q6" type="radio" value="a) Wow! That's amazing!"/> a) Wow! That's amazing!
+    </label><br>
+    <label>
+      <input name="q6" type="radio" value="b) The cat is sleeping."/> b) The cat is sleeping.
+    </label><br>
+    <label>
+      <input name="q6" type="radio" value="c) I like reading books."/> c) I like reading books.
+    </label><br>
+    <label>
+      <input name="q6" type="radio" value="d) She is playing outside."/> d) She is playing outside.
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(5)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(7)">Next</button>
+  </div>
+  <p class="quote">"Expressions of surprise make sentences fun!" - Anonymous</p>
+</div>
+
+<!-- Question 7 -->
+<div class="quiz-slide" id="slide-7">
+  <h2>Q7: Which of the following is a question?</h2>
+  <form>
+    <label>
+      <input name="q7" type="radio" value="a) The dog is barking."/> a) The dog is barking.
+    </label><br>
+    <label>
+      <input name="q7" type="radio" value="b) Do you have a pen?"/> b) Do you have a pen?
+    </label><br>
+    <label>
+      <input name="q7" type="radio" value="c) He is running fast."/> c) He is running fast.
+    </label><br>
+    <label>
+      <input name="q7" type="radio" value="d) I am going to school."/> d) I am going to school.
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(6)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(8)">Next</button>
+  </div>
+  <p class="quote">"Questions are like doors to new discoveries." - Anonymous</p>
+</div>
+
+<!-- Question 8 -->
+<div class="quiz-slide" id="slide-8">
+  <h2>Q8: Which sentence is correct?</h2>
+  <form>
+    <label>
+      <input name="q8" type="radio" value="a) My favorite game cricket is."/> a) My favorite game cricket is.
+    </label><br>
+    <label>
+      <input name="q8" type="radio" value="b) My favorite game is cricket."/> b) My favorite game is cricket.
+    </label><br>
+    <label>
+      <input name="q8" type="radio" value="c) Cricket favorite game is my."/> c) Cricket favorite game is my.
+    </label><br>
+    <label>
+      <input name="q8" type="radio" value="d) Game favorite my cricket is."/> d) Game favorite my cricket is.
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(7)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(9)">Next</button>
+  </div>
+  <p class="quote">"Good sentences make your thoughts clear." - Anonymous</p>
+</div>
+
+<!-- Question 9 -->
+<div class="quiz-slide" id="slide-9">
+  <h2>Q9: What is missing in this sentence: "Do you like ice cream"</h2>
+  <form>
+    <label>
+      <input name="q9" type="radio" value="a) A full stop"/> a) A full stop
+    </label><br>
+    <label>
+      <input name="q9" type="radio" value="b) A question mark"/> b) A question mark
+    </label><br>
+    <label>
+      <input name="q9" type="radio" value="c) A comma"/> c) A comma
+    </label><br>
+    <label>
+      <input name="q9" type="radio" value="d) A capital letter"/> d) A capital letter
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(8)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(10)">Next</button>
+  </div>
+  <p class="quote">"Punctuation makes a sentence complete!" - Anonymous</p>
+</div>
+
+<!-- Question 10 -->
+<div class="quiz-slide" id="slide-10">
+  <h2>Q10: What should every sentence start with?</h2>
+  <form>
+    <label>
+      <input name="q10" type="radio" value="a) A full stop"/> a) A full stop
+    </label><br>
+    <label>
+      <input name="q10" type="radio" value="b) A comma"/> b) A comma
+    </label><br>
+    <label>
+      <input name="q10" type="radio" value="c) A capital letter"/> c) A capital letter
+    </label><br>
+    <label>
+      <input name="q10" type="radio" value="d) A question mark"/> d) A question mark
+
+
+ </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(9)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(11)">Next</button>
+  </div>
+  <p class="quote">"Punctuation makes a sentence complete!" - Anonymous</p>
+</div>
+
+
+
+
+<!-- Question 11 -->
+<div class="quiz-slide" id="slide-11">
+  <h2>Q11: Which sentence is asking a question?</h2>
+  <form>
+    <label>
+      <input name="q11" type="radio" value="a) The dog is barking."/> a) The dog is barking.
+    </label><br>
+    <label>
+      <input name="q11" type="radio" value="b) Where are you going?"/> b) Where are you going?
+    </label><br>
+    <label>
+      <input name="q11" type="radio" value="c) She is reading a book."/> c) She is reading a book.
+    </label><br>
+    <label>
+      <input name="q11" type="radio" value="d) He is playing in the park."/> d) He is playing in the park.
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(10)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(12)">Next</button>
+  </div>
+  <p class="quote">"Curiosity leads to great questions, and great questions lead to learning." - Anonymous</p>
+</div>
+
+<!-- Question 12 -->
+<div class="quiz-slide" id="slide-12">
+  <h2>Q12: What is missing in the sentence: 'She is playing outside'</h2>
+  <form>
+    <label>
+      <input name="q12" type="radio" value="a) A full stop"/> a) A full stop
+    </label><br>
+    <label>
+      <input name="q12" type="radio" value="b) A comma"/> b) A comma
+    </label><br>
+    <label>
+      <input name="q12" type="radio" value="c) A capital letter"/> c) A capital letter
+    </label><br>
+    <label>
+      <input name="q12" type="radio" value="d) An exclamation mark"/> d) An exclamation mark
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(11)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(13)">Next</button>
+  </div>
+  <p class="quote">"Punctuation is the music of language." - Anonymous</p>
+</div>
+
+<!-- Question 13 -->
+<div class="quiz-slide" id="slide-13">
+  <h2>Q13: How should this sentence be corrected: 'my name is john'</h2>
+  <form>
+    <label>
+      <input name="q13" type="radio" value="a) My name is John."/> a) My name is John.
+    </label><br>
+    <label>
+      <input name="q13" type="radio" value="b) my Name is john."/> b) my Name is john.
+    </label><br>
+    <label>
+      <input name="q13" type="radio" value="c) my name is John."/> c) my name is John.
+    </label><br>
+    <label>
+      <input name="q13" type="radio" value="d) My Name is john."/> d) My Name is john.
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(12)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(14)">Next</button>
+  </div>
+  <p class="quote">"A capital letter and a full stop make your sentence shine." - Anonymous</p>
+</div>
+
+<!-- Question 14 -->
+<div class="quiz-slide" id="slide-14">
+  <h2>Q14: Which sentence is expressing excitement?</h2>
+  <form>
+    <label>
+      <input name="q14" type="radio" value="a) I am going to school."/> a) I am going to school.
+    </label><br>
+    <label>
+      <input name="q14" type="radio" value="b) Wow! That is an amazing cake!"/> b) Wow! That is an amazing cake!
+    </label><br>
+    <label>
+      <input name="q14" type="radio" value="c) The cat is sleeping."/> c) The cat is sleeping.
+    </label><br>
+    <label>
+      <input name="q14" type="radio" value="d) He is playing with toys."/> d) He is playing with toys.
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(13)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(15)">Next</button>
+  </div>
+  <p class="quote">"Exclamation marks help us express our excitement and joy!" - Anonymous</p>
+</div>
+
+<!-- Question 15 -->
+<div class="quiz-slide" id="slide-15">
+  <h2>Q15: Which of the following is a command?</h2>
+  <form>
+    <label>
+      <input name="q15" type="radio" value="a) Please close the door."/> a) Please close the door.
+    </label><br>
+    <label>
+      <input name="q15" type="radio" value="b) I like to play football."/> b) I like to play football.
+    </label><br>
+    <label>
+      <input name="q15" type="radio" value="c) The sun is shining brightly."/> c) The sun is shining brightly.
+    </label><br>
+    <label>
+      <input name="q15" type="radio" value="d) Do you like ice cream?"/> d) Do you like ice cream?
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(14)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(16)">Next</button>
+  </div>
+  <p class="quote">"Commands help us guide others with respect." - Anonymous</p>
+</div>
+
+<!-- Question 16 -->
+<div class="quiz-slide" id="slide-16">
+  <h2>Q16: How do we correct this sentence: 'where are you going'</h2>
+  <form>
+    <label>
+      <input name="q16" type="radio" value="a) Where are you going?"/> a) Where are you going?
+    </label><br>
+    <label>
+      <input name="q16" type="radio" value="b) where Are you Going."/> b) where Are you Going.
+    </label><br>
+    <label>
+      <input name="q16" type="radio" value="c) Where are you going."/> c) Where are you going.
+    </label><br>
+    <label>
+      <input name="q16" type="radio" value="d) where are You Going?" /> d) where are You Going?
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(15)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(17)">Next</button>
+  </div>
+  <p class="quote">"Questions help us understand others." - Anonymous</p>
+</div>
+
+<!-- Question 17 -->
+<div class="quiz-slide" id="slide-17">
+  <h2>Q17: How should the following sentence be corrected: 'the apple is red'</h2>
+  <form>
+    <label>
+      <input name="q17" type="radio" value="a) The apple is red."/> a) The apple is red.
+    </label><br>
+    <label>
+      <input name="q17" type="radio" value="b) the Apple is red."/> b) the Apple is red.
+    </label><br>
+    <label>
+      <input name="q17" type="radio" value="c) the apple is Red."/> c) the apple is Red.
+    </label><br>
+    <label>
+      <input name="q17" type="radio" value="d) The Apple is red"/> d) The Apple is red
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(16)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(18)">Next</button>
+  </div>
+  <p class="quote">"Every sentence needs a strong start and a proper ending." - Anonymous</p>
+</div>
+
+<!-- Question 18 -->
+<div class="quiz-slide" id="slide-18">
+  <h2>Q18: Which of the following is a correct sentence?</h2>
+  <form>
+    <label>
+      <input name="q18" type="radio" value="a) Where you going?" /> a) Where you going?
+    </label><br>
+    <label>
+      <input name="q18" type="radio" value="b) Are you going school?" /> b) Are you going school?
+    </label><br>
+    <label>
+      <input name="q18" type="radio" value="c) Are you going to school?" /> c) Are you going to school?
+    </label><br>
+    <label>
+      <input name="q18" type="radio" value="d) Going you to school?" /> d) Going you to school?
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(17)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(19)">Next</button>
+  </div>
+  <p class="quote">"Proper sentences make our thoughts clear." - Anonymous</p>
+</div>
+
+<!-- Question 19 -->
+<div class="quiz-slide" id="slide-19">
+  <h2>Q19: What does a sentence always start with?</h2>
+  <form>
+    <label>
+      <input name="q19" type="radio" value="a) A comma"/> a) A comma
+    </label><br>
+    <label>
+      <input name="q19" type="radio" value="b) A capital letter"/> b) A capital letter
+    </label><br>
+    <label>
+      <input name="q19" type="radio" value="c) A question mark"/> c) A question mark
+    </label><br>
+    <label>
+      <input name="q19" type="radio" value="d) A full stop"/> d) A full stop
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(18)">Back</button>
+    <button class="navigation-button next-button" onclick="nextSlide(20)">Next</button>
+  </div>
+  <p class="quote">"A capital letter gives strength to your sentences." - Anonymous</p>
+</div>
+
+<!-- Question 20 -->
+<div class="quiz-slide" id="slide-20">
+  <h2>Q20: How should the sentence 'i like playing football' be corrected?</h2>
+  <form>
+    <label>
+      <input name="q20" type="radio" value="a) I like playing football."/> a) I like playing football.
+    </label><br>
+    <label>
+      <input name="q20" type="radio" value="b) i like Playing football."/> b) i like Playing football.
+    </label><br>
+    <label>
+      <input name="q20" type="radio" value="c) I like playing Football."/> c) I like playing Football.
+    </label><br>
+    <label>
+      <input name="q20" type="radio" value="d) i Like playing football."/> d) i Like playing football.
+    </label>
+  </form>
+  <div class="navigation-buttons">
+    <button class="navigation-button back-button" onclick="prevSlide(19)">Back</button>
+    <button class="submit-button navigation-button" onclick="submitQuiz()">Submit</button>
+  </div>
+  <p class="quote">"Every sentence starts with 'I can' and ends with success." - Anonymous</p>
+</div>
+ </div>
+ 
+  <!-- Results section -->
+  <div class="results-container" id="results-container">
+    <h2>Results</h2>
+    <p id="student-info"></p>
+    <p id="total-marks"></p>
+    <p id="time-taken"></p>
+    <canvas id="results-chart" width="600" height="400"></canvas>
+    <h3>Correct Answers:</h3>
+    <ul id="correct-answers-list"></ul> <!-- For correct answers display -->
+
+    <div class="navigation-buttons">
+      <button class="back-button back-button-custom" onclick="goBack()">Go Back</button>
+    </div>
+  </div>
+</div>
+<script>
+
+
+let currentSlide = 1;
+let timerInterval;
+let totalTimeTaken = 0; // Add this to track the total time taken
+const totalQuizDuration = 15 * 60; // 15 minutes in seconds
+
+
+window.onload = function() {
+  const studentName = localStorage.getItem('studentName') || 'Student';
+  const studentClass = localStorage.getItem('studentClass') || 'Class Info';
+  const schoolName = localStorage.getItem('schoolName') || 'School Name';
+  const schoolImageURL = localStorage.getItem('schoolURL') || 'default_school_image_url.jpg';
+ const userId = localStorage.getItem('userId') || 'User ID'; // Retrieve user ID from localStorage
+
+  document.getElementById('studentName').textContent = studentName;
+  document.getElementById('studentClass').textContent = studentClass;
+  document.getElementById('schoolName').textContent = schoolName;
+
+  document.getElementById('schoolImage').src = schoolImageURL;
+
+  document.querySelector('.quiz-container').style.display = 'none';
+  document.getElementById('results-container').style.display = 'none';
+ document.getElementById('userId').textContent = userId; // Display user ID
+};
+
+function startQuiz() {
+  document.querySelector('.start-container').style.display = 'none';
+  document.querySelector('.quiz-container').style.display = 'block';
+  startTimer(totalQuizDuration); // Start timer with total quiz duration
+}
+
+function nextSlide(slideNumber) {
+  document.querySelector('.quiz-slide.active').classList.remove('active');
+  document.getElementById('slide-' + slideNumber).classList.add('active');
+}
+
+function prevSlide(slideNumber) {
+  document.querySelector('.quiz-slide.active').classList.remove('active');
+  document.getElementById('slide-' + slideNumber).classList.add('active');
+}
+
+let startTime;
+let remainingTime = totalQuizDuration;
+
+function startTimer(duration) {
+  startTime = performance.now();  // Capture the start time
+  requestAnimationFrame(updateTimer);  // Start the animation frame loop
+}
+
+function updateTimer(currentTime) {
+  const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+  const timer = remainingTime - elapsedTime;
+  
+  const minutes = Math.floor(timer / 60);
+  const seconds = timer % 60;
+  
+  document.getElementById('timer').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+  if (timer <= 0) {
+    submitQuiz();  // Automatically submit when the time is up
+  } else {
+    requestAnimationFrame(updateTimer);  // Continue the loop
+  }
+}
+function submitQuiz() {
+  clearInterval(timer);
+
+ const correctAnswers = [
+  "b) A group of words that makes complete sense", 
+  "b) Likes mango.", 
+  "b) The boy goes to school.", 
+  "b) A capital letter", 
+  "a) A full stop, question mark, or exclamation mark", 
+  "a) Wow! That's amazing!", 
+  "b) Do you have a pen?", 
+  "b) My favorite game is cricket.", 
+  "b) A question mark", 
+  "c) A capital letter", 
+  "b) Where are you going?", 
+  "a) A full stop", 
+  "a) My name is John.", 
+  "b) Wow! That is an amazing cake!", 
+  "a) Please close the door.", 
+  "a) Where are you going?", 
+  "a) The apple is red.", 
+  "c) Are you going to school?", 
+  "b) A capital letter", 
+  "a) I like playing football."
+];
+
+   let totalMarks = 0;
+  let wrongAnswers = 0;
+  let notAttempted = 0;
+
+  // Calculate total marks
+  document.querySelectorAll('.quiz-slide').forEach((slide, index) => {
+    const selectedOption = slide.querySelector('input[type="radio"]:checked');
+    if (selectedOption) {
+      if (selectedOption.value === correctAnswers[index]) {
+        totalMarks += 1; // Increment marks for correct answer
+      } else {
+        wrongAnswers += 1; // Count wrong answers
+      }
+    } else {
+      notAttempted += 1; // Count not attempted questions
+    }
+  });
+
+  // Store marks in localStorage for chapterTest (Final Test)
+  const chapterTestKey = "chapterTest"; // Use a simple key for chapter test
+  localStorage.setItem(chapterTestKey, totalMarks);
+
+
+
+  const minutesTaken = Math.floor(totalTimeTaken / 60);
+  const secondsTaken = totalTimeTaken % 60;
+  document.getElementById('total-marks').textContent = `Total Marks: ${totalMarks} / 20`;
+  document.getElementById('time-taken').textContent = `Time Taken: ${minutesTaken}:${secondsTaken < 10 ? '0' : ''}${secondsTaken}`;
+
+  generateChart(totalMarks, wrongAnswers, notAttempted);
+  displayCorrectAnswers(correctAnswers);
+
+  // Send totalMarks to the server
+  sendTotalMarksToServer(totalMarks);
+
+  document.querySelector('.quiz-container').style.display = 'none';
+  document.getElementById('results-container').style.display = 'block';
+}
+
+function generateChart(totalMarks, wrongAnswers, notAttempted) {
+  const ctx = document.getElementById('results-chart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Your Score', 'Wrong Answers', 'Not Attempted'],
+      datasets: [{
+        label: 'Score',
+        data: [totalMarks, wrongAnswers, notAttempted],
+        backgroundColor: ['#4CAF50', '#FF5733', '#FFC300']
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 20
+        }
+      }
+    }
+  });
+}
+
+function displayCorrectAnswers(correctAnswers) {
+  const answersList = document.getElementById('correct-answers-list');
+  correctAnswers.forEach((answer, index) => {
+    const listItem = document.createElement('li');
+    listItem.textContent = `Q${index + 1}: ${answer}`;
+    answersList.appendChild(listItem);
+  });
+}
+
+function sendTotalMarksToServer(totalMarks) {
+    const username = localStorage.getItem('studentName') || 'Student';
+    const userId = localStorage.getItem('userId') || 'User ID'; // Include the user ID
+
+    // Using FormData instead of JSON
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('userId', userId); // Add user ID to the payload
+    formData.append('totalMarks', totalMarks.toString()); // Ensure totalMarks is sent as a string
+
+    const url = "https://script.google.com/macros/s/AKfycbxKsw4vDb9XSlYdqhidAPQE8GzydDVOf5MgQmFM1Xk9xvebhwjrkjwtuf89VKHWzvZM/exec"; // Replace with actual URL
+
+    fetch(url, {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.result !== 'success') {
+            console.error("Error sending marks:", data.message);
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+}
+
+
+function goBack() {
+  if (window.history.length > 1) {
+    window.history.back();
+  } else {
+    document.getElementById('results-container').style.display = 'none';
+    document.querySelector('.start-container').style.display = 'block';
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter-1- The Sentences</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Times New Roman', serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    .header-image {
+      width: 200px;
+      height: 250px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .school-info {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 2em;
+      color: #007BFF;
+    }
+
+    .info-box {
+      text-align: center;
+      font-size: 1.5em;
+      margin: 20px auto;
+      padding: 20px;
+      width: 80%;
+      max-width: 500px;
+      border: 2px solid #007BFF;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 255, 0.2);
+      background-color: #e0f7fa;
+    }
+
+    .info-box:hover {
+      box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+      transform: scale(1.03);
+    }
+
+    .introduction-section {
+      text-align: center;
+      margin: 30px 20px;
+      color: #007BFF;
+    }
+
+    .introduction-section h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .introduction-section p {
+      font-size: 1.3em;
+      color: #333;
+      text-align: justify;
+      margin: 0 auto;
+      width: 80%;
+      max-width: 700px;
+    }
+
+    .marks-table-container {
+      margin-top: 40px;
+      width: 80%;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .marks-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .marks-table th, .marks-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    .marks-table th {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .progress-bar {
+      background-color: #28a745;
+      height: 20px;
+      border-radius: 5px;
+      text-align: center;
+      color: white;
+      line-height: 20px;
+      width: 100%;
+    }
+
+    .test-buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .test-buttons button {
+      background-color: #28a745;
+      color: white;
+      border: 2px solid #218838;
+      padding: 15px 25px;
+      margin: 10px;
+      border-radius: 5px;
+      font-size: 1.3em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .test-buttons button:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+
+    .test-buttons button:active {
+      transform: scale(0.98);
+    }
+
+    @media (max-width: 768px) {
+      .test-buttons button {
+        width: 90%;
+        margin: 5px 0;
+      }
+
+      .header-image {
+        width: 150px;
+        height: 200px;
+      }
+
+      .info-box {
+        font-size: 1.2em;
+      }
+
+      .introduction-section p {
+        font-size: 1.2em;
+      }
+    }
+
+    .chapter-test-button {
+      background-color: #FF6347;
+      color: white;
+      border: 2px solid #FF4500;
+      padding: 15px 25px;
+      margin: 10px;
+      border-radius: 5px;
+      font-size: 1.3em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .chapter-test-button:hover {
+      background-color: #FF4500;
+      transform: scale(1.05);
+    }
+
+    .chapter-test-button:active {
+      transform: scale(0.98);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div>
+    <img id="schoolImage" class="header-image" alt="School Image">
+  </div>
+
+  <div class="school-info">
+    <span id="schoolName">Welcome to Chapter-1- The Sentences</span>
+  </div>
+
+ <div class="info-box">
+    <p>Parent Name: <span id="parentName">Loading...</span></p>
+    <p>Student Name: <span id="studentName">Loading...</span></p>
+    <p>Class: <span id="studentClass">Loading...</span></p>
+  </div>
+
+  <div class="marks-table-container" id="marks-table-container" style="display: none;">
+    <h3>Your Performance</h3>
+    <table class="marks-table">
+      <thead>
+        <tr>
+          <th>Test Name</th>
+          <th>Marks Obtained</th>
+          <th>Progress</th>
+        </tr>
+      </thead>
+      <tbody id="marks-table-body">
+      </tbody>
+    </table>
+  </div>
+
+  <div class="introduction-section">
+    <div class="content-section">
+      <h2>Pretests & Final Tests</h2>
+      <p>Here are practice tests designed to help your child thoroughly understand and apply the concepts of this chapter. These practice tests carry a total of 10 marks and are intended to enhance their knowledge and readiness for future exams. Students are encouraged to repeat the practice tests until they achieve full marks, ensuring a solid grasp of the material. Once the practice tests are successfully completed, a final test worth 20 marks will follow.</p>
+    </div>
+
+    <div class="test-buttons">
+      <button onclick="startTest('practice1')">Practice Test 1</button>
+      <button onclick="startTest('practice2')">Practice Test 2</button>
+      <button onclick="startTest('practice3')">Practice Test 3</button>
+    </div>
+
+    <h2 style="color:#007BFF; text-align:center; margin-top:30px;">Final Test Quiz</h2>
+
+    <div class="test-buttons">
+      <button class="chapter-test-button" onclick="startTest('chapterTest')">Chapter Test</button>
+    </div>
+  </div>
+
+  <script>
+    function displayUserData() {
+      const parentName = localStorage.getItem('parentName');
+      const studentName = localStorage.getItem('studentName');
+      const schoolName = localStorage.getItem('schoolName');
+      const schoolURL = localStorage.getItem('schoolURL');
+      const studentClass = localStorage.getItem('studentClass');
+      const headerImageWidth = localStorage.getItem('headerImageWidth') || 200;
+      const headerImageHeight = localStorage.getItem('headerImageHeight') || 250;
+      const userId = localStorage.getItem('userId'); // Get the userId for unique storage
+
+      if (parentName) document.getElementById('parentName').textContent = parentName;
+      if (studentName) document.getElementById('studentName').textContent = studentName;
+      if (studentClass) document.getElementById('studentClass').textContent = studentClass;
+
+      const schoolImageElement = document.getElementById('schoolImage');
+      if (schoolURL) {
+        schoolImageElement.src = schoolURL;
+      } else {
+        schoolImageElement.src = 'https://thelifenavigator.com/wp-content/uploads/2024/08/DALL%C2%B7E-2024-04-29-23.50.21-A-classroom-beautifully-transformed-with-Vedic-themes-featuring-innovative-teaching-method-tools.-Teachers-kids-and-parents-adorned-in-Vedic-attir-1024x585.webp';
+      }
+
+      schoolImageElement.style.width = headerImageWidth + 'px';
+      schoolImageElement.style.height = headerImageHeight + 'px';
+
+      if (schoolName) document.getElementById('schoolName').textContent = schoolName;
+    }
+
+    window.onload = function() {
+      displayUserData();
+      displayMarksTable();
+    };
+
+    function startTest(testId) {
+      let quizUrl = '';
+
+      // Check if the user has already taken the chapter test
+      if (testId === 'chapterTest') {
+        const userId = localStorage.getItem('userId'); // Fetch the user ID
+        const chapterTestKey = `${userId}_chapterTest`; // Unique key for this user's chapter test marks
+        const chapterTestMarks = localStorage.getItem(chapterTestKey);
+
+        // If marks exist for the chapter test, the user has already taken the test
+        if (chapterTestMarks) {
+          alert('You have already taken the Chapter Test. This is a one-time test only.');
+          return; // Prevent the user from retaking the test
+        } else {
+          quizUrl = 'file:///C:/tln6%20quiz%20page%20work/English%20Gram%20-%20dashboard%20work/Class%201%20final/Chapter-1%20-%20Copy/class1_ch1_grand.html'; // Set the correct URL for the chapter test
+        }
+      } else {
+        // Allow retakes for other tests
+        if (testId === 'practice1') {
+          quizUrl = 'file:///C:/tln6%20quiz%20page%20work/English%20Gram%20-%20dashboard%20work/Class%201%20final/Chapter-1%20-%20Copy/eng_ch1_ptest1.html';
+        } else if (testId === 'practice2') {
+          quizUrl = 'file:///E:/tln6%20quiz%20page%20work/English%20Gram%20-%20dashboard%20work/Class%201/Chapter-1/eng_ch1_ptest2.html';
+        } else if (testId === 'practice3') {
+          quizUrl = 'file:///E:/tln6%20quiz%20page%20work/English%20Gram%20-%20dashboard%20work/Class%201/Chapter-1/eng_ch1_ptest3.html';
+        }
+      }
+
+      // Navigate to the selected test if a valid URL is provided
+      if (quizUrl) {
+        window.location.href = quizUrl;
+      } else {
+        alert('Invalid test selected');
+      }
+    }
+
+  function displayMarksTable() {
+  const userId = localStorage.getItem('userId'); // Fetch the user ID
+  const tests = ['practice1', 'practice2', 'practice3', 'chapterTest']; // Added 'chapterTest'
+  const testNames = {
+    'practice1': 'Practice Test 1',
+    'practice2': 'Practice Test 2',
+    'practice3': 'Practice Test 3',
+    'chapterTest': 'Final Test Marks' // New Test Name
+  };
+  const maxMarks = {
+    'practice1': 10,
+    'practice2': 10,
+    'practice3': 10,
+    'chapterTest': 20 // Maximum marks for Chapter Test
+  };
+
+  const marksTableBody = document.getElementById('marks-table-body');
+  let totalMarksObtained = 0;
+  let totalMaxMarks = 0;
+
+  tests.forEach(test => {
+    let marks;
+    if (test === 'chapterTest') {
+      // Retrieve final test marks using the key 'chapterTest' directly
+      marks = parseInt(localStorage.getItem('chapterTest')) || 0;
+    } else {
+      const testKey = `${userId}_${test}`; // Unique key for each user's test marks
+      marks = parseInt(localStorage.getItem(testKey)) || 0;
+    }
+
+    const row = document.createElement('tr');
+    let progressBarWidth = 0;
+    let marksDisplay = 'Not Attempted';
+
+    if (marks > 0) {
+      marksDisplay = `${marks} / ${maxMarks[test]}`;
+      progressBarWidth = (marks / maxMarks[test]) * 100; // Calculate percentage based on max marks
+      totalMarksObtained += marks;
+      totalMaxMarks += maxMarks[test];
+    }
+
+    row.innerHTML = `
+      <td>${testNames[test]}</td>
+      <td>${marksDisplay}</td>
+      <td><div class="progress-bar" style="width: ${progressBarWidth}%;"></div></td>
+    `;
+
+    marksTableBody.appendChild(row);
+  });
+
+  document.getElementById('marks-table-container').style.display = 'block';
+}
+
+  </script>
+
+</body>
+</html>
