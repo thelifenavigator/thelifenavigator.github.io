@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Course</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+
+    /* Default header image size, can be overridden by the server spreadsheet */
+    .header-image {
+      width: 150px;
+      height: 150px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .school-info {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.5em;
+    }
+
+    .school-info span {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .parent-info, .student-info {
+      text-align: center;
+      font-size: 1.3em;
+      margin: 20px 0;
+    }
+
+    .parent-info span, .student-info span {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .introduction-section {
+      text-align: center;
+      margin: 30px 20px;
+    }
+
+    .introduction-section h2 {
+      color: #007BFF;
+    }
+
+    .introduction-section p {
+      font-size: 1.2em;
+      color: #555;
+    }
+
+    .chapter-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .chapter-section h3 {
+      color: #28a745;
+    }
+
+    .chapter-section select {
+      padding: 10px;
+      font-size: 1.1em;
+      margin-bottom: 10px;
+      width: 80%;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    .chapter-section button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .chapter-section button:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Dynamic header with school image -->
+  <div>
+    <img id="schoolImage" class="header-image" alt="School Image">
+  </div>
+
+  <!-- School Info -->
+  <div class="school-info">
+    <span id="schoolName"></span> Presents English Course
+  </div>
+
+  <!-- Parent name fetched from local storage -->
+  <div class="parent-info">
+    <p>Parent Name: <span id="parentName">Loading...</span></p>
+  </div>
+
+  <!-- Student name and class fetched from local storage -->
+  <div class="student-info">
+    <p>Student Name: <span id="studentName">Loading...</span></p>
+    <p>Class: <span id="studentClass">Loading...</span></p>
+  </div>
+
+  <!-- Introduction to the course -->
+  <div class="introduction-section">
+    <h2>Welcome to the English Course</h2>
+    <p>This course will help you dive deeper into various chapters covering grammar, literature, and comprehension. Select a chapter below to get started on your journey to mastering the English language.</p>
+  </div>
+
+  <!-- Chapter selection -->
+  <div class="chapter-section">
+    <h3>Select a Chapter:</h3>
+    <select id="english-chapter-select">
+      <option value="">Select Chapter</option>
+      <option value="chapter-1">Chapter 1: Grammar Basics</option>
+      <option value="chapter-2">Chapter 2: Understanding Poetry</option>
+      <option value="chapter-3">Chapter 3: Essay Writing</option>
+      <option value="chapter-4">Chapter 4: Short Stories</option>
+      <option value="chapter-5">Chapter 5: Reading Comprehension</option>
+    </select>
+    <br>
+    <button onclick="goToChapter()">Proceed</button>
+  </div>
+
+  <script>
+    // Fetch and display parent name, student name, school info, student class, and dynamic URL from localStorage
+    function displayUserData() {
+      const parentName = localStorage.getItem('parentName');
+      const studentName = localStorage.getItem('studentName');
+      const schoolName = localStorage.getItem('schoolName');
+      const schoolURL = localStorage.getItem('schoolURL');
+      const studentClass = localStorage.getItem('studentClass');
+      const headerImageWidth = localStorage.getItem('headerImageWidth');
+      const headerImageHeight = localStorage.getItem('headerImageHeight');
+
+      if (parentName) document.getElementById('parentName').textContent = parentName;
+      if (studentName) document.getElementById('studentName').textContent = studentName;
+      if (studentClass) document.getElementById('studentClass').textContent = studentClass;
+
+      // Display school image with dynamic size (fetched from server or spreadsheet)
+      const schoolImageElement = document.getElementById('schoolImage');
+      if (schoolURL) {
+        schoolImageElement.src = schoolURL;
+      } else {
+        schoolImageElement.src = 'https://thelifenavigator.com/wp-content/uploads/2024/08/DALL%C2%B7E-2024-04-29-23.50.21-A-classroom-beautifully-transformed-with-Vedic-themes-featuring-innovative-teaching-method-tools.-Teachers-kids-and-parents-adorned-in-Vedic-attir-1024x585.webp';
+      }
+
+      // Set the header image size dynamically if provided, otherwise default to 150x150
+      schoolImageElement.style.width = headerImageWidth ? headerImageWidth + 'px' : '150px';
+      schoolImageElement.style.height = headerImageHeight ? headerImageHeight + 'px' : '150px';
+
+      if (schoolName) document.getElementById('schoolName').textContent = schoolName;
+    }
+
+    // Call the function to display user data when the page loads
+    window.onload = function() {
+      displayUserData();
+    };
+
+    // Redirect to the selected chapter page
+    function goToChapter() {
+      const selectedChapter = document.getElementById('english-chapter-select').value;
+
+      if (selectedChapter) {
+        const parentName = localStorage.getItem('parentName');
+        const studentName = localStorage.getItem('studentName');
+        const schoolName = localStorage.getItem('schoolName');
+        const schoolURL = localStorage.getItem('schoolURL');
+
+        const url = selectedChapter + '.html';
+
+        // Redirect with query parameters
+        navigateTo(`${url}?parentName=${encodeURIComponent(parentName)}&studentName=${encodeURIComponent(studentName)}&schoolName=${encodeURIComponent(schoolName)}&schoolURL=${encodeURIComponent(schoolURL)}`);
+      } else {
+        alert('Please select a chapter.');
+      }
+    }
+
+    // Navigate function that works for both local and live environments
+    function navigateTo(page) {
+      const baseURL = window.location.origin;  // Get the current domain (works for both local and live)
+      window.location.href = `${baseURL}/${page}`;
+    }
+  </script>
+
+</body>
+</html>

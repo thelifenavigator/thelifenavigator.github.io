@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pretests - Human Body: Food We Eat</title>
+  <title>ICSE Class 4 Science - Test & Train</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -46,6 +46,7 @@
       border: 2px solid #007BFF;
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 255, 0.2);
+      transition: all 0.3s ease;
       background-color: #e0f7fa;
     }
 
@@ -62,6 +63,7 @@
     }
 
     .introduction-section h2 {
+      color: #007BFF;
       font-size: 2.5em;
       margin-bottom: 20px;
     }
@@ -76,37 +78,36 @@
     }
 
     /* Button styling */
-    .test-buttons {
+    .chapter-buttons {
       text-align: center;
       margin-top: 20px;
     }
 
-    .test-buttons button {
+    .chapter-buttons button {
       background-color: #28a745;
       color: white;
-      border: 2px solid #218838;
-      padding: 15px 25px;
+      border: none;
+      padding: 15px 30px;
       margin: 10px;
       border-radius: 5px;
       font-size: 1.3em;
       cursor: pointer;
       transition: background-color 0.3s ease, transform 0.3s ease;
-      width: 100%;
-      max-width: 200px;
+      display: inline-block;
     }
 
-    .test-buttons button:hover {
+    .chapter-buttons button:hover {
       background-color: #218838;
-      transform: scale(1.05);
+      transform: rotate(-3deg) scale(1.05);
     }
 
-    .test-buttons button:active {
+    .chapter-buttons button:active {
       transform: scale(0.98);
     }
 
     /* Responsive styling for buttons and mobile view */
     @media (max-width: 768px) {
-      .test-buttons button {
+      .chapter-buttons button {
         width: 90%;
         margin: 5px 0;
       }
@@ -135,7 +136,7 @@
 
   <!-- School Info -->
   <div class="school-info">
-    <span id="schoolName">Welcome to Pretests on Human Body: Food We Eat</span>
+    <span id="schoolName">ICSE Class 4 Science - Test & Train</span>
   </div>
 
   <!-- Parent and student information -->
@@ -145,21 +146,65 @@
     <p>Class: <span id="studentClass">Loading...</span></p>
   </div>
 
-  <!-- Introduction Section -->
+  <!-- Class Header -->
   <div class="introduction-section">
-    <h2>Pretests on Human Body: Food We Eat</h2>
-    <p>Here are practice tests to help your child understand the concepts of the "Human Body: Food We Eat" chapter. These tests will enhance their knowledge and readiness for future exams. Let's begin with the practice tests below!</p>
+    <h2>Class-4 Science</h2>
+    <p>Dear Parents, this page is designed to help your children test and train their knowledge in Science. The tests provided are not only time-efficient but also vital in shaping their foundational knowledge for future competitive exams like IIT and NEET. Encouraging your child to regularly take these tests will help track their progress and ensure a deep understanding of scientific concepts, which is crucial for their overall academic success. Let's prepare for a brighter future!</p>
   </div>
 
-  <!-- Practice Test Buttons -->
-  <div class="test-buttons">
-    <button onclick="startTest('practice1')">Practice Test 1</button>
-    <button onclick="startTest('practice2')">Practice Test 2</button>
-    <button onclick="startTest('practice3')">Practice Test 3</button>
+  <!-- Buttons for the 12 chapters in box layout -->
+  <div class="chapter-buttons">
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch1_ptest_selection')">Human Body: Food We Eat</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch2_ptest_selection')">Human Body: The Teeth</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch3_ptest_selection')">Human Body: Digestive & Excretory Systems</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch4_ptest_selection')">Adaptation in Animals</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch5_ptest_selection')">Adaptation in Plants</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch6_ptest_selection')">Plants in the Environment</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch7_ptest_selection')">Air</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch8_ptest_selection')">Materials and Solutions</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch9_ptest_selection')">Light</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch10_ptest_selection')">Measurement</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch11_ptest_selection')">Push and Pull</button>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <button onclick="navigateToQuiz('icse_sci_class4_ch12_ptest_selection')">Friction as a Force</button>
+      </div>
+    </div>
   </div>
 
   <script>
-    // Fetch and display parent name, student name, school info, student class, and dynamic URL from localStorage
+    // Fetch and display parent name, student name, school info, and dynamic URL from localStorage
     function displayUserData() {
       const parentName = localStorage.getItem('parentName');
       const studentName = localStorage.getItem('studentName');
@@ -181,7 +226,7 @@
         schoolImageElement.src = 'https://thelifenavigator.com/wp-content/uploads/2024/08/DALL%C2%B7E-2024-04-29-23.50.21-A-classroom-beautifully-transformed-with-Vedic-themes-featuring-innovative-teaching-method-tools.-Teachers-kids-and-parents-adorned-in-Vedic-attir-1024x585.webp';
       }
 
-      // Set the header image size dynamically if provided
+      // Set the header image size dynamically if provided, otherwise default to 200x250
       schoolImageElement.style.width = headerImageWidth + 'px';
       schoolImageElement.style.height = headerImageHeight + 'px';
 
@@ -193,8 +238,8 @@
       displayUserData();
     };
 
-    // Navigate to the specific practice test page without re-login
-    function startTest(testId) {
+    // Navigate to the specific quiz page and pass user data from localStorage
+    function navigateToQuiz(chapterId) {
       const username = localStorage.getItem('username');
       const parentName = localStorage.getItem('parentName');
       const studentName = localStorage.getItem('studentName');
@@ -202,10 +247,8 @@
       const schoolURL = localStorage.getItem('schoolURL');
       const studentClass = localStorage.getItem('studentClass');
 
-      // Build the URL for the quiz page and pass the login details as query parameters
-      const quizUrl = `https://thelifenavigator.github.io/test1?username=${encodeURIComponent(username)}&parentName=${encodeURIComponent(parentName)}&studentName=${encodeURIComponent(studentName)}&schoolName=${encodeURIComponent(schoolName)}&schoolURL=${encodeURIComponent(schoolURL)}&studentClass=${encodeURIComponent(studentClass)}`;
-      
-      // Navigate to the quiz page
+      // Redirect to the quiz page with correct file path and query parameters
+      const quizUrl = `file:///D:/tln%20app/${chapterId}.html?username=${encodeURIComponent(username)}&parentName=${encodeURIComponent(parentName)}&studentName=${encodeURIComponent(studentName)}&schoolName=${encodeURIComponent(schoolName)}&schoolURL=${encodeURIComponent(schoolURL)}&studentClass=${encodeURIComponent(studentClass)}`;
       window.location.href = quizUrl;
     }
   </script>

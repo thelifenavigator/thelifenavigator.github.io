@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Life Navigator</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 0;
+      background-image: url('path-to-your-main-background-image.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #333;
+      margin-top: 20px;
+      text-align: center;
+      text-shadow: none;
+    }
+
+    .header-image {
+      display: block;
+      margin: 0 auto;
+      width: 30%;
+      max-width: 800px;
+      height: auto;
+      border-radius: 100px;
+    }
+
+    .tagline {
+      font-size: 26px;
+      color: #666;
+      text-align: center;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    .highlight-line {
+  border-bottom: 4px solid red; /* Change 4px to adjust the thickness */
+  width: 20%; /* Full width of the parent container */
+  margin: 20px auto;
+}
+
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .button-grid button, .login-options button {
+      background-color: #007BFF;
+      color: white;
+      font-weight: bold;
+      border: 2px solid #cccccc;
+      padding: 15px;
+      border-radius: 15px;
+      font-size: 1em;
+      width: 200px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .button-grid button:hover, .login-options button:hover {
+      transform: rotate(-3deg);
+      background-color: #0056b3;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-section {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .login-section button {
+      background-color: #28a745;
+      color: white;
+      font-weight: bold;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2em;
+      width: 90%;
+      max-width: 300px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .login-section button:hover {
+      background-color: #218838;
+      transform: scale(1.05);
+    }
+
+    .hidden-section {
+      display: none;
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: justify;
+    }
+
+    /* Content section for centered content */
+    .content-section {
+      max-width: 800px;
+      width: 90%;
+      background-color: white;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    .highlight-text {
+      font-size: 26px;
+      font-weight: bold;
+      color: #2c3e50;
+      text-align: center;
+      margin: 20px 0 10px;
+    }
+
+    .content-section p {
+      font-size: 22px;
+      color: #333;
+      text-align: justify;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .highlight-line {
+      text-align: center;
+      font-size: 22px;
+      margin-top: 20px;
+    }
+
+    /* Responsive styling for mobile */
+    @media only screen and (max-width: 600px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .button-grid button, .login-options button {
+        max-width: 100%;
+      }
+
+      .login-section button {
+        max-width: 100%;
+        font-size: 1.1em;
+      }
+
+      .highlight-text {
+        font-size: 20px;
+      }
+
+      .content-section p {
+        font-size: 16px;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+
+      .hidden-section {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+  <!-- Header Image -->
+  <img src="https://thelifenavigator.com/wp-content/uploads/2024/05/animationstars0001-0400-ezgif.com-video-to-gif-converter-3.gif" 
+       alt="Header Image" class="header-image">
+
+  <h1>The Life Navigator</h1>
+  <p class="tagline">Empowering future leaders by identifying each child's unique potential and offering personalized guidance. Through skill development and psychological support, we partner with parents and teachers to navigate their journey in shaping well-rounded, capable individuals.</p>
+  <p class="highlight-line"></p>
+
+  <!-- Login Section -->
+  <div class="login-section">
+    <p class="highlight-text">Start Navigating Your Child’s Path to Success: Login to Unlock a World of Parenting Tools</p>
+    <button onclick="toggleLoginSection()">Login</button>
+  </div>
+
+  <!-- Main Buttons in Rows -->
+  <div class="button-grid" id="mainButtons">
+    <button onclick="navigateToLink('https://thelifenavigator.com/advisory-committee/')">About Us</button>
+    <button onclick="navigateToLink('https://thelifenavigator.com/vision-mission/')">Our Vision & Mission</button>
+    <button onclick="navigateToLink('https://thelifenavigator.com/')">Visit Our Website</button>
+    <button>Sample Quizzes</button>
+    <button>Free Courses</button>
+    <button>Books</button>
+    <button>Mothers Navigator</button>
+    <button onclick="navigateToLink('https://thelifenavigator.com/centered-heading-with-contact-form-2/')">Contact Us</button>
+ <button onclick="navigateToLink('file:///E:/quotes%20coding%20work/quotes.html')">Beautiful Reminders</button>
+
+
+    <button>News</button>
+    <button>English - Word of the Day</button>
+    <button>School Results</button>
+    <button>Monthly Attendance</button>
+    <button>Skilling Results</button>
+  </div>
+
+<!-- Hidden Login and Content Section --> 
+<div class="hidden-section" id="loginContent">
+  <div class="button-grid login-options" style="text-align: center;">
+    
+    <!-- Parents Login Button -->
+    <button onclick="window.location.href = './Parents/parents_login.html'">Parents Login</button>
+    
+    <!-- Teachers Login Button -->
+    <button onclick="window.location.href = './Teachers/teachers_login.html'">Teachers Login</button>
+    
+    <!-- Navigators Login Button -->
+    <button onclick="window.location.href = './Navigators/navigators_login.html'">Navigators Login</button>
+    
+    <!-- Principal Login Button -->
+    <button onclick="window.location.href = './Principal/principal_login.html'">Principal Login</button>
+
+  </div>
+</div>
+
+ <div class="content-section">
+    <p class="highlight-text">Preliminary Skill Assessment</p>
+    <p>We begin by introducing kids to medical, engineering, and civil services through pre-tests to gauge their initial interests and capabilities.</p>
+
+    <p class="highlight-text">Chapter-wise Quizzes for Ongoing Evaluation</p>
+    <p>Children are continuously tested using chapter-wise quizzes, allowing us to track their progress and identify strengths and areas for improvement.</p>
+
+    <p class="highlight-text">Parent Training for Holistic Support</p>
+    <p>Simultaneously, we provide parents with parenting skills training, helping them understand how to support their child's development both academically and emotionally.</p>
+
+    <p class="highlight-text">Integrated Psychological Analysis and IQ Testing</p>
+    <p>Teachers and parents contribute to a psychological analysis of the child’s behavior at school and home, combined with IQ tests to create a holistic view of the child's potential.</p>
+
+    <p class="highlight-text">Comprehensive Insights</p>
+    <p>A combination of school results, skill assessments, psychological analysis, IQ, and aptitude tests allows us to provide time-to-time projections of potential career paths and future job suitability for each child.</p>
+
+    <p class="highlight-text">Guiding Kids Towards Their Best Path</p>
+    <p>Based on these insights, teachers guide students towards careers that align with their unique personality and skills, ensuring they excel in fields that suit them—free from pressure to fit into predefined roles like medical, engineering, or civil services.</p>
+
+    <p class="highlight-text">Fostering Happy, Positive Individuals</p>
+    <p>Ultimately, this approach helps children grow into positive, well-rounded individuals, allowing them to pursue fulfilling careers that bring joy and purpose to their lives, without guilt or undue pressure.</p>
+
+    <p class="highlight-line"></p>
+</div>
+
+
+  <script>
+    // Toggle the login section visibility and hide main buttons
+    function toggleLoginSection() {
+      var mainButtons = document.getElementById("mainButtons");
+      var loginContent = document.getElementById("loginContent");
+
+      mainButtons.style.display = "none";  // Hide the main buttons
+      loginContent.style.display = "block";  // Show the login section
+    }
+
+    // Navigate to link or default link if not found
+    function navigateToLink(url) {
+      if (!url) {
+        var buttonName = event.target.textContent.trim();
+        url = "https://thelifenavigator.com/" + encodeURIComponent(buttonName.toLowerCase().replace(/ /g, "-"));
+      }
+      window.location.href = url;
+    }
+  </script>
+
+</body>
+</html>

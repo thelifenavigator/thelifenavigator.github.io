@@ -314,7 +314,7 @@
       formData.append('password', password);
 
       // Send login request to Google Apps Script endpoint
-      fetch('https://script.google.com/macros/s/AKfycbxy_p9LBbocLwU6DCh59qH1YUaG0o880_4bN1bJnm0EoBr00_SIXrV_QOPTJ7YRQcmz/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbxszwHCe6HiVLVUHgUtNG_-JiT47PTGUWhMARmN9x_LwVvm1vZ5kRyp9lMuEUC-3_1n/exec', {
         method: 'POST',
         body: formData
       })
@@ -358,7 +358,7 @@
           }
 
           // Redirect to the next page
-          window.location.href = 'parents_homepage11.html';  // Update the path as necessary
+          window.location.href = 'teachershomepage';  // Update the path as necessary
         } else {
           // Display error message
           errorMessage.textContent = 'Invalid username or password.';

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - The Life Navigator</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #0073e6;
+      color: #ffffff;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 450px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      position: relative;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      padding: 12px 40px 12px 12px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      width: 100%;
+      background-color: #f9f9f9;
+    }
+
+    .form-group input::placeholder {
+      font-size: 1em;
+      color: #666;
+    }
+
+    .form-group i {
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #aaa;
+    }
+
+    .forgot-password {
+      text-align: right;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .forgot-password a {
+      color: #007BFF;
+      cursor: pointer;
+    }
+
+    .show-password-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .remember-me-container {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .terms-container {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container form input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .container form input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .error-message {
+      color: #ff6347;
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .separator {
+      border-top: 3px solid red;
+      margin: 20px 0;
+    }
+
+    .new-button {
+      background-color: #e6e6e6;
+      color: #333;
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+      margin-top: 20px;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .new-button:hover {
+      background-color: #d4d4d4;
+    }
+
+    /* Loading Spinner */
+    .loading-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .loading-image {
+      position: relative;
+    }
+
+    .loading-image img {
+      width: 150px;
+      height: 150px;
+    }
+
+    .loading-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 16px solid #f3f3f3;
+      border-top: 16px solid #4CAF50;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+  <h1 style="font-family: 'Old English Text MT', serif; font-size: 30px; color:Black; margin-top: 10px;">The Life Navigator</h1>
+  <h2 style="font-family: 'Old English Text MT', serif; font-size: 24px; color:Yellow; margin-top: 10px;">Welcome to Parents Login</h2>
+</div>
+
+
+  <div class="container">
+    <h2>Login</h2>
+    <form id="loginForm">
+      <!-- Username -->
+      <div class="form-group">
+        <label for="username">👤 Username</label>
+        <input type="text" id="username" name="username" placeholder="👤 Username" required>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">🗝️ Password</label>
+        <input type="password" id="password" name="password" placeholder="🗝️ Password" required>
+      </div>
+
+      <!-- Show password checkbox -->
+      <div class="show-password-container">
+        <label>
+          <input type="checkbox" id="show-password" onclick="togglePassword()"> Show Password
+        </label>
+      </div>
+
+      <!-- Remember Me checkbox -->
+      <div class="remember-me-container">
+        <label>
+          <input type="checkbox" id="rememberMe"> Remember Me
+        </label>
+      </div>
+
+      <!-- Accept Terms and Conditions -->
+      <div class="terms-container">
+        <label>
+          <input type="checkbox" id="acceptTerms" required>
+          I accept the <a href="https://thelifenavigator.com/privacy-policy-for-the-life-navigator/" target="_blank">Terms and Conditions</a>
+        </label>
+      </div>
+
+      <!-- Forgot Password -->
+      <div class="forgot-password">
+        <a onclick="forgotPassword()">Forgot Password?</a>
+      </div>
+
+      <!-- Error message -->
+      <div class="error-message" id="errorMessage"></div>
+
+      <!-- Submit button -->
+      <input type="submit" value="Login">
+    </form>
+
+    <!-- Separator and New Button -->
+    <div class="separator"></div>
+
+    <div class="new-button" onclick="window.open('https://thelifenavigator.com/new-here-know-about-the-program/', '_blank')">
+      New here? Know about the program
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div id="loadingContainer" class="loading-container">
+    <div class="loading-image">
+      <img src="https://thelifenavigator.com/wp-content/uploads/2024/05/animationstars0001-0400-ezgif.com-video-to-gif-converter-3.gif" alt="Loading..." style="width: 420px; height: 330px; display: block; margin: 0 auto;">
+      <div class="loading-ring"></div>
+    </div>
+  </div>
+
+  <script>
+    // Show/Hide password function
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+    }
+
+    // Load saved credentials if "Remember Me" was checked
+    window.onload = function() {
+      const savedUsername = localStorage.getItem('savedUsername');
+      const savedPassword = localStorage.getItem('savedPassword');
+      if (savedUsername && savedPassword) {
+        document.getElementById('username').value = savedUsername;
+        document.getElementById('password').value = savedPassword;
+        document.getElementById('rememberMe').checked = true;
+      }
+    };
+
+    // Forgot Password functionality
+    function forgotPassword() {
+      const savedUsername = localStorage.getItem('savedUsername');
+      const savedPassword = localStorage.getItem('savedPassword');
+      if (savedUsername && savedPassword) {
+        alert(`Your stored username is: ${savedUsername}\nYour stored password is: ${savedPassword}\nContact school admin or connect@thelifenavigator.com if you need a new ID and password.`);
+      } else {
+        alert('To change the password, contact your school/college admin or email connect@thelifenavigator.com.');
+      }
+    }
+
+    // Form submission with "Remember Me" functionality
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const rememberMe = document.getElementById('rememberMe').checked;
+      const errorMessage = document.getElementById('errorMessage');
+      const loadingContainer = document.getElementById('loadingContainer');
+
+      // Clear previous error messages
+      errorMessage.textContent = '';
+
+      // Show loading spinner
+      loadingContainer.style.display = 'flex';
+
+      // Prepare form data for the login request
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('password', password);
+
+      // Send login request to Google Apps Script endpoint
+      fetch('https://script.google.com/macros/s/AKfycbxszwHCe6HiVLVUHgUtNG_-JiT47PTGUWhMARmN9x_LwVvm1vZ5kRyp9lMuEUC-3_1n/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Hide the loading spinner
+        loadingContainer.style.display = 'none';
+
+        if (data.result === 'success') {
+          const userData = data.userData;
+
+          // Store user data in localStorage for further use on other pages
+          localStorage.setItem('userId', userData.userId);
+          localStorage.setItem('password', userData.password);
+          localStorage.setItem('confirmPassword', userData.confirmPassword);
+          localStorage.setItem('studentName', userData.studentName);
+          localStorage.setItem('parentName', userData.parentName);
+          localStorage.setItem('schoolName', userData.schoolName);
+          localStorage.setItem('parentPhone', userData.parentPhone);
+          localStorage.setItem('studentClass', userData.studentClass);
+          localStorage.setItem('studentRollNumber', userData.studentRollNumber);
+          localStorage.setItem('attendance', userData.attendance);
+          localStorage.setItem('schoolMessage', userData.schoolMessage);
+          localStorage.setItem('schoolMessage2', userData.schoolMessage2);
+          localStorage.setItem('schoolURL', userData.schoolURL);
+          localStorage.setItem('loginDatetime', userData.loginDatetime);
+          localStorage.setItem('videoTitle', userData.videoTitle);
+          localStorage.setItem('videoUrl', userData.videoUrl);
+          localStorage.setItem('quoteHeader', userData.quoteHeader);
+          localStorage.setItem('quoteUrl', userData.quoteUrl);
+          localStorage.setItem('commentTitle', userData.commentTitle);
+          localStorage.setItem('commentBox', userData.commentBox);
+
+          // Remember user credentials if "Remember Me" is checked
+          if (rememberMe) {
+            localStorage.setItem('savedUsername', username);
+            localStorage.setItem('savedPassword', password);
+          } else {
+            localStorage.removeItem('savedUsername');
+            localStorage.removeItem('savedPassword');
+          }
+
+          // Redirect to the next page
+         window.location.href = './parents_homepage.html';  // Update the path as necessary
+        } else {
+          // Display error message
+          errorMessage.textContent = 'Invalid username or password.';
+        }
+      })
+      .catch(error => {
+        // Hide the loading spinner on error
+        loadingContainer.style.display = 'none';
+        errorMessage.textContent = 'Error logging in. Please try again.';
+      });
+    });
+  </script>
+</body>
+</html>

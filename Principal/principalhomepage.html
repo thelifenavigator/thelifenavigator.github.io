@@ -258,7 +258,88 @@
         width: 90%;
         height: 250px;
       }
-    }
+
+
+.designer-button {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.designer-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.side-menu {
+  background-color: #0073e6;
+  color: white;
+  padding: 10px 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: height 0.3s ease;
+}
+
+.side-menu a {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+}
+
+.side-menu a:hover {
+  background-color: #005bb5;
+}
+
+.side-menu.active {
+  height: 100%; /* Expands vertically */
+}
+
+@media only screen and (max-width: 768px) {
+  .menu-bar {
+    display: none; /* Hide the top menu on small screens */
+  }
+
+  .side-menu {
+    width: 80%; /* Make the sidebar wider on mobile */
+  }
+}
+
+/* Show the menu bar when the sidebar is expanded */
+.menu-bar.expanded {
+  display: flex !important;
+}
+
+/* Hide menu bar initially on mobile */
+@media only screen and (max-width: 768px) {
+  .menu-bar {
+    display: none; /* Hide the menu bar on small screens */
+  }
+
+  .menu-bar.expanded {
+    display: flex; /* Show the menu bar when expanded */
+  }
+}
+
   </style>
 </head>
 <body>
@@ -268,26 +349,32 @@
   </div>
 
   <div class="welcome-section">
-    <h1>Welcome to all the parents to the journey of great parenthood</h1>
+    <h1>Welcome to all the Principal/Head-Master/Admins of the school to the journey of great taching</h1>
     <p class="school-name" id="schoolName">School: Loading...</p>
   </div>
 
-  <div class="menu-bar">
-    <a href="#">Homepage</a>
-    <a href="#">Book My Psychologist</a>
-    <a href="#">About Us</a>
-    <a href="#">Books</a>
-    <a href="#">Contact Us</a>
-    <a href="#">News</a>
-    <a href="#">Free Courses</a>
-    <a href="#">Vision & Mission</a>
-    <a href="#">Sponsor a Kid</a>
-    <a href="#">Logout</a>
-    <a href="#">Explore More</a>
+<div class="menu-bar">
+  <button id="menuToggle" class="designer-button">
+    <span class="glyphicon glyphicon-menu-hamburger"></span> Open Sidebar
+  </button>
+  <div id="sideMenu" class="side-menu">
+    <a href="#" onclick="navigateTo('index.html')">Homepage</a>
+    <a href="https://thelifenavigator.com/know-your-navigators/" target="_blank">Book My Psychologist</a>
+    <a href="https://thelifenavigator.com/privacy-policy-for-the-life-navigator/" target="_blank">Privacy Policy</a>
+    <a href="https://thelifenavigator.com/publication-house-books-journals/" target="_blank">Books</a>
+    <a href="https://thelifenavigator.com/advisory-committee/" target="_blank">Our Team</a>
+    <a href="https://thelifenavigator.com/category/the-life-navigator/" target="_blank">News</a>
+    <a href="https://thelifenavigator.com/empowering-education-for-all-our-commitment-to-excellence/" target="_blank">Free Courses</a>
+    <a href="https://thelifenavigator.com/vision-mission/" target="_blank">Vision & Mission</a>
+    <a href="https://thelifenavigator.com/sponsor-a-kid-family/" target="_blank">Sponsor a Kid</a>
+    <a href="login.html">Logout</a>
+    <a href="https://thelifenavigator.com/new-here-know-about-the-program/" target="_blank">Know about the program</a>
+    <a href="https://thelifenavigator.com/how-ai-based-result-analysis-works/" target="_blank">How AI based result analysis works</a>
+    <a href="https://thelifenavigator.com/upcoming-events/" target="_blank">Explore More</a>
   </div>
-
+</div>
   <div class="parent-info">
-    <p>Name of the parent: <span id="parentName">Loading...</span></p>
+    <p>Name of the teacher: <span id="parentName">Loading...</span></p>
   </div>
 
   <!-- School Messages from Spreadsheet - Scrolling -->
@@ -299,19 +386,19 @@
   </div>
 
   <div class="body-text">
-    <p>Parenting is a journey filled with challenges and beautiful moments. 
+    <p>Teaching is a journey filled with challenges and beautiful moments. 
     Here at The Life Navigator, we aim to equip you with the right skills 
     to nurture your child's emotional, mental, and intellectual growth. 
-    Our resources are designed to empower parents with actionable advice, 
-    self-care strategies, and child development insights to ensure a positive 
+    Our resources are designed to empower teachers with actionable advice, 
+    self-care strategies, and innovative teaching learning methods along with updated ICT tools knowledge and training for child development insights to ensure a positive 
     parenting experience.</p>
   </div>
 
   <div class="button-section">
-    <button onclick="navigateTo('parentsselectsyllabus.html')">Parents Self Care</button>
+    <button onclick="navigateTo('parentsselectsyllabus.html')">Teachers Self Care</button>
     <button onclick="navigateTo('kids-mental-health.html')">Kids Mental Health</button>
-    <button onclick="navigateTo('parenting-course.html')">Parenting Course</button>
-    <button onclick="navigateTo('file:///D:/tln6%20quiz%20page%20work/icse_class-4_all_chapters.html')">Engineering/Medical Skilling</button> 
+    <button onclick="navigateTo('parenting-course.html')">Teachers Developement Course</button>
+    <button onclick="navigateTo('file:///D:/tln6%20quiz%20page%20work/icse_class-4_all_chapters.html')">Engineering/Medical Skilling/English</button> 
   </div>
 
   <div class="blue-line"></div>
@@ -365,6 +452,14 @@
   <button id="submitComment" style="background-color: #4CAF50; color: white; padding: 10px 30px; font-size: 1.2em; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">Submit Comment</button>
 </div>
 
+<!-- Loading message section -->
+<div id="loadingMessage" style="display: none; text-align: center; margin-top: 20px;">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <p>Please wait while we send your reply...</p>
+</div>
+
   <script>
     // Limit comment to 40 words
     document.getElementById('commentBox').addEventListener('input', function () {
@@ -378,33 +473,40 @@
     });
 
     // Function to submit the comment
-    document.getElementById('submitComment').addEventListener('click', function() {
-      const comment = document.getElementById('commentBox').value.trim();
-      if (!comment || comment.split(/\s+/).length > 40) {
-        alert('Please make sure your comment is within 40 words.');
-        return;
-      }
+document.getElementById('submitComment').addEventListener('click', function() {
+  const comment = document.getElementById('commentBox').value.trim();
+  if (!comment || comment.split(/\s+/).length > 40) {
+    alert('Please make sure your comment is within 40 words.');
+    return;
+  }
 
-      const formData = new FormData();
-      formData.append('username', localStorage.getItem('userId'));
-      formData.append('commentBox', comment);
+  // Show loading message
+  document.getElementById('loadingMessage').style.display = 'block';
 
-      fetch('https://script.google.com/macros/s/AKfycbxrJe-XKwp7-vFcXrMFCf39BaGNTRWOXEwiQv0YYoqvwrWOhE7ROZByAkJC8fUgUQ38/exec', {
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data.result === 'success') {
-          alert('Comment submitted successfully!');
-        } else {
-          alert('Failed to submit comment.');
-        }
-      })
-      .catch(error => {
-        alert('Error submitting comment: ' + error.message);
-      });
-    });
+  const formData = new FormData();
+  formData.append('username', localStorage.getItem('userId'));
+  formData.append('commentBox', comment);
+
+  fetch('https://script.google.com/macros/s/AKfycbzSqhakKk6GK9wKc1NTbp97CBJLnnAO0wJ_wGg19oXgStbePrtf9MXSDkP4vcwXYg9t/exec', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    // Hide loading message
+    document.getElementById('loadingMessage').style.display = 'none';
+
+    if (data.result === 'success') {
+      alert('Comment submitted successfully!');
+    } else {
+      alert('Failed to submit comment.');
+    }
+  })
+  .catch(error => {
+    document.getElementById('loadingMessage').style.display = 'none';
+    alert('Error submitting comment: ' + error.message);
+  });
+});
 
     // Function to display user data (from localStorage)
     function displayUserData() {
@@ -491,6 +593,23 @@
       e.preventDefault();
       alert('Copying content is not allowed on this page.');
     });
-  </script>
-</body>
+
+<script>
+  document.getElementById('menuToggle').addEventListener('click', function() {
+    const sideMenu = document.getElementById('sideMenu');
+    const menuBar = document.querySelector('.menu-bar');
+    
+    if (sideMenu.classList.contains('active')) {
+      sideMenu.classList.remove('active'); // Collapse the sidebar vertically
+      menuBar.classList.remove('expanded'); // Hide the menu bar
+    } else {
+      sideMenu.classList.add('active'); // Expand the sidebar vertically
+      menuBar.classList.add('expanded'); // Show the menu bar
+    }
+  });
+
+  function navigateTo(page) {
+    window.location.href = page;
+  }
+</script></body>
 </html>
