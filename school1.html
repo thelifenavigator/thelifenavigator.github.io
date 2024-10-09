@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>School Result Portal</title>
+    <style>
+
+/* General body styling */
+/* General body styling */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            color: black;
+            background-color: #f0f0f0;
+            background-size: cover;
+            user-select: none;
+        }
+
+        /* Main container styling */
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 0 20px;
+        }
+
+        /* Header section styling */
+        .header {
+            padding: 20px;
+            text-align: center;
+            background-color: skyblue;
+            color: black;
+            position: relative;
+            font-family: 'Arial', sans-serif;
+            z-index: 2;
+        }
+
+        /* Header image */
+        .header img {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+
+        /* Styling for the header title (school name) */
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        /* Login form container */
+        .login-container {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: skyblue;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Login form header styling */
+        .login-container h2 {
+            text-align: center;
+            color: black;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* Login form input styling */
+        .login-container form input[type="text"],
+        .login-container form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 18px;
+        }
+
+        /* Submit button styling */
+        .login-container form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Hover effect for submit button */
+        .login-container form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Hidden by default, displayed after successful login */
+        .results-container, .ai-analysis-section, .video-container {
+            display: none;
+        }
+
+        /* Student details section styling */
+        .student-details {
+            margin: 20px 0;
+            font-size: 22px;
+        }
+
+        /* Result table styling */
+        .result-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid black;
+        }
+
+        .result-table th, .result-table td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .result-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .result-table td {
+            background-color: #f9f9f9;
+            color: black;
+        }
+
+        /* Responsive design for smaller screens */
+        @media only screen and (max-width: 600px) {
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .login-container {
+                max-width: 100%;
+                padding: 15px;
+            }
+
+            .result-table th, .result-table td {
+                padding: 5px;
+                font-size: 16px;
+            }
+
+            .result-table {
+                font-size: 16px;
+            }
+        }
+
+        /* Loading screen */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: url('https://thelifenavigator.com/wp-content/uploads/2024/09/Green-Classroom-Blackboard-Virtual-Background-1-1024x576.gif') no-repeat center center;
+            background-size: cover;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+        }
+
+        /* Enhanced video section styling */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        .video-box {
+            width: 45%;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+            border: 2px solid #0073e6;
+        }
+
+        .video-box h4 {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: #ff5722;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .video-box iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive adjustments for videos */
+        @media only screen and (max-width: 600px) {
+            .video-box {
+                width: 100%;
+            }
+
+            .video-box iframe {
+                height: auto;
+            }
+        }
+
+        /* Separator line */
+        .blue-line {
+            width: 100%;
+            height: 2px;
+            background-color: #0073e6;
+            margin: 40px 0;
+        }
+
+        /* AI Analysis section */
+        #aiAnalysisSection {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        #aiAnalysisSection h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #aiAnalysisSection p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* Performance category section */
+        #performanceCategory {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        /* Do's and Don'ts Section */
+        #dosAndDonts {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        #dosAndDonts h4 {
+            font-size: 18px;
+        }
+
+        #dosAndDonts p {
+            font-size: 16px;
+        }
+
+
+
+
+ /* Enhanced video section styling */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        .video-box {
+            width: 45%;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+            border: 2px solid #0073e6;
+        }
+
+        .video-box h4 {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            color: #ff5722;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .video-box iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive adjustments for videos */
+        @media only screen and (max-width: 600px) {
+            .video-box {
+                width: 100%;
+            }
+
+            .video-box iframe {
+                height: auto;
+            }
+        }
+
+        /* Separator line */
+        .blue-line {
+            width: 100%;
+            height: 2px;
+            background-color: #0073e6;
+            margin: 40px 0;
+        }
+
+        /* AI Analysis section */
+        #aiAnalysisSection {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        #aiAnalysisSection h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #aiAnalysisSection p {
+            font-size: 18px;
+            color: #555;
+        }
+
+    /* Displaying trend section */
+    #trendSection {
+      margin-top: 30px;
+    }
+
+
+  /* Theater-style video container */
+    .theater-video-container {
+      border: 5px solid #000;
+      border-radius: 20px;
+      padding: 10px;
+      width: 80%;
+      max-width: 720px;
+      height: 400px;
+      margin: 20px auto;
+      background-color: #333;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .theater-video-container iframe {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    @keyframes glow {
+      from {
+        opacity: 0.7;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes blink {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .menu-bar {
+      display: flex;
+      justify-content: center;
+      background-color: #0073e6;
+      padding: 10px 0;
+    }
+
+    .menu-bar a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 15px;
+      font-size: 1.2em;
+      margin: 0 5px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-bar a:hover {
+      background-color: #005bb5;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .header-image {
+        width: 90%;
+      }
+
+      .welcome-section h1 {
+        font-size: 1.8em;
+      }
+
+      .school-name {
+        font-size: 1.2em;
+      }
+
+      .button-section button {
+        font-size: 1.1em;
+      }
+
+      .reminder-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .theater-video-container {
+        width: 90%;
+        height: 250px;
+      }
+
+
+
+</style>
+</head>
+<body>
+
+<!-- Loading Screen (initially hidden) -->
+<div id="loadingScreen">
+    <div id="loader"></div>
+</div>
+
+<!-- Header for the login and result page -->
+<div class="header">
+  <img id="headerImage" src="https://thelifenavigator.com/wp-content/uploads/2024/07/front-view-13-1024x576.png" alt="Header Image"/>
+  <h1 id="schoolName">Exam Result Portal</h1>
+</div>
+
+<div class="container">
+
+    <!-- Login Container -->
+    <div class="login-container">
+        <h2>Check Your Result</h2>
+        <p>Enter the parent's phone number to check the result.</p>
+        <form id="loginForm">
+            <label for="phone">Parent's Phone Number</label>
+            <input id="phone" name="phone" required="" type="text"/>
+            <div class="error-message" id="errorMessage"></div>
+            <input type="submit" value="Check Result"/>
+        </form>
+    </div>
+
+    <!-- Results Container -->
+    <div class="results-container" id="resultsContainer">
+        <h2>Result Details</h2>
+
+        <!-- Student Details -->
+        <div class="student-details">
+            <p><strong>Class & Section:</strong> <span id="classSection"></span></p>
+            <p><strong>Name:</strong> <span id="studentName"></span></p>
+            <p><strong>Parent's Name:</strong> <span id="parentName"></span></p>
+            <p><strong>Attendance:</strong> <span id="additionalInfo1"></span></p>
+            <p><strong>Languages: </strong> <span id="additionalInfo2"></span></p>
+            <p><strong>Remark:</strong> <span id="additionalInfo3"></span></p>
+        </div>
+
+        <!-- Result Table -->
+        <table class="result-table" id="resultTable"></table>
+    </div>
+
+
+
+<canvas id="performanceGraph" width="400" height="200"></canvas>
+<div id="performanceCategory"></div>
+<div id="dosAndDonts"></div>
+
+
+
+<!-- Add a new canvas for the career prediction graph including Art and Literature -->
+<canvas id="careerPredictionGraph" width="400" height="200"></canvas>
+<div id="careerPredictionChances"></div>
+<div id="careerPredictionMessage"></div>
+
+
+<!-- AI Based Detailed Analysis -->
+    <div id="aiAnalysisSection">
+        <h3>AI Based Detailed Analysis</h3>
+        <canvas id="comparativeGraph" width="400" height="200"></canvas>
+        <div id="trendAnalysis"></div>
+    </div>
+
+    <!-- YouTube Videos Section -->
+    <div class="video-container">
+        <div class="video-box">
+            <h4>Plans for Weak Learners</h4>
+            <iframe src="https://www.youtube.com/embed/laC6ED-3qRY" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="video-box">
+            <h4>Plans for Bright Learners</h4>
+            <iframe src="https://www.youtube.com/embed/NPj_i75OHqs" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Separator line -->
+    <div class="blue-line"></div>
+
+    <!-- Performance Category Section -->
+    <div id="performanceCategory"></div>
+
+    <!-- Do's and Don'ts Section -->
+    <div id="dosAndDonts"></div>
+
+</div>
+<!-- Video title header -->
+<h2 id="videoTitleLabel" style="text-align: center; font-size: 1.8em; font-weight: bold; color: #ff5722;">Loading video title...</h2>
+
+<!-- Video container with theater-style border -->
+<div class="theater-video-container">
+  <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<script>
+let selectedLanguage = 'en'; // default language is English
+document.addEventListener('DOMContentLoaded', () => {
+    // Get the loading screen element by ID
+    const loadingScreen = document.getElementById('loadingScreen');
+
+    // Get the login form element by ID
+    const loginForm = document.getElementById('loginForm');
+
+    // Add an event listener for the submit event of the login form
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission to the server
+
+        // Show the loading screen when the request is initiated
+        loadingScreen.style.display = 'flex';
+
+        // Get the phone number entered by the user
+        const phone = document.getElementById('phone').value;
+        const errorMessage = document.getElementById('errorMessage');
+
+        // Clear any previous error messages
+        errorMessage.textContent = '';
+
+        // Create a new FormData object and append the phone number
+        const formData = new FormData();
+        formData.append('phone', phone);
+
+        // Clear the result table before loading new data
+        const table = document.getElementById('resultTable');
+        table.innerHTML = ''; // Clear any previous data
+
+        // Send a POST request to the server with the form data
+        fetch('https://script.google.com/macros/s/AKfycbxmfZe2-Oq2xwqkZbRhpnP9AMvd6e8YwxegUlC8RbJr7D3CptwrWDAuLt__3Qn2ULLd2A/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json()) // Parse the response as JSON
+        .then(data => {
+            if (data.result === 'success') {
+                // Hide the login form and show the results container
+                document.querySelector('.login-container').style.display = 'none';
+                document.querySelector('.results-container').style.display = 'block';
+
+                // Hide the loading screen after data is loaded
+                loadingScreen.style.display = 'none';
+
+                // Update the header image and school name
+                const headerImage = document.getElementById('headerImage');
+                const imageUrl = data.studentInfo.logoUrl;  // Assuming 'logoUrl' corresponds to the correct column for the image URL
+                if (imageUrl) {
+                    headerImage.src = imageUrl; // Set the src attribute to the URL from the spreadsheet
+
+                    // Set the width and height dynamically (modifiable based on preference)
+                    headerImage.style.width = '300px';  // Set desired width for result page image
+                    headerImage.style.height = '350px'; // Set desired height for result page image
+                }
+
+                // Update other student information on the result page
+                document.getElementById('schoolName').textContent = data.studentInfo.schoolName;
+                document.getElementById('classSection').textContent = data.studentInfo.classSection;
+                document.getElementById('studentName').textContent = data.studentInfo.name;
+                document.getElementById('parentName').textContent = data.studentInfo.parentName;
+                document.getElementById('additionalInfo1').textContent = data.studentInfo.additionalInfo1;
+                document.getElementById('additionalInfo2').textContent = data.studentInfo.additionalInfo2;
+                document.getElementById('additionalInfo3').textContent = data.studentInfo.additionalInfo3;
+
+
+
+ // NEW: Include Video Title and URL
+        const videoTitle = data.studentInfo.videoTitle;  // Video title from column 176
+        const videoUrl = data.studentInfo.videoUrl;      // Video URL from column 177
+
+        // Update the video title and video player
+        document.getElementById('videoTitleLabel').textContent = videoTitle;
+        document.getElementById('videoPlayer').src = videoUrl;
+
+
+                // Extract subject names and test data
+                const subjectNames = data.studentInfo.subjectNames;
+                const totalMarks = data.studentInfo.totalMarks;
+                const testLabels = [
+                    data.studentInfo.testNumber1,
+                    data.studentInfo.testNumber2,
+                    data.studentInfo.testNumber3,
+                    data.studentInfo.testNumber4,
+                    data.studentInfo.testNumber5,
+                    data.studentInfo.testNumber6,
+                    data.studentInfo.testNumber7,
+                    data.studentInfo.testNumber8,
+                    data.studentInfo.testNumber9
+                ];
+
+                const testData = [
+                    { marks: data.studentInfo.marks1, total: data.studentInfo.totalMarks1 },
+                    { marks: data.studentInfo.marks2, total: data.studentInfo.totalMarks2 },
+                    { marks: data.studentInfo.marks3, total: data.studentInfo.totalMarks3 },
+                    { marks: data.studentInfo.marks4, total: data.studentInfo.totalMarks4 },
+                    { marks: data.studentInfo.marks5, total: data.studentInfo.totalMarks5 },
+                    { marks: data.studentInfo.marks6, total: data.studentInfo.totalMarks6 },
+                    { marks: data.studentInfo.marks7, total: data.studentInfo.totalMarks7 },
+                    { marks: data.studentInfo.marks8, total: data.studentInfo.totalMarks8 },
+                    { marks: data.studentInfo.marks9, total: data.studentInfo.totalMarks9 }
+                ];
+
+                // Build the table rows for subjects and test marks
+                const subjectNameRow = document.createElement('tr');
+                const headersRow1 = document.createElement('th');
+                headersRow1.textContent = "Subject Name";
+                subjectNameRow.appendChild(headersRow1);
+
+                subjectNames.forEach((name) => {
+                    const subjectCell = document.createElement('th');
+                    subjectCell.textContent = name;
+                    subjectNameRow.appendChild(subjectCell);
+                });
+
+                table.appendChild(subjectNameRow);
+
+                // Append the test data to the table
+                testData.forEach((test, testIndex) => {
+                    if (testLabels[testIndex]) {
+                        const totalMarksRow = document.createElement('tr');
+                        totalMarksRow.classList.add('total-marks-row');
+                        const testLabelRow = document.createElement('tr');
+
+                        const totalMarksHeader = document.createElement('td');
+                        totalMarksHeader.textContent = "Total Marks";
+                        totalMarksRow.appendChild(totalMarksHeader);
+
+                        const testLabelCell = document.createElement('td');
+                        testLabelCell.textContent = testLabels[testIndex];
+                        testLabelRow.appendChild(testLabelCell);
+
+                        subjectNames.forEach((_, colIndex) => {
+                            const totalMarkCell = document.createElement('td');
+                            totalMarkCell.textContent = test.total[colIndex] || '';
+                            totalMarksRow.appendChild(totalMarkCell);
+
+                            const markCell = document.createElement('td');
+                            markCell.textContent = test.marks[colIndex] || '';
+                            testLabelRow.appendChild(markCell);
+                        });
+
+                        table.appendChild(totalMarksRow);
+                        table.appendChild(testLabelRow);
+                    }
+                });
+
+
+
+// Function to calculate percentage and assign performance category dynamically based on all completed tests
+function calculatePercentageAndCategory(testData) {
+    const percentages = [];
+    const subjectNames = data.studentInfo.subjectNames;
+    const studentClass = data.studentInfo.classSection;
+
+    // Loop through each subject
+    subjectNames.forEach((_, subjectIndex) => {
+        let totalMarksObtained = 0;
+        let totalMaxMarks = 0;
+
+        // Loop through all completed tests
+        testData.forEach((test, testIndex) => {
+            if (test.marks[subjectIndex] && test.total[subjectIndex]) {
+                totalMarksObtained += test.marks[subjectIndex]; // Sum of obtained marks for the subject
+                totalMaxMarks += test.total[subjectIndex];     // Sum of total marks for the subject
+            }
+        });
+
+        // Calculate the percentage for this subject
+        if (totalMaxMarks > 0) { // Ensure no division by zero
+            const percentage = (totalMarksObtained / totalMaxMarks) * 100;
+            percentages.push(percentage);
+        } else {
+            percentages.push(0); // If no tests are completed, set percentage to 0
+        }
+    });
+
+    // Calculate the overall percentage (average of all subjects)
+    const totalPercentage = percentages.reduce((acc, val) => acc + val, 0) / percentages.length;
+
+   // Assign performance category based on the overall percentage
+let category, dosParents, dontsParents, dosTeachers, dontsTeachers, goodActivities;
+if (totalPercentage >= 90) {
+    category = "Excellent Performer";  // Changed to "Excellent Performer"
+    
+    // Dos and Don'ts for Parents
+    dosParents = `
+        <p><strong>For Parents:</strong></p>
+        <ul>
+            <li>Encourage your child to explore new ideas and be curious about the world.</li>
+            <li>Recognize their achievements and show appreciation, even for small wins.</li>
+            <li>Engage in discussions about advanced topics that interest them.</li>
+        </ul>`;
+    dontsParents = `
+        <p><strong>For Parents:</strong></p>
+        <ul>
+            <li>Don't put too much pressure on your child to achieve perfect scores.</li>
+            <li>Avoid overloading them with activities; give space for creativity.</li>
+            <li>Never compare them to others as they already strive for excellence.</li>
+        </ul>`;
+    
+    // Dos and Don'ts for Teachers
+    dosTeachers = `
+        <p><strong>For Teachers:</strong></p>
+        <ul>
+            <li>Offer advanced projects or additional challenges to keep them engaged.</li>
+            <li>Recognize their potential and provide leadership opportunities.</li>
+            <li>Encourage group work where they can mentor peers, enhancing both learning and empathy.</li>
+        </ul>`;
+    dontsTeachers = `
+        <p><strong>For Teachers:</strong></p>
+        <ul>
+            <li>Avoid assuming they need no help; continue to challenge their thinking.</li>
+            <li>Don’t overlook their emotional needs—provide balanced praise and constructive feedback.</li>
+        </ul>`;
+    
+    // Good Activities
+    goodActivities = `
+        <p><strong>Good Activities:</strong></p>
+        <ul>
+            <li>Engage in puzzles, brain teasers, and advanced reading that challenge their intellect.</li>
+            <li>Encourage participation in science fairs, debate clubs, or other advanced competitions.</li>
+        </ul>`;
+    
+} else if (totalPercentage >= 75) {
+    category = "Advanced Learner";  // Changed to "Advanced Learner"
+    
+    dosParents = `
+        <p><strong>For Parents:</strong></p>
+        <ul>
+            <li>Support your child in their challenges and celebrate their efforts consistently.</li>
+            <li>Help them manage their time effectively and find a balance between study and leisure.</li>
+            <li>Encourage critical thinking and problem-solving by discussing real-world scenarios.</li>
+        </ul>`;
+    dontsParents = `
+        <p><strong>For Parents:</strong></p>
+        <ul>
+            <li>Avoid focusing solely on grades; value the learning process.</li>
+            <li>Don’t compare them to other high achievers, which may lead to unnecessary stress.</li>
+        </ul>`;
+    
+    dosTeachers = `
+        <p><strong>For Teachers:</strong></p>
+        <ul>
+            <li>Provide feedback that focuses on effort, not just results.</li>
+            <li>Incorporate real-life problems into lessons to deepen their understanding.</li>
+            <li>Foster group activities that encourage collaboration and leadership skills.</li>
+        </ul>`;
+    dontsTeachers = `
+        <p><strong>For Teachers:</strong></p>
+        <ul>
+            <li>Don’t push them too hard; it’s important to maintain a healthy learning pace.</li>
+            <li>Avoid making them feel like they are in constant competition with peers.</li>
+        </ul>`;
+    
+    goodActivities = `
+        <p><strong>Good Activities:</strong></p>
+        <ul>
+            <li>Join clubs or activities that match their interests, such as coding clubs, art classes, or robotics.</li>
+            <li>Allow them to explore creative hobbies like writing, painting, or music.</li>
+        </ul>`;
+    
+} else if (totalPercentage >= 60) {
+    category = "Capable Learner";  // Changed to "Capable Learner"
+    
+    dosParents = `
+        <p><strong>For Parents:</strong></p>
+        <ul>
+            <li>Provide extra support and resources for areas they struggle with.</li>
+            <li>Celebrate even small improvements to boost their confidence.</li>
+            <li>Help them organize study schedules and manage time effectively.</li>
+        </ul>`;
+    dontsParents = `
+        <p><strong>For Parents:</strong></p>
+        <ul>
+            <li>Don’t compare their progress to others, which can hurt their self-esteem.</li>
+            <li>Avoid criticizing mistakes; instead, focus on learning from them.</li>
+        </ul>`;
+    
+    dosTeachers = `
+        <p><strong>For Teachers:</strong></p>
+        <ul>
+            <li>Encourage participation in class to build confidence in their abilities.</li>
+            <li>Offer constructive feedback and emphasize areas of improvement.</li>
+            <li>Focus on hands-on activities to make learning more engaging.</li>
+        </ul>`;
+    dontsTeachers = `
+        <p><strong>For Teachers:</strong></p>
+        <ul>
+            <li>Don’t single them out in front of peers if they make mistakes.</li>
+            <li>Avoid fast-paced lessons that may overwhelm them.</li>
+        </ul>`;
+    
+    goodActivities = `
+        <p><strong>Good Activities:</strong></p>
+        <ul>
+            <li>Engage in activities like educational games, team sports, or group projects that build teamwork.</li>
+            <li>Participate in study groups to encourage learning with peers.</li>
+        </ul>`;
+    
+} else if (totalPercentage >= 45) {
+    category = "Developing Learner";  // Changed to "Developing Learner"
+    
+    dosParents = `
+        <p><strong>For Parents:</strong></p>
+        <ul>
+            <li>Offer consistent support and work closely on improving foundational skills.</li>
+            <li>Encourage regular study habits and break down difficult concepts.</li>
+            <li>Boost their self-confidence by focusing on strengths, not just weaknesses.</li>
+        </ul>`;
+    dontsParents = `
+        <p><strong>For Parents:</strong></p>
+        <ul>
+            <li>Don’t compare them to siblings or classmates; every child learns at their own pace.</li>
+            <li>Avoid labeling them as "lazy" or "uninterested"; this can harm their self-esteem.</li>
+        </ul>`;
+    
+    dosTeachers = `
+        <p><strong>For Teachers:</strong></p>
+        <ul>
+            <li>Provide one-on-one assistance when needed to clarify difficult topics.</li>
+            <li>Use positive reinforcement to encourage participation and effort.</li>
+            <li>Incorporate interactive learning techniques to keep them engaged.</li>
+        </ul>`;
+    dontsTeachers = `
+        <p><strong>For Teachers:</strong></p>
+        <ul>
+            <li>Don’t make them feel incapable by focusing solely on their mistakes.</li>
+            <li>Avoid rushing through lessons without ensuring comprehension.</li>
+        </ul>`;
+    
+    goodActivities = `
+        <p><strong>Good Activities:</strong></p>
+        <ul>
+            <li>Focus on interactive learning activities such as building models or simple experiments.</li>
+            <li>Incorporate short quizzes or memory games to make learning fun and effective.</li>
+        </ul>`;
+    
+} else {
+    category = "Weak Learner";  // Changed to "Weak Learner"
+    
+    dosParents = `
+        <p><strong>For Parents:</strong></p>
+        <ul>
+            <li>Seek professional help, such as tutors or educational therapists, to improve learning outcomes.</li>
+            <li>Provide a calm and stress-free environment for studying.</li>
+            <li>Encourage their efforts and avoid focusing on grades.</li>
+        </ul>`;
+    dontsParents = `
+        <p><strong>For Parents:</strong></p>
+        <ul>
+            <li>Avoid punishment for low scores, which may cause anxiety and fear.</li>
+            <li>Don’t set unrealistic expectations; work with their pace of learning.</li>
+        </ul>`;
+    
+    dosTeachers = `
+        <p><strong>For Teachers:</strong></p>
+        <ul>
+            <li>Use differentiated learning strategies to meet their needs.</li>
+            <li>Offer praise for even small improvements to build their confidence.</li>
+            <li>Focus on foundational concepts and make learning as engaging as possible.</li>
+        </ul>`;
+    dontsTeachers = `
+        <p><strong>For Teachers:</strong></p>
+        <ul>
+            <li>Don’t publicly highlight their struggles, which could lead to embarrassment.</li>
+            <li>Avoid overwhelming them with too much information at once.</li>
+        </ul>`;
+    
+    goodActivities = `
+        <p><strong>Good Activities:</strong></p>
+        <ul>
+            <li>Focus on activities that improve basic skills, such as simple puzzles and educational games.</li>
+            <li>Engage them in activities like group learning, where they can benefit from peer interaction.</li>
+        </ul>`;
+}
+
+// Display the performance category and related advice
+document.getElementById("performanceCategory").innerHTML = `
+    <h3 style="text-align:center; font-size:1.8em; color:#4CAF50;">Performance Category: ${category}</h3>
+    <div style="text-align:justify; padding: 10px;">
+        ${dosParents}
+        ${dontsParents}
+        ${dosTeachers}
+        ${dontsTeachers}
+        ${goodActivities}
+    </div>
+`;
+
+
+
+
+
+
+// Existing Graph-1: Function to calculate percentage and assign performance category
+function calculatePercentageAndCategory(testData) {
+    const percentages = [];
+    const subjectNames = data.studentInfo.subjectNames;
+
+    subjectNames.forEach((_, subjectIndex) => {
+        let totalMarksObtained = 0;
+        let totalMaxMarks = 0;
+
+        // Loop through all tests and sum the obtained marks and total marks
+        testData.forEach((test) => {
+            if (test.marks[subjectIndex] && test.total[subjectIndex]) {
+                totalMarksObtained += test.marks[subjectIndex];
+                totalMaxMarks += test.total[subjectIndex];
+            }
+        });
+
+        if (totalMaxMarks > 0) {
+            const percentage = (totalMarksObtained / totalMaxMarks) * 100;
+            percentages.push(percentage);
+        } else {
+            percentages.push(0);
+        }
+    });
+
+    // Use percentages for Graph-1 rendering logic...
+}
+
+// New function to calculate career path likelihood
+// Function to calculate the percentages for different career paths and plot a graph
+function calculateCareerChances(testData) {
+    const subjectNames = data.studentInfo.subjectNames; // Subject names from Graph-1
+    const percentages = []; // Percentage values for subjects
+
+    // Group categories
+    let mpcTotal = 0, mpcCount = 0;
+    let bipcTotal = 0, bipcCount = 0;
+    let civilTotal = 0, civilCount = 0;
+    let artLitTotal = 0, artLitCount = 0;
+    let totalAverage = 0, subjectCount = 0;
+
+    // Define groups
+    const mpcSubjects = ["Math", "Physics", "Chemistry"];
+    const bipcSubjects = ["Biology", "Botany", "Zoology", "Science", "Physics", "Chemistry"]; // Simplified science in BIPC group
+    const civilSubjects = ["Social Science", "Environmental Science"];
+    const artLitSubjects = ["English", "Language-1", "Language-2", "Language-3"];
+
+    // Extract and calculate the percentages from Graph-1 data
+    testData.forEach((test, subjectIndex) => {
+        let totalMarksObtained = 0;
+        let totalMaxMarks = 0;
+
+        // Calculate percentage for each subject
+        testData.forEach((test, testIndex) => {
+            if (test.marks[subjectIndex] && test.total[subjectIndex]) {
+                totalMarksObtained += test.marks[subjectIndex]; // Sum obtained marks
+                totalMaxMarks += test.total[subjectIndex];     // Sum total marks
+            }
+        });
+
+        // Calculate percentage for this subject
+        if (totalMaxMarks > 0) {
+            const percentage = (totalMarksObtained / totalMaxMarks) * 100;
+            percentages.push(percentage);
+
+            // Add to the respective group totals
+            const subjectName = subjectNames[subjectIndex];
+            if (mpcSubjects.includes(subjectName)) {
+                mpcTotal += percentage;
+                mpcCount++;
+            }
+            if (bipcSubjects.includes(subjectName)) {
+                bipcTotal += percentage;
+                bipcCount++;
+            }
+            if (civilSubjects.includes(subjectName)) {
+                civilTotal += percentage;
+                civilCount++;
+            }
+            if (artLitSubjects.includes(subjectName)) {
+                artLitTotal += percentage;
+                artLitCount++;
+            }
+
+            // General total for weak learner check
+            totalAverage += percentage;
+            subjectCount++;
+        }
+    });
+
+    // Calculate average percentages for the different career paths
+    const mpcAverage = mpcCount > 0 ? mpcTotal / mpcCount : 0;
+    const bipcAverage = bipcCount > 0 ? bipcTotal / bipcCount : 0;
+    const civilAverage = civilCount > 0 ? civilTotal / civilCount : 0;
+    const artLitAverage = artLitCount > 0 ? artLitTotal / artLitCount : 0;
+    const overallAverage = subjectCount > 0 ? totalAverage / subjectCount : 0;
+
+    // Calculate Weak Learner chances
+    let weakLearnerChance = 0;
+    if (overallAverage < 45) {
+        weakLearnerChance = 100;
+    }
+
+    // Plot the new graph showing percentages of different career paths
+    const ctx = document.getElementById('careerPredictionGraph').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Engineering (MPC)', 'Medical (BIPC)', 'Civil Services', 'Art & Literature', 'Weak Learner'],
+            datasets: [{
+                label: 'Likelihood (%)',
+                data: [mpcAverage, bipcAverage, civilAverage, artLitAverage, weakLearnerChance],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',  // Art & Literature Color
+                    'rgba(255, 206, 86, 0.2)'  // Weak Learner Color
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',  // Art & Literature Color
+                    'rgba(255, 206, 86, 1)'  // Weak Learner Color
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+
+   // Display a prediction message based on the calculated data
+    let careerPredictionMessage = "Based on current performance, ";
+    if (weakLearnerChance === 100) {
+        careerPredictionMessage += "the student may need additional support to improve overall performance.";
+    } else if (mpcAverage > bipcAverage && mpcAverage > civilAverage && mpcAverage > artLitAverage) {
+        careerPredictionMessage += "the student shows the highest potential for pursuing an engineering career.";
+    } else if (bipcAverage > mpcAverage && bipcAverage > civilAverage && bipcAverage > artLitAverage) {
+        careerPredictionMessage += "the student shows the highest potential for pursuing a medical career.";
+    } else if (civilAverage > mpcAverage && civilAverage > bipcAverage && civilAverage > artLitAverage) {
+        careerPredictionMessage += "the student shows the highest potential for a career in civil or government services.";
+    } else if (artLitAverage > mpcAverage && artLitAverage > bipcAverage && artLitAverage > civilAverage) {
+        careerPredictionMessage += "the student shows the highest potential for a career in art, literature, or humanities.";
+    } else {
+        careerPredictionMessage += "the student shows balanced potential across multiple domains.";
+    }
+
+    document.getElementById('careerPredictionMessage').textContent = careerPredictionMessage;
+
+    // Display the % chances in text form below the graph
+    document.getElementById('careerPredictionChances').innerHTML = `
+       <h3 style="text-align: center; font-size: 1.8em; color: #0073e6;">Chances of Pursuing Each Path</h3>
+    <div style="text-align: justify; padding: 10px; line-height: 1.6; font-size: 1.1em;">
+        <p><strong style="color: #ff5722;">Engineering (MPC)</strong>: <span style="color: #0073e6;">${mpcAverage.toFixed(2)}%</span></p>
+        <p><strong style="color: #4CAF50;">Medical (BIPC)</strong>: <span style="color: #0073e6;">${bipcAverage.toFixed(2)}%</span></p>
+        <p><strong>Civil Services</strong>: <span style="color: #0073e6;">${civilAverage.toFixed(2)}%</span></p>
+        <p><strong>Art & Literature</strong>: <span style="color: #0073e6;">${artLitAverage.toFixed(2)}%</span></p>
+        <p><strong style="color: #ff0000;">Weak Learner</strong>: <span style="color: #ff0000;">${weakLearnerChance.toFixed(2)}%</span></p>
+    </div>
+
+    <div style="text-align: justify; padding: 15px; font-size: 1.1em; background-color: #f0f8ff; border-left: 5px solid #0073e6; margin-top: 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+        <strong>Disclaimer:</strong> This prediction is AI-based and may not be fully accurate. It's important to note that performance in theoretical examinations may differ from performance in skill-based (objective) exams, particularly for medical and engineering competitive exams. For a more accurate analysis of your competitive exam readiness, we highly recommend taking skilling exams and consistently monitoring your progress in both theory and practice.
+    </div>
+    `;
+}
+
+
+// Call the function after calculating percentages for Graph-1
+calculateCareerChances(testData);
+
+
+
+    // Plot graph with percentages using Chart.js
+    const ctx = document.getElementById('performanceGraph').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: subjectNames,
+            datasets: [{
+                label: 'Percentage',
+                data: percentages,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+}
+
+// Call the function to calculate percentage and category after building the table
+calculatePercentageAndCategory(testData);
+
+// Now that the table and first graph are styled, generate the comparative graph and analyze trends
+generateComparativeGraph(testData);
+                
+                // Function to generate the comparative graph for multiple tests
+                function generateComparativeGraph(testData) {
+                    const testPercentages = [];
+                    const colors = [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)'
+                    ];
+
+                    const borderColors = [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ];
+
+                    // Updated Code to calculate trend analysis with statistics
+testData.forEach((test, testIndex) => {
+    let totalMarksObtained = 0;
+    let totalMaxMarks = 0;
+
+    // Skip tests with "AB" (Absent) or invalid values
+    test.marks.forEach((marksObtained, subjectIndex) => {
+        if (marksObtained !== "AB" && marksObtained && test.total[subjectIndex]) {
+            totalMarksObtained += marksObtained;
+            totalMaxMarks += test.total[subjectIndex];
+        }
+    });
+
+    // Calculate percentage for each test
+    if (totalMaxMarks > 0) {
+        const percentage = (totalMarksObtained / totalMaxMarks) * 100;
+        testPercentages.push({
+            label: testLabels[testIndex],
+            percentage: percentage
+        });
+    }
+});
+
+// Create the comparative graph if more than one test exists
+if (testPercentages.length > 1) {
+    const ctx = document.getElementById('comparativeGraph').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: testPercentages.map(test => test.label),
+            datasets: [{
+                label: 'Percentage',
+                data: testPercentages.map(test => test.percentage),
+                backgroundColor: colors.slice(0, testPercentages.length),
+                borderColor: borderColors.slice(0, testPercentages.length),
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            }
+        }
+    });
+
+    // Analyze trends and generate performance comments
+    let totalPercentage = 0;
+    let percentagesArray = testPercentages.map(test => test.percentage);
+    let trendAnalysis = '';
+
+    // Calculate mean (average)
+    percentagesArray.forEach(percentage => totalPercentage += percentage);
+    const mean = totalPercentage / percentagesArray.length;
+
+    // Calculate variance and standard deviation
+    let variance = 0;
+    percentagesArray.forEach(percentage => {
+        variance += Math.pow(percentage - mean, 2);
+    });
+    variance = variance / percentagesArray.length;
+    const stdDeviation = Math.sqrt(variance);
+
+    // Calculate the slope (linear trend) between consecutive tests
+    let slope = 0;
+    for (let i = 1; i < percentagesArray.length; i++) {
+        slope += (percentagesArray[i] - percentagesArray[i - 1]);
+    }
+    slope = slope / (percentagesArray.length - 1); // Average slope
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Define translations for trend analysis in different languages
+    const trendAnalysisTranslations = {
+        en: {
+            highPerformerImproving: {
+                heading: 'Consistent High Performer',
+                text: 'The student is consistently performing well and showing improvement. This indicates strong learning habits, a solid understanding of subjects, and regular progress. It\'s important to nurture their curiosity by offering advanced learning opportunities to further boost their skills and keep them engaged.'
+            },
+            lowPerformerDeclining: {
+                heading: 'Consistent Poor Performer',
+                text: 'The student\'s performance is declining, and they are consistently performing poorly. This could indicate difficulties with grasping foundational concepts, lack of motivation, or external distractions. Identifying the underlying issues early on is crucial to avoid further academic decline.'
+            },
+            // ... other categories
+        },
+        hi: {
+            highPerformerImproving: {
+                heading: 'लगातार उत्कृष्ट प्रदर्शन',
+                text: 'विद्यार्थी लगातार अच्छा प्रदर्शन कर रहा है और सुधार दिखा रहा है। यह मजबूत सीखने की आदतों, विषयों की ठोस समझ, और नियमित प्रगति का संकेत है। उनकी जिज्ञासा को पोषित करना महत्वपूर्ण है ताकि उन्हें उन्नत सीखने के अवसर प्रदान कर उनके कौशल को और बढ़ाया जा सके।'
+            },
+            lowPerformerDeclining: {
+                heading: 'लगातार कमजोर प्रदर्शन',
+                text: 'विद्यार्थी का प्रदर्शन गिर रहा है और वे लगातार कमजोर प्रदर्शन कर रहे हैं। यह मूलभूत अवधारणाओं को समझने में कठिनाइयों, प्रेरणा की कमी, या बाहरी व्यवधानों का संकेत हो सकता है। आगे के शैक्षणिक पतन से बचने के लिए शुरुआती चरण में मुद्दों की पहचान करना महत्वपूर्ण है।'
+            },
+            // ... other categories
+        },
+        te: {
+            highPerformerImproving: {
+                heading: 'నిరంతరం ఉన్నత ప్రదర్శన',
+                text: 'విద్యార్థి నిరంతరం మంచి ప్రదర్శన చూపిస్తున్నాడు మరియు మెరుగుదల కనబరుస్తున్నాడు. ఇది బలమైన అభ్యాసపు అలవాట్లు, విషయాలపై దృఢమైన అవగాహన, మరియు నిరంతర ప్రగతిని సూచిస్తుంది. వారి నైపుణ్యాలను పెంపొందించేందుకు మరియు ఆసక్తిని కలిగించేందుకు అధునాతన అధ్యయన అవకాశాలను అందించడం ముఖ్యము.'
+            },
+            lowPerformerDeclining: {
+                heading: 'నిరంతరం తక్కువ ప్రదర్శన',
+                text: 'విద్యార్థి ప్రదర్శన తగ్గుతోంది మరియు వారు నిరంతరం తక్కువ ప్రదర్శన చూపుతున్నారు. ఇది పునాది భావాలను గ్రహించడంలో కష్టాలు, ప్రేరణ యొక్క కొరత, లేదా బాహ్య దిశాబోధనలు ఉండవచ్చు. మరింత విద్యా తగ్గుదల నుండి నివారించేందుకు ప్రారంభ దశలోనే సమస్యలను గుర్తించడం ముఖ్యము.'
+            },
+            // ... other categories
+        },
+        mr: {
+            highPerformerImproving: {
+                heading: 'सतत उच्च कार्यक्षमता',
+                text: 'विद्यार्थी सतत चांगली कामगिरी करत आहे आणि सुधारणा दर्शवित आहे. हे मजबूत शिकण्याच्या सवयी, विषयांची ठोस समज आणि नियमित प्रगतीचे संकेत देते. त्यांच्या कौशल्यांना वाढविण्यासाठी आणि त्यांना व्यस्त ठेवण्यासाठी प्रगत शिक्षणाच्या संधी देणे महत्वाचे आहे.'
+            },
+            lowPerformerDeclining: {
+                heading: 'सतत कमी कार्यक्षमता',
+                text: 'विद्यार्थ्यांची कामगिरी कमी होत आहे आणि ते सतत कमी कार्यक्षमता दाखवत आहेत. हे मूलभूत संकल्पना समजण्यात अडचणी, प्रेरणेचा अभाव, किंवा बाह्य विचलनांचे संकेत असू शकतात. पुढील शैक्षणिक घसरण टाळण्यासाठी लवकर टप्प्यातच समस्यांची ओळख पटविणे महत्वाचे आहे.'
+            },
+            // ... other categories
+        }
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Analyze based on mean, standard deviation, and slope
+if (slope > 0 && mean >= 75) {
+    trendAnalysis = `
+        <h4 style="text-align:center; color:#4CAF50;">Consistent High Performer</h4>
+        <p style="text-align:justify;">The student is consistently performing well and showing improvement. This indicates strong learning habits, a solid understanding of subjects, and regular progress. It's important to nurture their curiosity by offering advanced learning opportunities to further boost their skills and keep them engaged.</p>
+        
+        <h5 style="text-align:center; color:#0073e6;">Tips for Parents</h5>
+        <p style="text-align:justify;">When your child is performing well, it's essential to avoid complacency and continue encouraging them to explore new challenges. Recognize their achievements, offer advanced projects, and engage in activities that promote critical thinking. Avoid putting excessive pressure on perfect results. Instead, focus on cultivating a love for learning, allowing them to explore their interests.</p>
+
+        <h5 style="text-align:center; color:#4CAF50;">Psychological Tip</h5>
+        <p style="text-align:justify;">Children performing at a high level may still feel pressure. It's important to foster an environment where effort is appreciated more than results. Encourage open conversations about their interests, which allows them to feel in control of their learning journey. Always balance praise with encouragement for further improvement.</p>`;
+} else if (slope < 0 && mean < 45) {
+    trendAnalysis = `
+        <h4 style="text-align:center; color:#ff0000;">Consistent Poor Performer</h4>
+        <p style="text-align:justify;">The student's performance is declining, and they are consistently performing poorly. This could indicate difficulties with grasping foundational concepts, lack of motivation, or external distractions. Identifying the underlying issues early on is crucial to avoid further academic decline.</p>
+        
+        <h5 style="text-align:center; color:#0073e6;">Tips for Parents</h5>
+        <p style="text-align:justify;">If your child's results are consistently low, it's important to create a supportive environment. Instead of focusing on their low performance, engage them in conversations about their struggles and interests. Identify areas where they may need help, such as specific subjects or emotional challenges like stress or anxiety. Consider professional support like tutoring or counseling to address the issues.</p>
+
+        <h5 style="text-align:center; color:#ff5722;">Psychological Tip</h5>
+        <p style="text-align:justify;">Children who struggle academically may develop feelings of inadequacy or frustration. As a parent, it's essential to communicate without judgment. Use phrases like "I believe in you" and "We will work through this together." Avoid harsh criticisms or comparisons, which can worsen their self-esteem. Encourage their efforts and reassure them that progress takes time.</p>`;
+} else if (stdDeviation < 10 && mean >= 75) {
+    trendAnalysis = `
+        <h4 style="text-align:center; color:#4CAF50;">Stable High Performer</h4>
+        <p style="text-align:justify;">The student is consistently performing at a high level with little variation in their results. This indicates that they have mastered foundational concepts and have a reliable understanding of the material.</p>
+        
+        <h5 style="text-align:center; color:#0073e6;">Tips for Parents</h5>
+        <p style="text-align:justify;">Even when your child is performing well, it's crucial to keep them engaged by introducing new challenges. Consider enrolling them in extracurricular activities such as advanced workshops or leadership roles that match their interests. Also, ensure that they maintain a healthy balance between academics and personal development.</p>
+
+        <h5 style="text-align:center; color:#4CAF50;">Psychological Tip</h5>
+        <p style="text-align:justify;">When children perform consistently well, they may feel an internal pressure to maintain that performance. Encourage a growth mindset by highlighting the value of effort and learning from mistakes rather than focusing solely on results. This helps prevent burnout and keeps learning enjoyable.</p>`;
+} else if (stdDeviation < 10 && mean < 45) {
+    trendAnalysis = `
+        <h4 style="text-align:center; color:#ff0000;">Consistently Low Performer</h4>
+        <p style="text-align:justify;">The student is consistently performing at a low level with little variation in their results. This suggests that they may be struggling with key concepts and need focused support to improve their academic performance.</p>
+        
+        <h5 style="text-align:center; color:#0073e6;">Tips for Parents</h5>
+        <p style="text-align:justify;">When performance is consistently low, it's important to engage with your child in a compassionate way. Focus on their efforts, help them with structured study plans, and ensure that they receive one-on-one attention. Break larger concepts into smaller, manageable steps and celebrate small achievements to build confidence.</p>
+
+        <h5 style="text-align:center; color:#ff5722;">Psychological Tip</h5>
+        <p style="text-align:justify;">Children struggling academically often feel discouraged. Avoid focusing on grades, and instead, emphasize effort and improvement. Reinforce their strengths and provide consistent encouragement, ensuring they know you're invested in their progress, not just their results.</p>`;
+} else if (slope > 0) {
+    trendAnalysis = `
+        <h4 style="text-align:center; color:#4CAF50;">Improving Performer</h4>
+        <p style="text-align:justify;">The student is showing improvement over time, indicating a positive upward trend. Although they may still have areas of weakness, their consistent efforts are leading to progress. It's important to continue nurturing their growth by offering the right support.</p>
+        
+        <h5 style="text-align:center; color:#0073e6;">Tips for Parents</h5>
+        <p style="text-align:justify;">When you notice improvement, encourage your child by acknowledging their efforts. Create an environment where they feel safe to ask questions and make mistakes, as this is part of the learning process. Offer targeted support in weaker areas to help them build confidence.</p>
+
+        <h5 style="text-align:center; color:#4CAF50;">Psychological Tip</h5>
+        <p style="text-align:justify;">Positive reinforcement is key for improving performers. Celebrate small victories and emphasize the progress made rather than focusing on remaining challenges. By doing this, you help build their intrinsic motivation to continue improving.</p>`;
+} else if (slope < 0) {
+    trendAnalysis = `
+        <h4 style="text-align:center; color:#ff0000;">Declining Performer</h4>
+        <p style="text-align:justify;">The student's performance is declining, which could be due to a lack of interest, difficulties in understanding the material, or external distractions. Immediate intervention is needed to prevent further decline.</p>
+        
+        <h5 style="text-align:center; color:#0073e6;">Tips for Parents</h5>
+        <p style="text-align:justify;">A declining performance can be due to various reasons, including emotional stress or academic challenges. Start by having open conversations with your child about what they find difficult. Provide extra tutoring if needed and focus on re-establishing a steady routine with achievable goals.</p>
+
+        <h5 style="text-align:center; color:#ff5722;">Psychological Tip</h5>
+        <p style="text-align:justify;">Children whose performance is declining may feel frustrated or anxious. Make sure to listen to their concerns without judgment and offer empathy. Help them manage stress through mindfulness techniques, and ensure they know that setbacks are a normal part of the learning journey.</p>`;
+} else if (stdDeviation > 15 && mean < 45) {
+    trendAnalysis = `
+        <h4 style="text-align:center; color:#ff0000;">Fluctuating Low Performer</h4>
+        <p style="text-align:justify;">The student's performance is fluctuating, and they are struggling. This inconsistency may be due to a combination of factors like inconsistent study habits, lack of focus, or external challenges.</p>
+        
+        <h5 style="text-align:center; color:#0073e6;">Tips for Parents</h5>
+        <p style="text-align:justify;">In this case, work with your child to create a more consistent study routine and address any distractions that might be impacting their focus. Help them identify specific subjects they find difficult and provide resources or tutoring to address these issues.</p>
+
+        <h5 style="text-align:center; color:#ff5722;">Psychological Tip</h5>
+        <p style="text-align:justify;">Children who experience fluctuating performance may feel a lack of control over their results. Focus on helping them build study habits that provide structure and predictability. Encourage a growth mindset by reminding them that setbacks are part of progress.</p>`;
+} else if (stdDeviation > 15 && mean >= 75) {
+    trendAnalysis = `
+        <h4 style="text-align:center; color:#4CAF50;">Fluctuating High Performer</h4>
+        <p style="text-align:justify;">The student is performing well but shows fluctuations in performance. This could indicate external factors affecting their consistency or the need for more challenging work to keep them engaged.</p>
+        
+        <h5 style="text-align:center; color:#0073e6;">Tips for Parents</h5>
+        <p style="text-align:justify;">If your child's performance is fluctuating but generally good, try to identify external factors like stress or distractions that might be impacting them. Offer them new challenges to keep their interest high, and maintain a consistent study routine to improve stability.</p>
+
+        <h5 style="text-align:center; color:#4CAF50;">Psychological Tip</h5>
+        <p style="text-align:justify;">High performers with fluctuations often need more stimulating and varied tasks to stay engaged. Encourage your child to pursue new hobbies or challenging projects outside of their regular curriculum. Avoid pressure to maintain perfect results, and instead focus on fostering curiosity and engagement.</p>`;
+} else {
+    trendAnalysis = `
+        <h4 style="text-align:center; color:#0073e6;">Stable Performer</h4>
+        <p style="text-align:justify;">The student's performance is stable but may fluctuate slightly. This indicates they have a steady grasp of their subjects but may benefit from further support to enhance consistency and performance.</p>
+        
+        <h5 style="text-align:center; color:#0073e6;">Tips for Parents</h5>
+        <p style="text-align:justify;">To help your child maintain consistency, ensure they have a structured study environment and regular study habits. Encourage them to set small, achievable goals and provide rewards for steady effort. Identify any subjects that are particularly challenging and offer extra help in those areas.</p>
+
+        <h5 style="text-align:center; color:#4CAF50;">Psychological Tip</h5>
+        <p style="text-align:justify;">A stable performer may benefit from clear feedback and recognition of their consistent efforts. Encourage them by emphasizing the value of steady progress and continued learning. Help them build confidence by acknowledging improvements, no matter how small.</p>`;
+}
+
+// Display trend analysis
+document.getElementById("trendAnalysis").innerHTML = trendAnalysis;
+
+
+
+
+
+// Display trend analysis with bold, colored, and larger heading
+// Display trend analysis with bold, colored, and larger heading
+document.getElementById("trendAnalysis").innerHTML = `
+    <h4 style="font-weight: bold; color: #0073e6; font-size: 1.6em;">Performance Trend Analysis</h4>
+    <p style="font-size: 1.2em;">${trendAnalysis}</p>
+
+    <!-- New button to view result analysis in a regional language -->
+    <div style="text-align: center; margin-top: 20px;">
+        <button id="regionalLanguageButton" style="background-color: #4CAF50; color: white; font-size: 1.2em; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+            View Result Analysis in Your Language
+        </button>
+    </div>
+
+    <!-- Modal for language selection -->
+    <div id="languageModal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9999;">
+        <div style="background-color: white; padding: 20px; margin: 15% auto; width: 300px; border-radius: 10px; text-align: center;">
+            <h3 style="color: #0073e6;">Select Language</h3>
+            <select id="languageSelect" style="font-size: 1.2em; padding: 10px; width: 100%;">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+                <option value="mr">Marathi</option>
+                <option value="te">Telugu</option>
+                <option value="ta">Tamil</option>
+                <option value="bn">Bengali</option>
+                <option value="ne">Nepali</option>
+                <option value="ml">Malayalam</option>
+                <option value="or">Odiya</option>
+                <option value="ur">Urdu</option>
+                <option value="pa">Punjabi</option>
+                <option value="gu">Gujarati</option>
+                <option value="kn">Kannada</option>
+                <option value="id">Bahasa Indonesia</option>
+                <option value="fr">French</option>
+                <option value="other">Other Indian Languages</option>
+            </select>
+            <div style="margin-top: 20px;">
+                <button id="confirmLanguageButton" style="background-color: #4CAF50; color: white; font-size: 1.1em; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer;">Confirm</button>
+                <button id="closeLanguageModal" style="background-color: #ff0000; color: white; font-size: 1.1em; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">Close</button>
+            </div>
+        </div>
+    </div>
+`;
+
+// Add event listener to the button to show language modal
+document.getElementById("regionalLanguageButton").addEventListener('click', function() {
+    document.getElementById("languageModal").style.display = 'block';
+});
+
+// Add event listener to close modal
+document.getElementById("closeLanguageModal").addEventListener('click', function() {
+    document.getElementById("languageModal").style.display = 'none';
+});
+
+// Modify the event listener for the language selection
+document.getElementById("confirmLanguageButton").addEventListener('click', function() {
+    selectedLanguage = document.getElementById("languageSelect").value;
+    if (selectedLanguage === 'hi' || selectedLanguage === 'te' || selectedLanguage === 'mr') {
+        // Regenerate the trend analysis in the selected language
+        generateComparativeGraph(testData);
+    } else {
+        alert('Translation for the selected language is coming soon!');
+    }
+    document.getElementById("languageModal").style.display = 'none';
+});
+
+} else {
+    document.getElementById("trendAnalysis").innerHTML = `
+        <p style="font-weight: bold; color: #ff0000; font-size: 1.2em;">Only one exam so far. Trend analysis will be available after more exams.</p>
+
+        <!-- New button to view result analysis in a regional language -->
+        <div style="text-align: center; margin-top: 20px;">
+            <button id="regionalLanguageButton" style="background-color: #4CAF50; color: white; font-size: 1.2em; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">
+                View Result Analysis in Your Language
+            </button>
+        </div>
+    `;
+}
+
+// Add an event listener for the button (optional)
+document.getElementById("regionalLanguageButton").addEventListener('click', function() {
+    // Add functionality for language translation or redirection here
+    alert('Language selection feature coming soon!');
+});
+                }
+
+                generateComparativeGraph(testData);
+
+            } else {
+                loadingScreen.style.display = 'none';
+                errorMessage.textContent = 'Invalid phone number.';
+            }
+        })
+        .catch(error => {
+            loadingScreen.style.display = 'none';
+            errorMessage.textContent = 'Error checking the result. Try again.';
+        });
+    });
+});
+
+
+</script>
+
+</body>
+</html>
