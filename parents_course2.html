@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parenting Course</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-image {
+      width: 350px;
+      height: 150px;
+      display: block;
+      margin: 20px auto;
+      object-fit: cover;
+    }
+
+    .info-section, .marks-table {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+
+    .info-section span {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .intro-section {
+      text-align: center;
+      margin: 30px 20px;
+    }
+
+    .intro-section h2 {
+      color: #007BFF;
+    }
+
+    .intro-section p {
+      font-size: 1.1em;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .participant-info input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1.2em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .participant-info h3 {
+      color: #333;
+      font-weight: bold;
+      font-size: 1.8em;
+      text-align: center;
+    }
+
+    .marks-table th, .marks-table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .marks-table {
+      width: 90%;
+      max-width: 800px;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    .round-button {
+      background: url('https://thelifenavigator.com/wp-content/uploads/2024/10/DALL%C2%B7E-2024-07-17-12.06.26-A-golden-globe-with-a-blue-and-gold-globe-on-a-metallic-background.-Below-the-globe-is-a-large-button-with-the-text-Enter-Parents-World-in-a-large-f.webp');
+      background-size: cover;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: none;
+      display: block;
+      margin: 30px auto;
+      cursor: pointer;
+    }
+
+    .loading-circle {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 60px;
+      height: 60px;
+      animation: spin 2s linear infinite;
+      display: none;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 600px) {
+      .header-image {
+        width: 90%;
+        height: auto;
+      }
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      const studentName = localStorage.getItem('imageUrl3') || 'Student Name';
+      const fatherName = localStorage.getItem('imageUrl4') || 'Father Name';
+      const userId = localStorage.getItem('userId') || '';
+
+      document.getElementById('studentName').textContent = studentName;
+      document.getElementById('fatherName').textContent = fatherName;
+      document.getElementById('userId').value = userId;
+
+      if (localStorage.getItem('isRegistered') === 'true') {
+        displayMarksTable();
+        document.querySelector('.participant-info').classList.add('hidden');
+      }
+    };
+
+    function submitParticipantDetails() {
+      const loadingCircle = document.querySelector('.loading-circle');
+      loadingCircle.style.display = 'block';
+
+      const participantName = document.getElementById('participantName').value;
+      const participantAge = document.getElementById('participantAge').value;
+      const participantProfession = document.getElementById('participantProfession').value;
+      const participantPhone = document.getElementById('participantPhone').value;
+      const userId = document.getElementById('userId').value;
+
+      const formData = new FormData();
+      formData.append('userId', userId);
+      formData.append('imageUrl3', participantName);
+      formData.append('imageUrl4', participantAge);
+      formData.append('imageUrl5', participantProfession);
+      formData.append('imageUrl6', participantPhone);
+
+      fetch('https://script.google.com/macros/s/YOUR_GOOGLE_SCRIPT_URL/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        loadingCircle.style.display = 'none';
+        if (data.result === 'success') {
+          localStorage.setItem('isRegistered', 'true');
+          displayMarksTable();
+          document.querySelector('.participant-info').classList.add('hidden');
+        } else {
+          alert('Submission failed');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        loadingCircle.style.display = 'none';
+      });
+    }
+
+    function displayMarksTable() {
+      const tableHtml = `
+        <table class="marks-table">
+          <tr><th>Name</th><th>Total Marks</th><th>Obtained Marks</th></tr>
+          <tr><td>SESSION-1</td><td>20</td><td>${localStorage.getItem('session1-marks') || ''}</td></tr>
+          <tr><td>SESSION-2</td><td>20</td><td>${localStorage.getItem('session2-marks') || ''}</td></tr>
+          <tr><td>SESSION-3</td><td>20</td><td>${localStorage.getItem('session3-marks') || ''}</td></tr>
+          <tr><td>SESSION-4</td><td>20</td><td>${localStorage.getItem('session4-marks') || ''}</td></tr>
+          <tr><td>SESSION-5</td><td>20</td><td>${localStorage.getItem('session5-marks') || ''}</td></tr>
+          <tr><td>SESSION-6</td><td>20</td><td>${localStorage.getItem('session6-marks') || ''}</td></tr>
+          <tr><td>SESSION-7</td><td>20</td><td>${localStorage.getItem('session7-marks') || ''}</td></tr>
+          <tr><td>SESSION-8</td><td>20</td><td>${localStorage.getItem('session8-marks') || ''}</td></tr>
+          <tr><td>SESSION-9</td><td>20</td><td>${localStorage.getItem('session9-marks') || ''}</td></tr>
+          <tr><td>SESSION-10</td><td>20</td><td>${localStorage.getItem('session10-marks') || ''}</td></tr>
+          <tr><td>FINAL EXAM</td><td>80</td><td>${localStorage.getItem('final-exam-marks') || ''}</td></tr>
+          <tr><td colspan="2">FINAL SCORE</td><td>100</td><td>${calculateFinalScore()}%</td></tr>
+        </table>
+      `;
+      document.getElementById('marksSection').innerHTML = tableHtml;
+    }
+
+    function calculateFinalScore() {
+      const sessionMarks = [
+        parseInt(localStorage.getItem('session1-marks')) || 0,
+        parseInt(localStorage.getItem('session2-marks')) || 0,
+        parseInt(localStorage.getItem('session3-marks')) || 0,
+        parseInt(localStorage.getItem('session4-marks')) || 0,
+        parseInt(localStorage.getItem('session5-marks')) || 0,
+        parseInt(localStorage.getItem('session6-marks')) || 0,
+        parseInt(localStorage.getItem('session7-marks')) || 0,
+        parseInt(localStorage.getItem('session8-marks')) || 0,
+        parseInt(localStorage.getItem('session9-marks')) || 0,
+        parseInt(localStorage.getItem('session10-marks')) || 0,
+      ];
+      const finalExamMarks = parseInt(localStorage.getItem('final-exam-marks')) || 0;
+      const totalMarksObtained = sessionMarks.reduce((sum, mark) => sum + mark, finalExamMarks);
+      return Math.round((totalMarksObtained / 100) * 100);
+    }
+
+    function startTest() {
+      const studentName = localStorage.getItem('imageUrl3') || 'Student';
+      window.location.href = `MOTHERS_COURSE_TEST_1.html?studentName=${encodeURIComponent(studentName)}`;
+    }
+  </script>
+</head>
+<body>
+
+  <!-- School and Student Information -->
+  <div class="info-section">
+    <p>Student Name: <span id="studentName">Loading...</span></p>
+    <p>Father Name: <span id="fatherName">Loading...</span></p>
+  </div>
+
+  <!-- Participant Details Form -->
+  <div class="participant-info">
+    <h3>Enter Participant Details</h3>
+    <input type="hidden" id="userId" value="">
+    <input type="text" id="participantName" placeholder="Participant Name">
+    <input type="number" id="participantAge" placeholder="Age">
+    <input type="text" id="participantProfession" placeholder="Profession">
+    <input type="tel" id="participantPhone" placeholder="Phone Number">
+    <button onclick="submitParticipantDetails()">Submit</button>
+  </div>
+
+  <!-- Loading Circle -->
+  <div class="loading-circle"></div>
+
+  <!-- Marks Section -->
+  <div id="marksSection"></div>
+
+  <!-- Test-1 Button -->
+  <button class="round-button" onclick="startTest()">Start Test-1</button>
+
+</body>
+</html>

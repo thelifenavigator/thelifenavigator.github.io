@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parenting Course</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-image {
+      width: 350px;
+      height: 150px;
+      display: block;
+      margin: 20px auto;
+      object-fit: cover;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 1.3em;
+    }
+
+    .info-section span {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .intro-section {
+      text-align: center;
+      margin: 30px 20px;
+    }
+
+    .intro-section h2 {
+      color: #007BFF;
+    }
+
+    .intro-section p {
+      font-size: 1.1em;
+      color: #555;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .participant-info input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1.2em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .participant-info h3 {
+      color: #333;
+      font-weight: bold;
+      font-size: 1.8em;
+      text-align: center;
+    }
+
+    .theater-video-container {
+      border: 5px solid #000;
+      border-radius: 20px;
+      padding: 10px;
+      width: 80%;
+      max-width: 720px;
+      height: 400px;
+      margin: 20px auto;
+      background-color: #333;
+    }
+
+    .theater-video-container iframe {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2em;
+      width: 90%;
+      max-width: 300px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    @media (max-width: 600px) {
+      .header-image {
+        width: 90%;
+        height: auto;
+      }
+      .theater-video-container {
+        height: 250px;
+      }
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      // Fetch data from localStorage and display it
+      const schoolImage = localStorage.getItem('schoolURL') || 'https://via.placeholder.com/350x150';
+      const schoolName = localStorage.getItem('schoolName') || 'School Name';
+      const studentName = localStorage.getItem('imageUrl3') || 'Student Name';   // Student's Name from localStorage
+            const userId = localStorage.getItem('userId') || '';  // User ID from localStorage (unique identifier)
+      const videoTitle = localStorage.getItem('videoTitle8') || 'Loading video title...';
+      const videoUrl = localStorage.getItem('videoUrl8') || '';
+
+      // Display data in elements
+      document.getElementById('schoolImage').src = schoolImage;
+      document.getElementById('schoolName').textContent = schoolName;
+      document.getElementById('studentName').textContent = studentName;
+           // Store userId in hidden field to use it during form submission
+      document.getElementById('userId').value = userId;
+      document.getElementById('videoTitle').textContent = videoTitle;
+      document.getElementById('videoPlayer').src = videoUrl;
+    };
+
+    function submitParticipantDetails() {
+      const participantName = document.getElementById('participantName').value;
+      const participantAge = document.getElementById('participantAge').value;
+      const participantProfession = document.getElementById('participantProfession').value;
+      const participantPhone = document.getElementById('participantPhone').value;
+      const userId = document.getElementById('userId').value;  // Retrieve the hidden userId field
+
+      // Prepare form data
+      const formData = new FormData();
+      formData.append('userId', userId);  // Send userId to identify the correct row
+      formData.append('imageUrl3', participantName);  // Column AS - Mother's Name (mapped to participant name)
+      formData.append('imageUrl4', participantAge);   // Column AT - Age
+      formData.append('imageUrl5', participantProfession);  // Column AU - Profession
+      formData.append('imageUrl6', participantPhone);  // Column AV - Phone Number
+
+      // Send data to server via Google Apps Script
+      fetch('https://script.google.com/macros/s/AKfycbydulRLO4FIa2vwQK9HdknfLofrXgdLdoZzdkEZ9XBD79Xs7nkoCritDKoBc--D14eS/exec', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.result === 'success') {
+          alert('Details submitted successfully');
+        } else {
+          alert('Submission failed');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  </script>
+</head>
+<body>
+
+  <!-- School Header Image -->
+  <img id="schoolImage" class="header-image" src="https://via.placeholder.com/350x150" alt="School Image">
+
+  <!-- School and Student Information -->
+  <div class="info-section">
+    <p>School Name: <span id="schoolName">Loading...</span></p>
+    <p>Student Name: <span id="studentName">Loading...</span></p>
+      </div>
+
+  <!-- Course Introduction -->
+  <div class="intro-section">
+    <h2>Welcome to the Course on Parenting</h2>
+    <p>Parenting is one of the most rewarding and challenging journeys in life. ...</p>
+  </div>
+
+  <!-- Hidden User ID Field -->
+  <input type="hidden" id="userId" value="">
+
+  <!-- Participant Details Form -->
+  <div class="participant-info">
+    <h3>Enter Participant Details</h3>
+    <input type="text" id="participantName" placeholder="Participant Name">
+    <input type="number" id="participantAge" placeholder="Age">
+    <input type="text" id="participantProfession" placeholder="Profession">
+    <input type="tel" id="participantPhone" placeholder="Phone Number">
+    <button onclick="submitParticipantDetails()">Submit</button>
+  </div>
+
+  <!-- Video Section -->
+  <div class="intro-section">
+    <h3 id="videoTitle">Loading Video Title...</h3>
+    <div class="theater-video-container">
+      <iframe id="videoPlayer" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Take Exam Button -->
+  <button onclick="location.href='exam-page.html'">Take Exam</button>
+
+</body>
+</html>
